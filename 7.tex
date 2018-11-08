@@ -236,8 +236,60 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 \setcounter{problem}{6}
 
 \begin{problem}
-
+    Записати крайову задачу принципу максимуму для задачі оптимального керування:
+    \begin{equation*}
+        \mathcal{J}(u) = \Int_0^T (4 u_1^2(s) + u_2^2(s) + \cos^2(x_1(s))) \, \dif s + \sin^2(x_2(T)) \to \inf
+    \end{equation*}
+    за умови, що
+    \begin{system*}
+        \dot x_1 &= x_1 + x_2 + 3 x_1 x_2 + 2 u_1, \\
+        \dot x_2 &= - x_1 + 6 x_2 - 3 x_1 x_2 + u_2,
+    \end{system*}
+    \begin{equation*}
+        x_1(0) = 4, x_2(0) = -2.
+    \end{equation*}
+    Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $u_1(t), u_2(t)$ -- функції керування, $t \in [0, T]$, момент часу $T$ є заданим.
 \end{problem}
+
+\begin{solution}
+    Для початку випишемо всі функції з теоретичної частини:
+    \begin{equation}
+        \begin{aligned}
+            f_0(x, u, t) &=  u_1^2(s) + u_2^2(s) + \cos^2(x_1(s)), \\
+            f(x(t), u(t), t) &= \begin{pmatrix} x_1 + x_2 + 3 x_1 x_2 + 2 u_1 \\ - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 \end{pmatrix}, \\
+            \Phi(x(T)) &= \sin^2(x_2(T)).
+        \end{aligned}
+    \end{equation}
+
+    Функція Гамільтона-Понтрягіна має вигляд
+    \begin{equation}
+        \begin{aligned}
+        \mathcal{H} (x, u, \psi, t) &= - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = \\
+        &= - u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \langle \psi, f(x, u, t) \rangle = \\
+        &= - u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \left \langle \psi, \begin{pmatrix} x_1 + x_2 + 3 x_1 x_2 + 2 u_1 \\ - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 \end{pmatrix} \right \rangle = \\
+        &= - u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \left \langle \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}, \begin{pmatrix} x_1 + x_2 + 3 x_1 x_2 + 2 u_1 \\ - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 \end{pmatrix} \right \rangle = \\
+        &= - u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \psi_1 ( x_1 + x_2 + 3 x_1 x_2 + 2 u_1 ) + \psi_2 ( - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 ).
+        \end{aligned}
+    \end{equation}
+    
+    Спряжена система записується так:
+    \begin{equation} 
+        \dot \psi = - \nabla_x \mathcal{H} = \begin{pmatrix} \sin (2 x_1) + \psi_1 + 3 \psi_1 x_2 - \psi_2 - 3 \psi_2 x_2 \\ \psi_1 + 3 \psi_1 x_1 + 6 \psi_2 - 3 \psi_2 x_1 \end{pmatrix},
+    \end{equation}
+    \begin{equation} 
+        \psi(T) = - \nabla \Phi(x(T)) = \begin{pmatrix} 0 \\ \sin (2 x_2) \end{pmatrix}.
+    \end{equation} 
+    
+    Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування
+    \begin{equation} 
+        \dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = \begin{pmatrix} - 2 u_1 + 2 \psi_1 \\ - 2 u_2 + \psi_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix},
+    \end{equation}
+    звідки $u_1 = \psi_1$, $u_2 = \psi_2 / 2$. Підставляємо знайдене керування у початкову систему:
+    \begin{system}
+        \dot x_1 &= x_1 + x_2 + 3 x_1 x_2 + 2 \psi_1, \\
+        \dot x_2 &= - x_1 + 6 x_2 - 3 x_1 x_2 + \psi_2 / 2.
+    \end{system}
+\end{solution}
 
 \begin{problem}
 
