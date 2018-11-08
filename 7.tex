@@ -1,6 +1,8 @@
 \setcounter{section}{6}
 
 \numberwithin{equation}{section}
+\numberwithin{theorem}{section}
+\numberwithin{example}{section}
 
 \section{Принцип максимуму Понтрягіна для задачі з вільними правим кінцем}
 
@@ -22,7 +24,7 @@
     \label{eq:6.3}
     x(t_0) = x_0.
 \end{equation}
-Тут $x = (x_1, x_2, \ldots, x_n)^*$ -- фазові координати, $u = (u_1, u_2, \ldots, u_m)^*$ -- керування. Керування $u(\cdot)$ є кусково-неперервним. Також $u(t) \in \mathcal{U}, t \in [t_0, T]$, де $\mathcal{U} \subseteq \RR^m$, не залежить від часу. \\
+Тут $x = (x_1, x_2, \ldots, x_n)^*$ -- фазові координати, $u = (u_1, u_2, \ldots, u_m)^*$ -- кусково-неперервне керування таке. що $u(t) \in \mathcal{U}, t \in [t_0, T]$, де $\mathcal{U} \subseteq \RR^m$, не залежить від часу. \\
 
 $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за сукупністю змінних, разом зі своїми градієнтами за $x$, $\Phi(x)$ -- неперервно диференційовна, $(x, u, t) \in \RR^n \times \mathcal{U} \times [t_0, T]$, $x_0 \in \RR^n$. \\
 
@@ -30,7 +32,7 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 
 Моменти часу $t_0$ і $T$ фіксовані, а обмеження на фазові координати відсутні. \\
 
-Якщо існує оптимальне керування задачі \ref{eq:6.1}-\ref{eq:6.3}, тобто допустиме $u_* = u_*(\cdot)$ і відповідний йому розв'язок $x_* = x_*(\cdot)$ задачі Коші (\ref{eq:6.2})-(\ref{eq:6.3}) такі, що
+Якщо існує оптимальне керування задачі (\ref{eq:6.1})-(\ref{eq:6.3}), тобто допустиме $u_* = u_*(\cdot)$ і відповідний йому розв'язок $x_* = x_*(\cdot)$ задачі Коші (\ref{eq:6.2})-(\ref{eq:6.3}) такі, що
 \begin{equation*}
     \inf \mathcal{J}(u, x) = \mathcal{J}(u_*, x_*),
 \end{equation*}
@@ -48,7 +50,7 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
     \label{eq:6.5}
     \dot \psi = - \nabla_x \mathcal{H}(x, u, \psi, t), t \in [t_0, T],
 \end{equation}
-\begin{equation}
+\begin{equation}8
     \label{eq:6.6}
     \psi(T) = - \nabla_x \Phi(x(T)).
 \end{equation}
@@ -62,7 +64,51 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
     \end{equation*}
 \end{theorem}
 
-
+\begin{example}
+    Розглянемо задачу
+    \[ \mathcal{J}(u) = \dfrac12 \Int_0^T u^2(s) \dif s + \dfrac{x^2(T)}{2} \]
+    за умови
+    \[ \dot x = a x + y, x(t_0) = x_0, \]
+    де $x(\cdot): \RR \to \RR$, $u(\cdot): \RR \to \RR$, $a$ -- сталий параметр, $x_0$ -- фіксована точка. \\
+    
+    Функція Гамільтона-Понтрягіна має вигляд
+    \[ \mathcal{H}(x, u, \psi, t) = - \dfrac{u^2}{2} + \psi (a x + u). \]
+    
+    Спряжена система записується так:
+    \[ \dot \psi = - \nabla_x \mathcal{H} = - a \psi, \psi(T) = - x(T). \]
+    
+    Її розв'язок 
+    \[ \psi(t) = - x(T) \cdot e^{a (T - t)}. \]
+    
+    Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування
+    \[ \dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = 0.\]
+    
+    Звідси $- u_* + \psi = 0$ і $u_*(t) = \psi(t) = - x(T) \cdot e^{a (T - t)}$. \\
+    
+    Підставляємо знайдене керування у рівняння 
+    \[ \dot x = a x + u, x(t_0) = x_0. \]
+    
+    Формула Коші для загального розв'язку лінійного рівняння першого порядку має вигляд
+    \begin{equation*}
+        \begin{aligned}
+            x(t) &= e^{a t} x_0 + \Int_0^t e^{a (t - s)} \cdot u(s) \dif s = e^{a t} x_0 - \Int_0^t  e^{a (t - s)} \cdot x(T) \cdot e^{a (T - s)} \dif s = \\
+            &= e^{a t} x_0 - e^{a t + a T} x(T) \Int_0^t  e^{- 2 a s} \dif s = e^{a t} x_0 - \dfrac{e^{a T} \cdot x(T) \cdot \left(e ^{at} - e^{-a t}\right)}{2a},
+        \end{aligned}
+    \end{equation*}
+    
+    звідки, при $t = T$:
+    \[ x(T) = e^{aT} \left( x_0 - \dfrac{x(T) \cdot \left( e^{aT} - e^{-aT} \right)}{2a} \right), \]
+    
+    звідки
+    \[ x(T) = \dfrac{e^{a T} x_0}{1 - \frac{e^{aT}}{2a} \cdot \left(e^{aT} - e^{-aT}\right)}. \]
+    
+    
+    Підсумовуючи все вищесказане,
+    \[ u_*(t) = - \dfrac{e^{a (2T - t)} x_0}{1 - \frac{e^{aT}}{2a} \cdot \left(e^{aT} - e^{-aT} \right)}, \]
+    причому 
+    \[ x_*(t) = e^{at} x_0 - \dfrac{e^{2 a T} x_0 \cdot \left( e^{at} - e^{-at} \right)}{2a - e^{2aT} - 1}. \]
+    
+\end{example}
 
 \subsection{Аудиторне заняття}
 
