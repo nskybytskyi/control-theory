@@ -165,30 +165,75 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 \end{solution}
 
 \begin{problem}
-
+    Записати крайову задачу принципу максимуму для задачі оптимального керування:
+    \begin{equation*}
+        \mathcal{J}(u) = \gamma^2 \Int_0^T x^2(s) \, \dif s \to \inf
+    \end{equation*}
+    за умови, що
+    \begin{equation*}
+        \dot x = u, \quad x(0) = x_0
+    \end{equation*}
+    Тут $x(t) \in \RR^1$, $u(t) \in \RR^1$,
+    \begin{equation*}
+        |u(t)|\le \rho,
+    \end{equation*}
+    $t \in [0, T]$. Точка $x_0 \in \RR^1$ і момент часу $T$ є заданими.
 \end{problem}
 
-\begin{problem}
+\begin{solution}
+    Для початку випишемо всі функції з теоретичної частини:
+    \begin{equation}
+        f_0(x, u, t) = \gamma^2 x^2(t), \quad f(x(t), u(t), t) = u(t), \quad \Phi(x(T)) = 0, \quad \mathcal{U} = \mathcal{U}(t) = [-\rho, \rho].
+    \end{equation}
+    
+    Функція Гамільтона-Понтрягіна має вигляд
+    \begin{equation}
+        \mathcal{H} (x, u, \psi, t) = - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = - \gamma^2 x^2 + \psi u.
+    \end{equation}
+    
+    Спряжена система записується так:
+    \begin{equation} 
+        \dot \psi = - \nabla_x \mathcal{H} = - 2 \gamma^2 x,
+    \end{equation}
+    \begin{equation} 
+        \psi(T) = - \nabla \Phi(x(T)) = 0,
+    \end{equation}
+    її розв'язок 
+    \begin{equation}
+        \psi = \dfrac{2 \gamma^2}{u^3} + \dfrac{2 \gamma^2 x}{u^2} + \dfrac{\gamma^2 x^2}{u} + c_1 e^{u x},
+    \end{equation}
+    де $c_1$ визначається з рівняння
+    \begin{equation}
+        \psi(T) = 0.
+    \end{equation}
+    
+    Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування
+    \begin{equation} 
+        \dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = \psi = 0,
+    \end{equation}
+    але обмеження на керування є, тому ??
+    
+\end{solution}
 
-\end{problem}
+% \begin{problem}
 
-\begin{problem}
+% \end{problem}
 
-\end{problem}
+% \begin{problem}
 
-\begin{problem}
+% \end{problem}
 
-\end{problem}
+% \begin{problem}
 
-\begin{problem}
+% \end{problem}
 
-\end{problem}
+% \begin{problem}
+
+% \end{problem}
 
 \subsection{Домашнє завдання}
 
-\begin{problem}
-
-\end{problem}
+\setcounter{problem}{6}
 
 \begin{problem}
 
@@ -198,14 +243,18 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 
 \end{problem}
 
-\begin{problem}
+% \begin{problem}
 
-\end{problem}
+% \end{problem}
 
-\begin{problem}
+% \begin{problem}
 
-\end{problem}
+% \end{problem}
 
-\begin{problem}
+% \begin{problem}
 
-\end{problem}
+% \end{problem}
+
+% \begin{problem}
+
+% \end{problem}
