@@ -1,0 +1,186 @@
+\setcounter{section}{2}
+
+\section{Домашнє завдання за 9/21}
+
+\setcounter{problem}{7}
+
+\begin{problem}
+    Перевести систему 
+    \[ \dfrac{dx}{dt} = 2tx + u, t \in [0, T], \]
+    з точки $x(0) = x_0$ в точку $x(T) = y_0$ за допомогою керування з класу:
+    \begin{enumerate}
+        \item постійних функцій $u(t) = c$, $c$ -- константа; 
+        \item кусково-постійних функцій 
+        \[
+        u(t) = \begin{cases}
+            c_1 & t \in [0, t_1), \\
+            c_2 & t \in (t_1, T].
+        \end{cases}
+        \]
+        Тут $c_1$, $c_2$ -- константи, $c_1 \ne c_2$, $0 < t_1 < T$;
+        \item програмних керувань $u(t) = ct$, $c$ -- константа;
+        \item керувань з оберненим зв'язок $u(x) = cx$, $c$ -- константа.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+Будемо просто підставляти керування у диференційне рівняння і розв'язувати його:
+\begin{enumerate}
+\item Зводимо до канонічного вигляду лінійного рівняння:
+\[ \dfrac{dx}{dt} - 2t \cdot x(t) = c. \]
+Домножаємо на множник що інтегрує:
+\begin{align*}
+    \exp\{-t^2\} \cdot \dfrac{dx}{dt} - 2 t \cdot \exp\{-t^2\} \cdot x(t) &= c \cdot \exp\{-t^2\} \\
+    \\
+    \exp\{-t^2\} \cdot \dfrac{dx}{dt} + x(t) \cdot \dfrac {d \exp\{-t^2\}} {dt} &= c \cdot \exp\{-t^2\}.
+\end{align*}
+Згортаємо похідну добутку:
+\[ \dfrac {d (\exp\{-t^2\} \cdot x(t))} {dt} = c \cdot \exp\{-t^2\}. \]
+Інтегруємо:
+\begin{align*}
+    \left.(\exp\{-t^2\} \cdot x(t))\right|_0^T &= \Int_0^T c \cdot \exp\{-t^2\} dt \\
+    \\
+    \exp\{-T^2\} \cdot y_0 - x_0 &= c \cdot \dfrac {\sqrt \pi} 2 \cdot \erf (T),
+\end{align*}
+і виражаємо звідси $c$:
+\[ c = 2 \cdot \dfrac{\exp\{-T^2\} \cdot y_0 - x_0} {\sqrt \pi \cdot \erf (T)}, \]
+де $\erf$ позначає функцію помилок, тобто $\erf(x) = \dfrac 2 {\sqrt \pi} \cdot \Int_0^x \exp\{-t^2\} dt$.\\
+
+Зауважимо, що задача має розв'язок завжди.
+\item Нескладно зрозуміти, що нас задовольнить довільне керування вигляду
+\[ c_2 = 2 \cdot \dfrac{\exp\{-T^2\} \cdot y_0 - \exp\{-t_1^2\} \cdot x_1} {\sqrt \pi \cdot (\erf (T) - \erf (t_1))},\] де \[ x_1 = \dfrac{2x_0 + c_1\sqrt \pi \cdot \erf (T)}{2\cdot \exp\{-t_1^2\}}, \]
+тобто  ми просто дозволили $c_1$ бути довільною сталою, обчислили $x(t_1)$, а потім розв'язали задачу переведення системи з точки $(t_1, x_1)$ у точку $(T, y_0)$ як у першому пункті, з мінімальними поправками на межі інтегрування. \\
+
+Зокрема, якщо $c_1 = 0$, то $x_1 = \dfrac {x_0} {\exp\{-t_1^2\}}$, тому $c_2 = 2 \cdot \dfrac{\exp\{-T^2\} \cdot y_0 - x_0} {\sqrt \pi \cdot (\erf (T) - \erf (t_1))}$.\\
+
+Зауважимо, що задача має розв'язок завжди.
+\item 
+\begin{align*}
+    \dfrac{dx}{2x(t) + c} &= t dt \\
+    \\
+    \Int_0^T \dfrac{dx}{2x(t) + c} &= \Int_0^T t dt \\
+    \\
+    \left.\left(\dfrac 12 \ln(2x(t) + c)\right)\right|_0^T &= \dfrac {T^2} 2 \\
+    \\
+    \ln(2y_0 + c) - \ln(2x_0 + c) &= T^2 \\
+    \\
+    \ln\left(\dfrac{2y_0 + c}{2x_0 + c}\right) &= T^2 \\
+    \\
+    \dfrac{2y_0 + c}{2x_0 + c} &= \exp\{T^2\} \\
+    \\
+    2y_0 + c &= (2x_0 + c)\cdot \exp\{T^2\} \\
+    \\
+    2(y_0 - x_0 \cdot \exp\{T^2\}) &= c \cdot (\exp\{T^2\} - 1) 
+\end{align*}
+звідки
+\[c = 2\cdot \dfrac{y_0 - x_0 \cdot \exp\{T^2\}}{\exp\{T^2\} - 1}. \]
+Зауважимо, що задача має розв'язок завжди.
+\item 
+\begin{align*}
+    \dfrac{dx}{dt} &= 2t\cdot x(t) + c\cdot x(t) \\
+    \\
+    \dfrac{dx}{x(t)} &= (2t + c) dt \\
+    \\
+    \Int_0^T \dfrac{dx}{x(t)} &= \Int_0^T (2t + c) dt \\
+    \\
+    (\ln(x(t))|_0^T &= T^2 + cT \\
+    \\
+    \ln(y_0) - \ln(x_0) &= T^2 + cT \\ 
+    \\
+    \ln\left(y_0/x_0\right) &= T^2 + cT 
+\end{align*}
+звідки
+\[ c = \dfrac{\ln\left(y_0/x_0\right) - T^2}{T}. \]
+Зауважимо, що задача має розв'язок тільки якщо $\signum(x_0) = \signum(y_0)$.
+\end{enumerate}
+\end{solution} 
+
+\begin{problem}
+\begin{enumerate}
+    \item Знайти грамміан керованості для системи керування \[\dfrac{dx(t)}{dt} = tx(t) + u(t)\] і дослідити її на керованість, використовуючи перший критерій керованості.
+    \item За допомогою грамміана керованості розв'язати таку задачу оптимального керування: \[\mathcal{J}(u) = \Int_0^T u^2(s) ds \to \min\]
+    за умов, що \[\dfrac{dx(t)}{dt} = tx(t) + u(t), x(0) = x_0, x(T) = x_T. \]
+    Тут $x$ -- стан системи. $u(t)$ -- скалярне керування, $x_0$, $x_T$ -- задані точки, $t\in[0,T]$.
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+    \item Одразу помітимо, що $A(t) = (t)$, $B(t) = (1)$. Далі, з рівняння $\dfrac{d\Theta(t,s)}{dt} = A(t) \cdot \Theta(t,s)$ знаходимо $\Theta(t,s) = \exp\{t^2 / 2 - s^2 / 2\}$. Залишилося всього нічого, знайти власне грамміан:
+    \[ \Phi(T,0) = \Int_0^T \Theta(T,s)B(s)B^\star(s),\Theta^\star(T,s) ds = \Int_0^T (\exp\{T^2 - s^2\}) ds = \begin{pmatrix}\dfrac{\sqrt \pi}{2} \cdot \exp\{T^2\} \cdot \erf(T) \end{pmatrix}, \] і $\det\Phi(T,0)\ne0$, тобто система цілком керована на $[0, T]$.
+    \item Пригадаємо наступний результат: розв'язком вищезгаданої задачі про оптимальне керування є функція
+    \begin{align*}
+        u(t) &= B^\star(t) \Theta^\star(T,t)\Phi^{-1}(T,0)(x_T-\Theta(T,0) x_0) = \\
+        \\
+        &= \exp\{T^2 / 2 - t^2 / 2\} \begin{pmatrix}\dfrac2{\sqrt \pi} \cdot \exp\{-T^2\} \cdot \dfrac1{\erf(T)} \end{pmatrix} (x_T - \exp\{T^2 / 2\} x_0) = \\
+        \\
+        &= \dfrac{2}{\sqrt{\pi}\cdot \erf(T)} \cdot \left(x_T \cdot \exp\left\{-\dfrac{T^2+t^2}2\right\} - x_0 \cdot \exp\left\{- \dfrac{t^2}2\right\}\right).
+    \end{align*} 
+\end{enumerate}
+\end{solution} 
+
+\setcounter{section}{2}
+
+\setcounter{problem}{7}
+
+\begin{problem}
+Знайти опорну функцію множини досяжності для системи керування:
+\begin{equation*}
+    \left\{
+    \begin{aligned}
+    \dfrac{dx_1}{dt} &= x_1 - x_2 + 2u_1, \\
+    \dfrac{dx_2}{dt} &= -4x_1 + x_2 + u_2,
+    \end{aligned}
+    \right.
+\end{equation*}
+де $x(0) = (x_{01}, x_{02}) \in \mathcal{M}_0$, $u(t) = (u_1(t), u_2(t)) \in\mathcal{U}$, $t\ge0$,
+\begin{align*}
+    \mathcal{M}_0 &= \{(x_{01},x_{02}): x_{01}^2 + x_{02}^2 \le 4\}, \\
+    \mathcal{U} &= \{(u_1, u_2): u_1^2 + u_2^2 \le 1\}.
+\end{align*}
+\end{problem}
+
+\begin{solution}
+    Одразу помітимо, що $C=\begin{pmatrix}2&0\\0&1\end{pmatrix}$.\\
+
+    $\Theta(t,s)$ знайдемо розв'язавши однорідну систему:
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+        \dfrac{dx_1}{dt} &= x_1 - x_2, \\
+        \dfrac{dx_2}{dt} &= -4x_1 + x_2,
+        \end{aligned}
+        \right.
+    \end{equation*}
+    
+    Її визначник $\begin{vmatrix} 1 - \lambda & - 1 \\ - 4 & 1 - \lambda \end{vmatrix} = (1 - \lambda)^2 - 4 = (\lambda + 1) (\lambda - 3) = 0$, звідки $\lambda_1 = -1$, $\lambda_2 = 3$. \\
+    
+    Підставляючи знайдені числа у систему, знаходимо власні вектори: $\begin{pmatrix} 1 \\ 2 \end{pmatrix}$ та $\begin{pmatrix} 1 \\ -2 \end{pmatrix}$ відповідно. \\
+
+    Отже загальний розв'язок має вигляд \[\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}(t) = c_1 \begin{pmatrix} e^{-t} \\ 2e^{-t} \end{pmatrix} + c_2 \begin{pmatrix} e^{3t} \\ -2e^{3t} \end{pmatrix}\]
+    
+    Розв'язуючи рівняння
+    \[ c_1 \begin{pmatrix} e^{-s} \\ 2e^{-s} \end{pmatrix} + c_2 \begin{pmatrix} e^{3s} \\ -2e^{3s} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \]
+    і
+    \[ c_1 \begin{pmatrix} e^{-s} \\ 2e^{-s} \end{pmatrix} + c_2 \begin{pmatrix} e^{3s} \\ -2e^{3s} \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \]
+    знаходимо фундаментальну матрицю системи, нормовану за моментом $s$, а саме 
+    \[ \Theta(t,s) = \begin{pmatrix} \dfrac{e^{s-t} + e^{3(t-s)}}{2} & \dfrac{e^{s-t} - e^{3(t-s)}}{4} \\ e^{s-t} - e^{3(t-s)} & \dfrac{e^{s-t} + e^{3(t-s)}}{2} \end{pmatrix} \]
+    
+    
+    Далі знаходимо $c(\mathcal{M}_0, \psi) = c(\mathcal{K}_2(0), \psi) = 2\|\psi\|$, та $c(\mathcal{U}, \psi) = c(\mathcal{K}_1(0), \psi) = \|\psi\|$, вже достатньо відомі нам опорні функції. \\
+    
+    Нарешті, можемо зібрати це все докупи: 
+    \begin{align*}
+        c(\mathcal{X}(t, \mathcal{M}_0), \psi) &= c(\mathcal{M}_0, \Theta^\star(t, 0) \psi) + \Int_{0}^t c(\mathcal{U}(s), C^\star(s) \Theta^\star(t, s)\psi) ds = \\
+        \\
+        &= 2 \|\Theta^\star(t, 0) \psi\| + \Int_{0}^t \left\|C^\star(s) \Theta^\star(t, s)\psi\right\| ds = \\
+        \\
+        &= 2 \left\|\begin{pmatrix} \dfrac{e^{-t} + e^{3t}}{2} & e^{3t} - e^{-t} \\ \dfrac{e^{3t} - e^{-t}}{4} & \dfrac{e^{-t} + e^{3t}}{2} \end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}\right\| + \\
+        \\
+        &+ \Int_{0}^t \left\|\begin{pmatrix} e^{s-t} + e^{3(t-s)} & 2(e^{3(t-s)} - e^{s-t}) \\ \dfrac{e^{3(t-s)} - e^{s-t}}{4} & \dfrac{e^{s-t} + e^{3(t-s)}}{2} \end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}\right\| ds = \\
+        \\
+        &= 2 \left\| \begin{pmatrix} \dfrac{e^{-t} + e^{3t}}{2} \cdot \psi_1 + (e^{3t} - e^{-t}) \cdot \psi_2 \\ \dfrac{e^{3t} - e^{-t}}{4}\cdot\psi_1 + \dfrac{e^{-t} + e^{3t}}{2}\cdot\psi_2 \end{pmatrix} \right\| + \\
+    \end{align*}
+    
+\end{solution} 

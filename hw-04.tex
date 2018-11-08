@@ -1,0 +1,135 @@
+\setcounter{section}{3}
+
+
+
+\section{Домашнє завдання за 9/28}
+
+\setcounter{section}{3}
+\setcounter{problem}{9}
+\begin{problem}
+    За допомогою грамміана керованості розв'язати таку задачу оптимального керування: мінімізувати критерій якості
+    \[ \mathcal{J}(u) = \Int_0^T u^2(s) dx \]
+    за умов, що
+    \[ \dfrac{d^2x(t)}{dt^2} - 5\dfrac{dx(t)}{dt} + 6x(t) = u(t), \]
+    \[ x(0) = x_0, x'(0) = y_0, x(T) = x'(T) = 0.\]
+    Тут $x$ -- стан системми, $u(t)$ -- скалярне керування, $t \in [0, T]$.
+\end{problem}
+
+\begin{solution}
+    Почнемо з того що зведемо рівняння другого порядку до системи рівнянь заміною $x_1 = x$, $x_2 = \dot x_1$, тоді маємо систему
+    \[ \begin{pmatrix} \dot x_1 \\ \dot x_2 \end{pmatrix} (t) = \begin{pmatrix} 0 & 1 \\ -6 & 5 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} (t) + \begin{pmatrix} 0 \\ 1 \end{pmatrix} u(t). \]
+    
+    Знайдемо власні числа матриці $A - \lambda E$: $\det(A - \lambda E) = \begin{vmatrix} -\lambda & 1 \\ -6 & 5-\lambda \end{vmatrix} = \lambda^2 - 5\lambda + 6 = (\lambda - 2) (\lambda - 3) = 0$, звідки $\lambda_1 = 2$, $\lambda_2 = 3$. Знайдемо власні вектори, вони будуть $\begin{pmatrix} 1 \\ 2 \end{pmatrix}$ і $\begin{pmatrix} 1 \\ 3 \end{pmatrix}$ відповідно. Звідси знаходимо загальний розв'язок
+    \[ \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} (t) = c_1 \begin{pmatrix} e^{2t} \\ 2e^{2t} \end{pmatrix} + c_2 \begin{pmatrix} e^{3t} \\ 3e^{3t} \end{pmatrix}. \]
+    
+    З рівняння
+    \[c_1 \begin{pmatrix} e^{2s} \\ 2e^{2s} \end{pmatrix} + c_2 \begin{pmatrix} e^{3s} \\ 3e^{3s} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \]
+    знаходимо $c_1 = 3e^{-2s}$, $c_2 = -2e^{-3s}$, а з рівняння
+    \[c_1 \begin{pmatrix} e^{2s} \\ 2e^{2s} \end{pmatrix} + c_2 \begin{pmatrix} e^{3s} \\ 3e^{3s} \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \]
+    знаходимо $c_1 = -e^{-2s}$, $c_2 = e^{-3s}$, тобто
+    \[ \Theta(t, s) = \begin{pmatrix} 3e^{2(t-s)} - 2e^{3(t-s)} & -e^{2(t-s)} + e^{3(t-s)} \\ 6e^{2(t-s)} - 6e^{3(t-s)} & -2e^{2(t-s)} + 3e^{3(t-s)} \end{pmatrix}. \]
+    
+    Знайдемо грамміан за формулою \[\Phi(T, 0) = \Int_0^T \Theta(T, s) B(s) B^\star (s) \Theta^\star(T, s) ds. \]
+    
+    \[ \Theta(T, s) B(s) = \begin{pmatrix} -e^{2(T - s)} + e^{3(T - s)} \\ -2e^{2(T - s)} + 3e^{3(T - s)} \end{pmatrix}. \]
+    \[ B^\star (s) \Theta^\star(T, s)  =  (\Theta(T, s) B(s))^\star = \begin{pmatrix} -e^{2(T - s)} + e^{3(T - s)} & -2e^{2(T - s)} + 3e^{3(T - s)} \end{pmatrix}. \]
+    
+    \begin{align*} 
+        \Phi(T, 0) &= \Int_0^T \begin{pmatrix} -e^{2(T - s)} + e^{3(T - s)} \\ -2e^{2(T - s)} + 3e^{3(T - s)} \end{pmatrix} \begin{pmatrix} -e^{2(T - s)} + e^{3(T - s)} & -2e^{2(T - s)} + 3e^{3(T - s)} \end{pmatrix} ds = \\
+        &= \Int_0^T \begin{pmatrix} e^{4(T - s)} - 2 e^{5(T - s)} + e^{6(T - s)} & 2 e^{4(T - s)} - 5 e^{5(T - s)} + 3 e^{6(T - s)} \\ 2e^{4(T - s)} - 5 e^{5(T - s)} + 3 e^{6(T - s)} & 4 e^{4(T - s)} - 12 e^{5(T - s)} + 9  e^{6(T - s)} \end{pmatrix} ds = \\
+        &= \begin{pmatrix} \dfrac{e^{4T} - 1}{4} - \dfrac{2(e^{5T} - 1)}{5} + \dfrac{e^{6T} - 1}{6} & \dfrac{e^{4T} - 1}{2} - (e^{5T} - 1) + \dfrac{e^{6T} - 1}{2} \\ \\ \dfrac{e^{4T} - 1}{2} - (e^{5T} - 1) + \dfrac{e^{6T} - 1}{2} & (e^{4T} - 1) - \dfrac{12(e^{5T} - 1)}{5} + \dfrac{3(e^{6T} - 1)}{2} \end{pmatrix}
+    \end{align*}
+    
+    Чесно кажучи вже обчислення визначника грамміану є надто складною обчислювальною задачею, не бачу сенсу її робити вручну.
+\end{solution}
+
+\begin{problem}
+    Мінімізувати критерій якості 
+    \[ \mathcal{J}(u) = \Int_0^T (u_1^1(s) + u_2^2(s)) ds \]
+    за умов \[ \left\{ \begin{aligned} \dfrac{dx_1(t)}{dt} = 6x_1(t) - 2x_2(t) + u_1(t), \\ \dfrac{dx_2(t)}{dt} = 5x_1(t) - x_2(t) + u_2(t), \end{aligned} \right. \]
+    \[ x_1(0) = x_{10}, x_2(0) = x_{20}, \] 
+    \[ x_1(T) = x_2(T) = 0. \]
+    Тут $x = (x_1, x_2)^\star$ -- вектор фазових координат з $\RR^2$, $u=(u_1,u_2)^\star$ -- вектор керування, $x = (x_{10}, x_{20})^\star$ -- відома точка, $t \in [0, T]$.
+\end{problem}
+
+\begin{solution}
+    Запишемо систему у людському вигляді:
+    \[ \begin{pmatrix} \dot x_1 \\ \dot x_2 \end{pmatrix} (t) = \begin{pmatrix} 6 & -2 \\ 5 & -1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} (t) + \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} u_1 \\ u_2 \end{pmatrix} (t) \]
+    
+    Знайдемо власні числа матриці $A - \lambda E$: $\det(A - \lambda E) = \begin{vmatrix} 6 - \lambda & -2 \\ 5 & -1 - \lambda \end{vmatrix} = \lambda^2 - 5\lambda + 4 = (\lambda - 1) (\lambda - 4) = 0$, звідки $\lambda_1 = 1$, $\lambda_2 = 4$. Знайдемо власні вектори, вони будуть $\begin{pmatrix} 2 \\ 5 \end{pmatrix}$ і $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$ відповідно. Звідси знаходимо загальний розв'язок
+    \[ \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} (t) = c_1 \begin{pmatrix} 2e^t \\ 5e^t \end{pmatrix} + c_2 \begin{pmatrix} e^{4t} \\ e^{4t} \end{pmatrix}. \]
+    
+    З рівняння
+    \[ c_1 \begin{pmatrix} 2e^s \\ 5e^s \end{pmatrix} + c_2 \begin{pmatrix} e^{4s} \\ e^{4s} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \]
+    знаходимо $c_1 = -\dfrac13 e^{-s}$, $c_2 = \dfrac53 e^{-4s}$, а з рівняння
+    \[ c_1 \begin{pmatrix} 2e^s \\ 5e^s \end{pmatrix} + c_2 \begin{pmatrix} e^{4s} \\ e^{4s} \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \]
+    знаходимо $c_1 = \dfrac13 e^{-s}$, $c_2 = -\dfrac23 e^{-4s}$, тобто
+    \[ \Theta(t, s) = \dfrac13\begin{pmatrix} -2 e^{t-s} + 5 e^{4(t-s)} & 2 e^{t-s} - 2 e^{4(t-s)} \\ -5 e^{t-s} + 5 e^{4(t-s)} & 5 e^{t-s} - 2 e^{4(t-s)} \end{pmatrix}. \]
+    
+    Знайдемо грамміан за формулою \[\Phi(T, 0) = \Int_0^T \Theta(T, s) B(s) B^\star (s) \Theta^\star(T, s) ds. \]
+    
+    \[ \Theta(T, s) B(s) =  \dfrac13\begin{pmatrix} -2 e^{t-s} + 5 e^{4(t-s)} & 2 e^{t-s} - 2 e^{4(t-s)} \\ -5 e^{t-s} + 5 e^{4(t-s)} & 5 e^{t-s} - 2 e^{4(t-s)} \end{pmatrix}. \]
+    \[ B^\star (s) \Theta^\star(T, s)  =  (\Theta(T, s) B(s))^\star =  \dfrac13\begin{pmatrix} -2 e^{t-s} + 5 e^{4(t-s)} & 5 e^{t-s} - 5 e^{4(t-s)} \\ -2 e^{t-s} + 2 e^{4(t-s)} & 5 e^{t-s} - 2 e^{4(t-s)} \end{pmatrix}. \]
+    
+    Чесно кажучи вже обчислення грамміану є надто складною обчислювальною задачею, не бачу сенсу її робити вручну.
+\end{solution}
+
+\setcounter{problem}{12}
+\begin{problem}
+    Записати систему диференціальних рівнянь для знаходження першої матриці керованості (грамміана керованості) і сформулювати критерій керованості на інтервалі $[0, T]$ у випадку, якщо система керування має вигляд:
+    \[ \dfrac{d^2x(t)}{dt^2} + tx(t) = u(t). \]
+    Тут $x$ -- стан системи, $u(t)$ -- скалярне керування, $t \in [0, T]$.
+\end{problem}
+
+\begin{solution}
+    Зробимо заміну $x_1 = x$, $x_2 = \dot x$, тоді маємо систему \[ \begin{pmatrix} \dot x_1 \\ \dot x_2 \end{pmatrix} (t) = \begin{pmatrix} 0 & 1 \\ -t & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} (t) + \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} u \end{pmatrix} (t). \]
+    Звідси можемо записати систему диференціальних рівнянь для знаходження грамміана керованості:
+    \[ \dfrac{\Phi(t, t_0)}{dt} = A(t) \Phi(t, t_0) + \Phi(t, t_0) A^\star(t) + B(t) B^\star(t). \]
+    \[ \dfrac{\Phi(t, 0)}{dt} = \begin{pmatrix} 0 & 1 \\ -t & 0 \end{pmatrix} \Phi(t, 0) + \Phi(t, 0) \begin{pmatrix} 0 & t \\ -1 & 0 \end{pmatrix} + \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}. \]
+    Окрім цього, не забуваємо про умову $\Phi(0, 0) = 0$.\\
+    
+    Щодо критерію керованості, то тут все просто (чи радше стандартно), для того щоб система була цілком керованою на $[0, T]$ необхідно і достатньо, щоб грамміан керованості $\Phi(T, 0)$ був невиродженим, тобто щоб $\det \Phi(T, 0) \ne 0$ або (що те саме у випадку невід'ємно-визначеної матриці) щоб $\det \Phi(T, 0) > 0$.
+\end{solution}
+
+\begin{problem}
+    Дослідити на керованість, використовуючи другий критерій керованості:
+    \begin{enumerate}
+        \item \[ \left\{ \begin{aligned} \dfrac{dx_1}{dt} &= -x_1 + x_2 + au, \\ \dfrac{dx_2}{dt} &= x_1 + \dfrac ua; \end{aligned} \right. \]
+        \item \[ \left\{ \begin{aligned} \dfrac{dx_1}{dt} &= x_1 - x_2 + au, \\ \dfrac{dx_2}{dt} &= x_1 + \dfrac ua; \end{aligned} \right. \] 
+        \item \[ \left\{ \begin{aligned} \dfrac{dx_1}{dt} &= x_1 + x_2 + au, \\ \dfrac{dx_2}{dt} &= - x_1 + x_2 + a^2u; \end{aligned} \right. \]
+        \item \[ \left\{ \begin{aligned} \dfrac{dx_1}{dt} &= 2x_1 + x_2 - au, \\ \dfrac{dx_2}{dt} &= - x_1 + au; \end{aligned} \right. \]
+        \item \[ x^{(n)}(t) + a_1 x^{(n-1)}(t) + \ldots + a_{n-1}x'(t) + a_n x(t) = u(t). \]
+        \item \[ \left\{ \begin{aligned} \dfrac{dx_1}{dt} &= x_1 + 2x_2 - x_3 + u_1 - u_2 \\ \dfrac{dx_2}{dt} &= -x_1 + x_2 + 3x_3 + u_1 \\ \dfrac{dx_3}{dt} &= x_2 + x_3 + 2u_2 \end{aligned} \right. \]
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item \[ A = \begin{pmatrix} -1 & 1 \\ 1 & 0 \end{pmatrix} \qquad B = \begin{pmatrix} a \\ 1 / a \end{pmatrix} \]
+        \[ D = \begin{pmatrix} B & AB \end{pmatrix} = \begin{pmatrix} a & 1 / a - a \\ 1 / a & a \end{pmatrix} \]
+        \[ \det D = a^2 + 1 - 1/a^2 \ne 0, \]
+        тобто система цілком керована якщо тільки $a \ne \pm \sqrt{\dfrac{\sqrt{5} - 1}{2}}$.
+        \item \[ A = \begin{pmatrix} 1 & -1 \\ 1 & 0 \end{pmatrix} \qquad B = \begin{pmatrix} a \\ 1 / a \end{pmatrix} \]
+        \[ D = \begin{pmatrix} B & AB \end{pmatrix} = \begin{pmatrix} a & a - 1 / a \\ 1 / a & a \end{pmatrix} \]
+        \[ \det D = a^2 - 1 + 1/a^2 \ne 0, \]
+        тобто система цілком керована для будь-яких $a$ (навіть $\det D \ge 1$ за нерівністю Коші).
+        \item \[ A = \begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix} \qquad B = \begin{pmatrix} a \\ a^2 \end{pmatrix} \]
+        \[ D = \begin{pmatrix} B & AB \end{pmatrix} = \begin{pmatrix} a & a + a^2 \\ a^2 & a^2 - a \end{pmatrix} \]
+        \[ \det D = a^3 - a^2 - a^4 - a^3 = -a^4 - a^2 \ne 0, \]
+        тобто система цілком керована якщо тільки $a \ne 0$.
+        \item \[ A = \begin{pmatrix} 2 & 1 \\ -1 & 0 \end{pmatrix} \qquad B = \begin{pmatrix} -a \\ a \end{pmatrix} \]
+        \[ D = \begin{pmatrix} B & AB \end{pmatrix} = \begin{pmatrix} -a & -a \\ a & a \end{pmatrix} \]
+        \[ \det D = 0, \]
+        тобто система не є цілком керованою для будь-яких $a$.
+        \item Зробимо заміну $x_0 = x$, $x_1 = x'$, $\ldots$, $x_n = x^{(n)}$, тоді отримаємо систему
+        \[ \left\{ \begin{aligned} \dot x_0 &= x_1 \\ \dot x_1 &= x_2 \\ \cdots \\ \dot x_{n-1} &= x_n \\ \dot x_n &= u - a_n x_0 - a_{n-1} x_1 - \ldots - a_1 x_{n-1} \end{aligned} \right. \]
+        тобто
+        \[ A = \begin{pmatrix} 0 & 1 & \ddots & 0 & 0 \\ 0 & 0 & \ddots & \ddots & 0 \\ \vdots & \vdots & \ddots & \ddots & \ddots \\ 0 & 0 & \cdots & 0 & 1 \\ -a_n & -a_{n-1} & \cdots & -a_1 & 0 \end{pmatrix} \qquad B = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix} \]
+        \[ D = \begin{pmatrix} B & AB & A^2B & \cdots & A^nB \end{pmatrix} = \begin{pmatrix} 0 & \cdots & 0 & 0 & 1 \\ \vdots & \reflectbox{$\ddots$} & \reflectbox{$\ddots$} & \reflectbox{$\ddots$} & \cdots \\ 0 & 0 & 1 & 0 & \cdots \\ 0 & 1 & 0 & -a_1 & \cdots \\ 1 & 0 & -a_1 & -a_2 & \cdots \end{pmatrix} \]
+        \[ \det D = -1 \ne 0, \] тобто система цілком керована для довільних $a_1$, $a_2$, $\ldots$, $a_n$.
+        \item \[ A = \begin{pmatrix} 1 & 2 & -1 \\ -1 & 1 & 3 \\ 0 & 1 & 1 \end{pmatrix} \qquad B = \begin{pmatrix} 1 & -1 \\ 1 & 0 \\ 0 & 2 \end{pmatrix} \]
+        \[ D = \begin{pmatrix} B & AB & A^2B  \end{pmatrix} = \begin{pmatrix} 1 & -1 & 3 & -3 & 2 & 8 \\ 1 & 0 & 0 & 7 & 0 & 16 \\ 0 & 2 & 1 & 2 & 1 & 9 \end{pmatrix} \]
+        Її ранг дорівнює 3, тобто система цілком керована.
+    \end{enumerate}
+    
+\end{solution}

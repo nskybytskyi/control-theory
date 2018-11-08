@@ -1,0 +1,155 @@
+\setcounter{section}{4}
+
+\setcounter{problem}{6}
+
+\begin{problem}
+    Записати диференціальне рівняння для знаходження грамміана спостережуваності системи
+    \begin{equation*}
+        \left\{
+            \begin{aligned}
+                \dfrac{dx_1(t)}{dt} &= x_1(t) + x_2(t), \\
+                \dfrac{dx_2(t)}{dt} &= - t^2x_2(t), \\
+                y(t) &= \sin (t) \cdot x_1(t) + \cos (t) \cdot x_2(t).
+            \end{aligned}   
+        \right.
+    \end{equation*}
+    Тут $x = (x_1, x_2)^\star$ -- вектор фазових координат, $y$ -- скалярне спостереження.
+\end{problem}
+
+\begin{solution}
+    Почнемо з того, що $A = \begin{pmatrix} 1 & 1 \\ 0 & -t^2 \end{pmatrix}$, $H = \begin{pmatrix} \sin(t) & \cos(t) \end{pmatrix}$, $A^\star = \begin{pmatrix} 1 & 0 \\ 1 & -t^2 \end{pmatrix}$, $H^\star = \begin{pmatrix} \sin(t) \\ \cos(t) \end{pmatrix}$.\\
+    
+    Тоді диференціальне рівняння для знаходження грамміана спостережуваності набуває вигляду
+    \[ \dfrac{dN(t, t_0)}{dt} = -\begin{pmatrix} 1 & 0 \\ 1 & -t^2 \end{pmatrix} N(t, t_0) - N(t, t_0) \begin{pmatrix} 1 & 1 \\ 0 & -t^2 \end{pmatrix} + \begin{pmatrix} \sin(t) \\ \cos(t) \end{pmatrix} \begin{pmatrix} \sin(t) & \cos(t) \end{pmatrix}. \]
+    Або, що те саме,
+    \begin{align*}
+        \begin{pmatrix} \dot n_{11} & \dot n_{12} \\ \dot n_{12} & \dot n_{22} \end{pmatrix} (t, t_0) = &-\begin{pmatrix} 1 & 0 \\ 1 & -t^2 \end{pmatrix} \begin{pmatrix} n_{11} & n_{12} \\ n_{12} & n_{22} \end{pmatrix} (t, t_0) - \begin{pmatrix} n_{11} & n_{12} \\ n_{12} & n_{22} \end{pmatrix}(t, t_0) \begin{pmatrix} 1 & 1 \\ 0 & -t^2 \end{pmatrix} + \\
+        &+ \begin{pmatrix} \sin^2(t) & \sin(t)\cdot \cos(t) \\ \sin(t) \cdot \cos(t) & \cos^2(t) \end{pmatrix}.
+    \end{align*} 
+    
+    \begin{align*}
+        \begin{pmatrix} \dot n_{11} & \dot n_{12} \\ \dot n_{12} & \dot n_{22} \end{pmatrix} (t, t_0) = &- \begin{pmatrix} n_{11} & n_{12} \\ n_{11} - t^2n_{12} & n_{12} - t^2n_{22} \end{pmatrix} (t, t_0) - \begin{pmatrix} n_{11} & n_{11} - t^2n_{12} \\ n_{12} & n_{12} - t^2n_{22} \end{pmatrix}(t, t_0) + \\
+        &+ \begin{pmatrix} \sin^2(t) & \sin(t)\cdot \cos(t) \\ \sin(t) \cdot \cos(t) & \cos^2(t) \end{pmatrix}.
+    \end{align*} 
+    
+    \begin{equation*}
+        \left\{
+            \begin{aligned}
+                \dot n_{11} (t, t_0) &= - 2n_{11} (t, t_0) + \sin^2(t) \\
+                \dot n_{12} (t, t_0) &= - n_{11} (t, t_0) + (t^2 - 1) n_{12} (t, t_0) + \sin(t)\cdot \cos(t) \\
+                \dot n_{22} (t, t_0) &= - 2n_{12} (t, t_0) + 2t^2 n_{22} (t, t_0) + \cos^2(t)
+            \end{aligned}
+        \right.
+    \end{equation*}
+\end{solution}
+
+\begin{problem}
+    Чи буде система цілком спостережуваною?
+    \begin{enumerate}
+        \item \[\ddot x = a^2 x, \quad y(t) = p\dot x(t); \]
+        \item \begin{equation*}
+            \left\{
+                \begin{aligned}
+                    \dot x_1 &= 2x_1 + \alpha x_2, \\
+                    \dot x_2 &= - \alpha x_1 - \alpha x_2, \\
+                    y(t) &= x_1 + \beta x_2.
+                \end{aligned}
+            \right.
+        \end{equation*}
+        \item \begin{equation*}
+            \left\{
+                \begin{aligned}
+                    \dot x_1 &= x_2 - 2 x_3, \\
+                    \dot x_2 &= x_1 - x_3, \\
+                    \dot x_3 &= - 2 x_3, \\
+                    y(t) &= - x_1 + x_2 - x_3.
+                \end{aligned}
+            \right.
+        \end{equation*}
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Почнемо з того, що $A = \begin{pmatrix} 0 & 1 \\ a^2 & 0 \end{pmatrix}$, $H = \begin{pmatrix} 0 & p \end{pmatrix}$. Матриці стаціонарні, тому застосуємо другий критерій спостережуваності:
+        \[ R = \begin{pmatrix} H^\star & A^\star H^\star \end{pmatrix} = \begin{pmatrix} 0 & a^2 \\ p & 0 \end{pmatrix}. \]
+        Як бачимо, ранг 2, тобто система є цілком спостережуваною, якщо тільки $a \ne 0$ і $p \ne 0$.
+        \item Почнемо з того, що $A = \begin{pmatrix} 2 & \alpha \\ -\alpha & -\alpha \end{pmatrix}$, $H = \begin{pmatrix} 1 & \beta \end{pmatrix}$. Матриці стаціонарні, тому застосуємо другий критерій спостережуваності:
+        \[ R = \begin{pmatrix} H^\star & A^\star H^\star \end{pmatrix} = \begin{pmatrix} 1 & 2 - \alpha\beta \\ \beta & \alpha - \alpha\beta \end{pmatrix}. \]
+        $\det R = \alpha - 2\beta - \alpha\beta + \alpha\beta^2 \ne 0$ (тобто система є спостережуваною), якщо тільки $\alpha \ne \dfrac{2\beta}{1-\beta+\beta^2}$.
+        \item Почнемо з того, що $A = \begin{pmatrix} 0 & 1 & -2 \\ 1 & 0 & - 1 \\ 0 & 0 & -2 \end{pmatrix}$, $H = \begin{pmatrix} -1 & 1 & -1 \end{pmatrix}$. Матриці стаціонарні, тому застосуємо другий критерій спостережуваності:
+        \[ R = \begin{pmatrix} H^\star & A^\star H^\star & (A^\star)^2 H^\star \end{pmatrix} = \begin{pmatrix} -1 & 1 & -1 \\ 1 & -1 & 1 \\ -1 & 3 & -7 \end{pmatrix}.\]
+        Як бачимо, ранг 2 а не 3, тому система не є цілком спостережуваною.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    Для яких параметрів $a$, $b$ система
+    \begin{equation*}
+        \left\{
+            \begin{aligned}
+                \dfrac{dx_1(t)}{dt} &= ax_1(t), \\
+                \dfrac{dx_2(t)}{dt} &= bx_2(t), \\
+                y(t) &= x_1(t) + x_2(t)
+            \end{aligned}
+        \right.
+    \end{equation*}
+    є цілком спостережуваною? Тут $x = (x_1, x_2)^\star$ -- вектор фазових координат, $y$ -- скалярне спостереження.
+\end{problem}
+
+\begin{solution}
+    Почнемо з того, що $A = \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}$, $H = \begin{pmatrix} 1 & 1 \end{pmatrix}$. Матриці стаціонарні, тому застосуємо другий критерій спостережуваності:
+        \[ R = \begin{pmatrix} H^\star & A^\star H^\star \end{pmatrix} = \begin{pmatrix} 1 & a \\ 1 & b \end{pmatrix}. \]
+        $\det R = b - a$, тобто система є цілком керованою якщо тільки $a \ne b$.
+\end{solution}
+
+\begin{problem}
+    Побудувати спостерігач у загальному вигляді для такої системи:
+    \begin{enumerate}
+        \item \begin{equation*}
+            \left\{
+                \begin{aligned}
+                    \dot x_1 &= x_1 + t^2 x_2, \\
+                    \dot x_2 &= 2x_1 - 3x_2, \\
+                    y(t) &= bx_1(t) + x_2(t).
+                \end{aligned}
+            \right.
+        \end{equation*}
+        \item \begin{equation*}
+            \left\{
+                \begin{aligned}
+                    & \dfrac{d^2x}{dt^2} + k_1 \dfrac{dx}{dt} + k_2 x = 0, \\
+                    & y(t) = x(t) + \beta \dfrac{dx(t)}{dt}.
+                \end{aligned}
+            \right.
+        \end{equation*}
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Почнемо з того, що $A = \begin{pmatrix} 1 & t^2 \\ 2 & -3 \end{pmatrix}$, $H = \begin{pmatrix} b & 1 \end{pmatrix}$. Далі пишемо
+        \[ \begin{pmatrix} \hat x_1 \\ \hat x_2 \end{pmatrix}^\prime (t) = \begin{pmatrix} 1 & t^2 \\ 2 & -3 \end{pmatrix} \begin{pmatrix} \hat x_1 \\ \hat x_2 \end{pmatrix} (t) + \begin{pmatrix} k_1 \\ k_2 \end{pmatrix} (t) \left( y(t) - \begin{pmatrix} b & 1 \end{pmatrix} \begin{pmatrix} \hat x_1 \\ \hat x_2 \end{pmatrix} (t) \right) .\]
+        
+        \begin{equation*}
+            \left\{
+                \begin{aligned}
+                    \hat x_1^\prime (t) &= \hat x_1 (t) + t^2 \hat x_2 (t) + k_1(t) (y(t) - b \hat x_1(t) - \hat x_2(t)) \\
+                    \hat x_2^\prime (t) &= 2 \hat x_1 (t) - 3 \hat x_2 (t) + k_2(t) (y(t) - b \hat x_1(t) - \hat x_2(t))
+                \end{aligned}
+            \right.
+        \end{equation*}
+        
+        \item Введемо заміну $x_1 = x$, $x_2 = \dot x$, тоді маємо $A = \begin{pmatrix} 0 & 1 \\ - k_2 & - k_1 \end{pmatrix}$, $H = \begin{pmatrix} 1 & b \end{pmatrix}$. Далі пишемо
+        \[ \begin{pmatrix} \hat x_1 \\ \hat x_2 \end{pmatrix}^\prime (t) = \begin{pmatrix} 0 & 1 \\ - k_2 & - k_1 \end{pmatrix} \begin{pmatrix} \hat x_1 \\ \hat x_2 \end{pmatrix} (t) + \begin{pmatrix} K_1 \\ K_2 \end{pmatrix} (t) \left( y(t) - \begin{pmatrix} 1 & b \end{pmatrix} \begin{pmatrix} \hat x_1 \\ \hat x_2 \end{pmatrix} (t) \right) .\]
+        
+        \begin{equation*}
+            \left\{
+                \begin{aligned}
+                    \hat x_1^\prime (t) &= \hat x_2 (t) + K_1 (t) (y(t) - \hat x_1(t) - b \hat x_2 (t)) \\
+                    \hat x_2^\prime (t) &= - k_2 \hat x_1(t) - k_1 \hat x_2 (t) + K_2 (t) (y(t) - \hat x_1(t) - b \hat x_2 (t))
+                \end{aligned}
+            \right.
+        \end{equation*}
+    \end{enumerate}
+\end{solution}
