@@ -479,6 +479,65 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
     Тут $x(t) \in \RR^1$, $u(t) \in \RR^1$, $t \in [0, T]$. Точки $x_0 \in \RR^1$, $x_1 \in \RR^1$ і момент часу $T$ є заданими.
 \end{problem}
 
+\begin{solution}
+	Для початку випишемо всі функції з теоретичної частини:
+	\begin{equation}
+		f_0(x, u, t) = \dfrac{u^2}{2}, \quad f(x(t), u(t), t) = a x(t) + u(t), \quad \Phi(x(T)) = \dfrac{(x(T) - x_1)^2}{2}.
+	\end{equation}
+
+	Функція Гамільтона-Понтрягіна має вигляд:
+	\begin{equation}
+		\mathcal{H}(x, u, \psi, t) = - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = - \dfrac{u^2}{2} + a \psi x + \psi u.
+	\end{equation}
+
+	Спряжена система записується так:
+	\begin{equation}
+		\dot \psi = - \nabla_x \mathcal{H} = - a \psi,
+	\end{equation}
+	\begin{equation}
+		\psi(T) = - \nabla \Phi(x(T)) = x(T) - x_1.
+	\end{equation}
+
+	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
+	\begin{equation}
+		\dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = - u + \psi = 0,
+	\end{equation}
+	звідки $u = \psi$. Підставляємо знайдене керування у початкову систему:
+	\begin{system}
+		\dot x &= a x + \psi, \\
+		x(0) &= x_0, \\
+		\dot \psi &= - a \psi, \\
+		\psi(T) &= x(T) - x_1.
+	\end{system}
+
+	З рівнянь на $\psi$ знаходимо, що $\psi(t) = C_1 \cdot e^{-a t}$, де $C_1$ визначається з рівності $\psi(T) = x(T) - x_1$, тобто $C_1 = (x(T) - x_1) \cdot e^{a T}$. \\
+
+	Підставляючи це у рівняння на $x$ знаходимо, що 
+	\begin{equation}
+		x(t) = C_2 e^{a t} - \dfrac{C_1 e^{-a t}}{2 a} = C_2 e^{a t} - \dfrac{(x(T) - x_1) \cdot e^{a (T - t)}}{2 a},
+	\end{equation}
+	де $C_2$ визначається з рівності $x(0) = x_0$, тобто $C_2 = x_0 + \dfrac{(x(T) - x_1) \cdot e^{a T}}{2 a}$. \\
+
+	% x(t) = x_0 e^{a t} + \dfrac{(x(T) - x_1) \cdot (e^{a (T + t)} - e^{a (T - t)})}{2 a},
+
+	Залишається знайти $x(T)$ з рівності 
+	\begin{equation}
+		x(T) = x_0 e^{a T} + \dfrac{(x(T) - x_1) \cdot (e^{2 a T} - 1)}{2 a}.
+	\end{equation}
+	Зробивши це, отримаємо
+	\begin{equation}
+		x(T) = \dfrac{x_1 (e^{2 a T} - 1) - 2 a x_0 e^{a T}}{e^{2 a T} - 2 a - 1}.
+	\end{equation}
+
+	Остаточно,
+	\begin{equation}
+		x(t) = x_0 e^{a t} + \dfrac{\left(\dfrac{x_1 (e^{2 a T} - 1) - 2 a x_0 e^{a T}}{e^{2 a T} - 2 a - 1} - x_1\right) \cdot \left(e^{a (T + t)} - e^{a (T - t)}\right)}{2 a},
+	\end{equation}	
+	\begin{equation}
+		u(t) = \left(\dfrac{x_1 (e^{2 a T} - 1) - 2 a x_0 e^{a T}}{e^{2 a T} - 2 a - 1} - x_1\right) \cdot e^{a (T - t)}.
+	\end{equation}
+\end{solution}
+
 \begin{problem}
     Записати крайову задачу принципу максимуму для задачі оптимального керування:
     \begin{equation*}
