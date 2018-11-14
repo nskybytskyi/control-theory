@@ -470,7 +470,7 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 \begin{problem}
     Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна:
     \begin{equation*}
-        \mathcal{J}(u) = \dfrac12 + \Int_0^T u^2(s) \, \dif s + \dfrac{(x(T) - x_1)^2}{2} \to \inf
+        \mathcal{J}(u) = \dfrac12 \Int_0^T u^2(s) \, \dif s + \dfrac{(x(T) - x_1)^2}{2} \to \inf
     \end{equation*}
     за умови, що
     \begin{equation*}
@@ -541,7 +541,7 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 \begin{problem}
     Записати крайову задачу принципу максимуму для задачі оптимального керування:
     \begin{equation*}
-        \mathcal{J}(u) = \dfrac12 + \Int_0^T (u^2(s) + x^2(s)) \, \dif s + \dfrac{(\dot x(T) - x_1)^2}{2} \to \inf
+        \mathcal{J}(u) = \dfrac12 \Int_0^T (u^2(s) + x^2(s)) \, \dif s + \dfrac{(\dot x(T) - x_1)^2}{2} \to \inf
     \end{equation*}
     за умови, що
     \begin{equation*}
@@ -549,6 +549,38 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
     \end{equation*}
     Тут $x(t) \in \RR^1$, $u(t) \in \RR^1$, $t \in [0, T]$. Точки $x_0 \in \RR^1$, $y_0 \in \RR^1$ і момент часу $T$ є заданими.
 \end{problem}
+
+\begin{solution}
+	Позначимо $\textbf{x} = \begin{pmatrix} \textbf{x}_1 & \textbf{x}_2 \end{pmatrix}^* = \begin{pmatrix} x & \dot x \end{pmatrix}^*$. \\
+
+	Для початку випишемо всі функції з теоретичної частини:
+	\begin{equation}
+		f_0(\textbf{x}, u, t) = \dfrac{u^2 + \textbf{x}_1^2}{2}, \quad f(\textbf{x}(t), u(t), t) = \begin{pmatrix} \textbf{x}_1(t) \\ u(t) \end{pmatrix}, \quad \Phi(\textbf{x}(T)) = \dfrac{(\textbf{x}_2(T) - x_1)^2}{2}.
+	\end{equation}
+
+	Функція Гамільтона-Понтрягіна має вигляд:
+	\begin{equation}
+		\mathcal{H}(\textbf{x}, u, \psi, t) = - f_0(\textbf{x}, u, t) + \langle \psi, f(\textbf{x}, u, t) \rangle = - \dfrac{u^2 + \textbf{x}_1^2}{2} + \psi_1 \textbf{x}_1 + \psi_2 u.
+	\end{equation}
+
+	Спряжена система записується так:
+	\begin{equation}
+		\dot \psi = - \nabla_x \mathcal{H} = \begin{pmatrix} \textbf{x}_1 - \psi_1 \\ 0 \end{pmatrix}.
+	\end{equation}
+	\begin{equation}
+		\psi(T) = - \nabla \Phi(x(T)) = \begin{pmatrix} 0 \\ \textbf{x}_2(T) - x_1 \end{pmatrix}.
+	\end{equation}
+
+	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
+	\begin{equation}
+    	\dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = - u + \psi_2
+	\end{equation}
+	звідки $u = \psi_2$. Підставляємо знайдене керування у початкову систему:
+	\begin{system}
+	    \dot{\textbf{x}}_1 &= \textbf{x}_2. \\
+	    \dot{\textbf{x}}_2 &= \psi_2.
+	\end{system}
+\end{solution}
 
 \begin{problem}
     Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна:
