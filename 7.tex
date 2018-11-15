@@ -565,15 +565,15 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 
 	Спряжена система записується так:
 	\begin{equation}
-		\dot \psi = - \nabla_x \mathcal{H} = \begin{pmatrix} \textbf{x}_1 - \psi_1 \\ 0 \end{pmatrix}.
+		\dot \psi = - \nabla_\textbf{x} \mathcal{H} = \begin{pmatrix} \textbf{x}_1 - \psi_1 \\ 0 \end{pmatrix}.
 	\end{equation}
 	\begin{equation}
-		\psi(T) = - \nabla \Phi(x(T)) = \begin{pmatrix} 0 \\ \textbf{x}_2(T) - x_1 \end{pmatrix}.
+		\psi(T) = - \nabla \Phi(\textbf{x}(T)) = \begin{pmatrix} 0 \\ \textbf{x}_2(T) - x_1 \end{pmatrix}.
 	\end{equation}
 
 	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
 	\begin{equation}
-    	\dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = - u + \psi_2
+    	\dfrac{\partial \mathcal{H}(\textbf{x}, u, \psi, t)}{\partial u} = - u + \psi_2
 	\end{equation}
 	звідки $u = \psi_2$. Підставляємо знайдене керування у початкову систему:
 	\begin{system}
@@ -596,6 +596,70 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
     \end{equation*}
     Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $u(t)$ -- функція керування, $t \in [0, T]$, момент часу $T$ є заданим.
 \end{problem}
+
+\begin{solution}
+    Для початку випишемо всі функції з теоретичної частини:
+	\begin{equation}
+		f_0(x, u, t) = \dfrac{u^2}{2}, \quad f(x(t), u(t), t) = \begin{pmatrix} x_1(t) - x_2(t) + u(t) \\ -4x_1(t) + x_2(t) \end{pmatrix}, \quad \Phi(x(T)) = x_2(T))^2.
+	\end{equation}
+	
+	Функція Гамільтона-Понтрягіна має вигляд:
+	\begin{equation}
+		\mathcal{H}(x, u, \psi, t) = - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = -\dfrac{u^2}{2} + \psi_1 x_1 - \psi_1 x_2 + \psi_1 u - 4 \psi_2 x_1 + \psi_2 x_2.
+	\end{equation}
+
+	Спряжена система записується так:
+	\begin{equation}
+		\dot \psi = - \nabla_x \mathcal{H} = \begin{pmatrix} - \psi_1 + 4 \psi_2 \\ \psi_1 - \psi_2 \end{pmatrix},
+	\end{equation}
+	\begin{equation}
+		\psi(T) = - \nabla \Phi(x(T)) = 2 x_2(T).
+	\end{equation}
+
+	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
+	\begin{equation}
+		\dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = - u + \psi_1 = 0,
+	\end{equation}
+	звідки $u = \psi_1$. Підставляємо знайдене керування у початкову систему:
+	\begin{system}
+		\dot x_1 &= x_1 - x_2 + \psi_1, \\
+		\dot x_2 &= - 4 x_1 + x_2.
+	\end{system}
+
+ 	З рівнянь на $\psi$ знаходимо
+ 	\begin{equation}
+ 	    \psi = C_1 \begin{pmatrix} 2 \\ -1 \end{pmatrix} e^{-3t} + C_2 \begin{pmatrix} 2 \\ 1 \end{pmatrix} e^{t},
+ 	\end{equation}
+ 	де $C_1$ і $C_2$ визначаються з крайових умов. \\
+
+	Підставляючи це у рівняння на $x$ знаходимо, що 
+    \begin{system}
+        \dot x_1 &= x_1 - x_2 + 2 C_1 e^{-3t} + 2 C_2 e^{t}, \\
+		\dot x_2 &= - 4 x_1 + x_2.
+    \end{system}
+    
+    Загальний розв'язок однорідного рівняння має вигляд 
+    \begin{equation}
+        x = C_3 \begin{pmatrix} 1 \\ 2 \end{pmatrix} e^{-t} + C_4 \begin{pmatrix} 1 \\ -2 \end{pmatrix} e^{3t}.
+    \end{equation}
+    
+    Частинний розв'язок неоднорідного знайдемо методом невизначених коефіцієнтів. Покладемо
+    \begin{equation}
+        x = \begin{pmatrix} A_1 \\ A_2 \end{pmatrix} e^{-3t} + \begin{pmatrix} B_{11} \\ B_{21} \end{pmatrix} e^{t} + \begin{pmatrix} B_{12} \\ B_{22} \end{pmatrix} x e^{t},
+    \end{equation}
+    тоді, при підстановці у систему, отримаємо:
+    \begin{system}
+        - 3 A_1 e^{-3 t} + B_1 e^t &= A_1 e^{-3 t} + B_1 e^t - A_2 e^{-3 t} - B_2 e^t + 2 C_1 e^{-3t} + 2 C_2 e^{t}, \\
+		- 3 A_2 e^{-3 t} + B_2 e^t &= - 4 A_1 e^{-3 t} - 4 B_1 e^t + A_2 e^{-3 t} + B_2 e^t.
+    \end{system}
+    Ця система рівносильна системі
+    \begin{system}
+        - 3 A_1 &= A_1 - A_2 + 2 C_1, \\
+        B_1 &= B_1 - B_2 + 2 C_2, \\
+		- 3 A_2 &= - 4 A_1 + A_2, \\
+		B_2 &= - 4 B_1 + B_2. \\
+    \end{system}
+\end{solution}
 
 % \begin{problem}
 
