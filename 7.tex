@@ -600,7 +600,7 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 \begin{solution}
     Для початку випишемо всі функції з теоретичної частини:
 	\begin{equation}
-		f_0(x, u, t) = \dfrac{u^2}{2}, \quad f(x(t), u(t), t) = \begin{pmatrix} x_1(t) - x_2(t) + u(t) \\ -4x_1(t) + x_2(t) \end{pmatrix}, \quad \Phi(x(T)) = x_2(T))^2.
+		f_0(x, u, t) = \dfrac{u^2}{2}, \quad f(x(t), u(t), t) = \begin{pmatrix} x_1(t) - x_2(t) + u(t) \\ -4x_1(t) + x_2(t) \end{pmatrix}, \quad \Phi(x(T)) = x_2^2(T).
 	\end{equation}
 	
 	Функція Гамільтона-Понтрягіна має вигляд:
@@ -613,7 +613,7 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
 		\dot \psi = - \nabla_x \mathcal{H} = \begin{pmatrix} - \psi_1 + 4 \psi_2 \\ \psi_1 - \psi_2 \end{pmatrix},
 	\end{equation}
 	\begin{equation}
-		\psi(T) = - \nabla \Phi(x(T)) = 2 x_2(T).
+		\psi(T) = - \nabla \Phi(x(T)) = \begin{pmatrix} 0 \\ 2 x_2(T) \end{pmatrix}.
 	\end{equation}
 
 	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
@@ -643,22 +643,26 @@ $f_0(x, u, t) \to \RR$, $f(x, u, t) \to \RR^n$ є неперервними за 
         x = C_3 \begin{pmatrix} 1 \\ 2 \end{pmatrix} e^{-t} + C_4 \begin{pmatrix} 1 \\ -2 \end{pmatrix} e^{3t}.
     \end{equation}
     
-    Частинний розв'язок неоднорідного знайдемо методом невизначених коефіцієнтів. Покладемо
-    \begin{equation}
-        x = \begin{pmatrix} A_1 \\ A_2 \end{pmatrix} e^{-3t} + \begin{pmatrix} B_{11} \\ B_{21} \end{pmatrix} e^{t} + \begin{pmatrix} B_{12} \\ B_{22} \end{pmatrix} x e^{t},
-    \end{equation}
-    тоді, при підстановці у систему, отримаємо:
-    \begin{system}
-        - 3 A_1 e^{-3 t} + B_1 e^t &= A_1 e^{-3 t} + B_1 e^t - A_2 e^{-3 t} - B_2 e^t + 2 C_1 e^{-3t} + 2 C_2 e^{t}, \\
-		- 3 A_2 e^{-3 t} + B_2 e^t &= - 4 A_1 e^{-3 t} - 4 B_1 e^t + A_2 e^{-3 t} + B_2 e^t.
-    \end{system}
-    Ця система рівносильна системі
-    \begin{system}
-        - 3 A_1 &= A_1 - A_2 + 2 C_1, \\
-        B_1 &= B_1 - B_2 + 2 C_2, \\
-		- 3 A_2 &= - 4 A_1 + A_2, \\
-		B_2 &= - 4 B_1 + B_2. \\
-    \end{system}
+%     Частинний розв'язок неоднорідного знайдемо методом невизначених коефіцієнтів. Покладемо
+%     \begin{equation}
+%         x = \begin{pmatrix} A_1 \\ A_2 \end{pmatrix} e^{-3t} + \begin{pmatrix} B_{11} \\ B_{21} \end{pmatrix} e^{t} ,%+ \begin{pmatrix} B_{12} \\ B_{22} \end{pmatrix} t e^{t},
+%     \end{equation}
+%     тоді, при підстановці у систему, отримаємо:
+%     \begin{system}
+%         & - 3 A_1 e^{-3 t} + B_{11} e^t + B_{12} e^t + B_{12} t e^t = \\
+%         & \quad = A_1 e^{-3 t} + B_{11} e^t + B_{12} t e^t - A_2 e^{-3 t} - B_{21} e^t - B_{22} t e^t + 2 C_1 e^{-3t} + 2 C_2 e^{t}, \\
+% 		& - 3 A_2 e^{-3 t} + B_{21} e^t + B_{22} e^t + B_{22} t e^t = \\
+% 		& \quad = - 4 A_1 e^{-3 t} - 4 B_{11} e^t - 4 B_{12} t e^t + A_2 e^{-3 t} + B_{21} e^t + B_{22} t e^t.
+%     \end{system}
+%     Ця система рівносильна системі
+%     \begin{system}
+%         - 3 A_1 &= A_1 - A_2 + 2 C_1, \\
+%         B_{1}1 + B_{12} &= B_{11} - B_{21} + 2 C_2, \\
+% 		- 3 A_2 &= - 4 A_1 + A_2, \\
+% 		B_{21} + B_{22} &= - 4 B_{11} + B_{21}, \\
+% 		B_{12} &= B_{12} - B_{22}, \\
+% 		B_{22} &= - 4 B_{12} + B_{22}
+%     \end{system}
 \end{solution}
 
 % \begin{problem}
