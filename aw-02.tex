@@ -1,0 +1,131 @@
+% OK, incomplete, missing 2.1, 2.2
+
+\section{Елементи багатозначного аналізу. Множина досяжності}
+
+\subsection*{Аудиторне заняття}
+
+\begin{problem}
+	% 2.1
+\end{problem}
+
+\begin{solution}
+	% 2.1
+\end{solution}
+
+\begin{problem}
+	% 2.2
+\end{problem}
+
+\begin{solution}
+	% 2.2
+\end{solution}
+
+\begin{problem}
+	Знайти опорні функції таких множин:
+
+	\begin{enumerate}
+		\item $A = [0, r]$;
+
+		\item $A = [-r, r]$;
+
+		\item $A = \{ (x_1, x_2): |x_1| \le 1, |x_2| \le 2 \}$;
+
+		\item $A = \KK_r (0) = \{ x \in \RR^n: \|x\| \le r \}$;
+
+		\item $A = \SS^n = \{ x \in \RR^n: \|x\| = 1 \}$.
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	\begin{enumerate}
+		\item За означення опорної функції, \[ c(A, \psi) = \max_{a \in A} \langle a, \psi \rangle = \begin{cases} 0, & \psi < 0 \\ r \psi, & 0 \le \psi \end{cases} = \max \{ 0, r \psi \}. \]
+
+		\item За означення опорної функції, \[ c(A, \psi) = \max_{a \in A} \langle a, \psi \rangle = \begin{cases} - r \psi, & \psi < 0 \\ r \psi, & 0 \le \psi \end{cases} = r |\psi |. \]
+
+		\item За означення опорної функції, \[ c(A, \psi) = \max_{a \in A} \langle a, \psi \rangle = \max_{a \in A} (\psi_1 x_1 + \psi_2 x_2) = |\psi_1| + 2 |\psi_2|. \]
+
+		\item За властивістю опорної функції (вона дорівнює орієнтованій відстані від початку координат до опорної площини множини $A$ яка відповідає напрямку $\psi$), маємо $c(\KK_r (0), \psi) = r \| \psi \|$.
+
+		\item За тією ж властивістю опорної функції маємо $c(\SS^n, \psi) = \| \psi \|$.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Знайти інтеграл Аумана $\JJ = \int_0^1 F(x) \diff x$ таких багатозначних відображень:
+
+	\begin{enumerate}
+		\item $F(x) = [0, x]$, $x \in [0, 1]$;
+
+		\item $F(x) = \KK_x (0) = \{ y \in \RR^n: \|y\| \le x \}$, $x \in [0, 1]$.
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	Скористаємося рівністю \[ c \left(\int_0^1 F(x), \psi\right) \diff x = \int_0^1 c(F(x), \psi) \diff x, \]
+
+	яка виконується в умовах теореми Ляпунова про опуклість інтегралу Аумана.
+
+	\begin{enumerate}
+		\item \[c(\JJ) = \int_0^1 c([0, x], \psi) \diff x = \begin{cases} \psi / 2, & 0 \le \psi \\ 0, & \psi < 0 \end{cases}. \]
+
+		А далі наші знання опорних функцій підказують, що $\JJ = [0, 1 / 2]$.
+
+		\item \[c(\JJ) = \int_0^1 c(\KK_x(0), \psi) \diff x = \int_0^1 x \| \psi \| \diff x = \| \psi \| / 2. \]
+
+		А далі наші знання опорних функцій підказують, що $\JJ = \KK_{1 / 2} (0)$.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Знайти множину досяжності такої системи керування: \[ \frac{\diff x}{\diff t} = x + u, \]
+
+	де $x (0) = x_0 \in \MM_0$, $u (t) \in \UU$, $t \ge 0$, \[ \MM_0 = \{ x: |x| \le 1 \}, \] \[ \UU = \{ u: |u| \le 1 \}. \]
+\end{problem}
+
+\begin{solution}
+	Скористаємося теоремою про вигляд множини досяжності лінійної системи керування: \[ \XX(t, \MM_0) = \Theta(t, t_0) \MM_0 + \int_{t_0}^t \Theta(t, s) B(s) \UU(s) \diff s. \]
+
+	Підставимо вже відомі значення: \[ \XX(t, [-1, 1]) = \Theta(t, 0) \cdot [-1, 1] + \int_0^t \left( \Theta(t, s) \cdot 1 \cdot [-1, 1] \right) \diff s, \] 
+
+	тобто залишилося знайти $\Theta$. Знайдемо її з системи \[ \frac{\diff \Theta(t, s)}{\diff t} = A(t) \cdot \Theta(t, s) = \Theta(t, s). \]
+
+	Нескладно бачити, що $\Theta(t, s) = e^{t - s}$, тому \begin{multline*} \XX(t, [-1, 1]) = [-e^t, e^t] + \int_0^t [-e^{t - s}, e^{t - s}] \diff s = \\ = [-e^t, e^t] + [1 - e^t, e^t - 1] = [1 - 2 e^t, 2 e^t - 1]. \end{multline*} 
+\end{solution}
+
+\begin{problem}
+	Знайти опорну функцію множини досяжності для системи керування: \[
+	\left\{
+		\begin{aligned}
+			\frac{\diff x_1}{\diff t} &= 2x_1 + x_2 + u_1, \\
+			\frac{\diff x_2}{\diff t} &= 3x_1 + 4x_2 + u_2,
+		\end{aligned}
+	\right.
+	\]
+
+	де $x (0) = (x_{01}, x_{02}) \in \MM_0$, $u(t) = (u_1(t), u_2(t)) \in \UU$, $t \ge 0$, \[ \MM_0 = \{ (x_{01}, x_{02}): |x_{01}| \le 1, |x_{02}| \le 1 \}, \] \[ \UU = \{(u_1, u_2): |u_1| \le 1, |u_2| \le 1\}. \]
+\end{problem}
+
+\begin{solution}
+	Скористаємося теоремою про вигляд опорної функції множини досяжності лінійної системи керування: \[ c(\XX(t, \MM_0), \psi) = c(\MM_0, \Theta^*(t, t_0) \psi) + \int_{t_0}^t c(\UU(s), B^*(s) \Theta^*(t, s) \psi) \diff s. \]
+
+	Підставимо вже відомі значення: \[ c(\XX(t, [-1,1]^2), \psi) = c([-1,1]^2, \Theta^*(t, 0) \psi) + \int_0^t c([-1,1]^2, \begin{pmatrix} 1 & 1 \end{pmatrix} \Theta^*(t, s) \psi) \diff s, \] 
+
+	тобто залишилося знайти $\Theta$. Знайдемо її з системи \[ \frac{\diff \Theta(t, s)}{\diff t} = A(t) \cdot \Theta(t, s) = \begin{pmatrix} 2 & 1 \\ 3 & 4 \end{pmatrix} \Theta(t, s). \]
+
+	Нескладно бачити, що \[ \Theta(t, s) = \frac{1}{4}
+	\begin{pmatrix}
+		3 e^{t - s} + e^{5 (t - s)} & - e^{t - s} + e^{5 (t - s)} \\ -3 e^{t - s} + 3 e^{5 (t - s)} & e^{t - s} + 3 e^{5 (t - s)}
+	\end{pmatrix} 
+	\]
+
+	Тому
+	\begin{multline*} 
+		c\left(\XX(t, [-1,1]^2), \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}\right) = c\left([-1,1]^2, \frac{1}{4} \begin{pmatrix} 3 e^t + e^{5 t} & -3 e^t + 3 e^{5 t} \\ - e^t + e^{5 t} & e^t + 3 e^{5 t}	\end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix} \right) + \\
+		+ \int_0^t c\left([-1,1]^2, \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \frac{1}{4} \begin{pmatrix} 3 e^{t - s} + e^{5 (t - s)} & -3 e^{t - s} + 3 e^{5 (t - s)} \\ - e^{t - s} + e^{5 (t - s)} & e^{t - s} + 3 e^{5 (t - s)} \end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix} \right) \diff s = \\
+		= c\left([-1,1]^2, \frac{1}{4} \begin{pmatrix} (3 e^t + e^{5 t}) \psi_1 + (-3 e^t + 3 e^{5 t}) \psi_2 \\ (- e^t + e^{5 t}) \psi_1 + (e^t + 3 e^{5 t}) \psi_2 \end{pmatrix}  \right) + \\
+		+ \int_0^t c\left([-1,1]^2, \frac{1}{4} \begin{pmatrix} (3 e^{t - s} + e^{5 (t - s)}) \psi_1 + (-3 e^{t - s} + 3 e^{5 (t - s)}) \psi_2 \\ (- e^{t - s} + e^{5 (t - s)}) \psi_1 + (e^{t - s} + 3 e^{5 (t - s)}) \psi_2 \end{pmatrix} \right) \diff s = \\
+		= \frac{1}{4} \left( \left|(3 e^t + e^{5 t}) \psi_1 + (-3 e^t + 3 e^{5 t}) \psi_2\right| + \left|(- e^t + e^{5 t}) \psi_1 + (e^t + 3 e^{5 t}) \psi_2\right| \right) + \\
+		+ \frac{1}{4} \int_0^t \left|(3 e^{t - s} + e^{5 (t - s)}) \psi_1 + (-3 e^{t - s} + 3 e^{5 (t - s)}) \psi_2\right| \diff s + \\
+		+ \frac{1}{4} \int_0^t \left|(- e^{t - s} + e^{5 (t - s)}) \psi_1 + (e^{t - s} + 3 e^{5 (t - s)}) \psi_2\right| \diff s.
+	\end{multline*}
+\end{solution}

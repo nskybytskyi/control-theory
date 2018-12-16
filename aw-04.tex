@@ -1,0 +1,145 @@
+% OK, incomplete, missing 4.6
+
+\section{Критерії спостережуваності. Критерій двоїстості}
+
+\subsection*{Аудиторне заняття}
+
+\begin{problem}
+	Побудувати систему для знаходження грамміана спостережуваності і записати умову спостережуваності на інтервалі для системи: \[
+	\left\{
+		\begin{aligned}
+			\dot x_1 &= \cos(t) \cdot x_1 + \sin(t) \cdot x_2, \\
+			\dot x_2 &= - \sin(t) \cdot x_1 + \cos(t) \cdot x_2, \\
+			y(t) &= k x_1 + x_2,
+		\end{aligned}
+	\right.
+	\]
+	$k > 0$.
+\end{problem}
+
+\begin{solution}
+	Диференціальне рівняння для знаходження грамміана спостережуваності має вигляд \[ \frac{\diff \NN(t, t_0)}{\diff t} = -A(t) \cdot \NN(t, t_0) - \NN(t, t_0) \cdot A^*(t) + H^*(t) \cdot H(t), \] а після підстановки відомих значень вона набує вигляду \begin{multline*} 
+		\frac{\diff \NN(t, t_0)}{\diff t} = -\begin{pmatrix} \cos (t) & \sin(t) \\ - \sin(t) & \cos(t) \end{pmatrix} \cdot \NN(t, t_0) - \\
+		- \NN(t, t_0) \cdot \begin{pmatrix} \cos (t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix} + \begin{pmatrix} k \\ 1 \end{pmatrix} \cdot \begin{pmatrix} k & 1 \end{pmatrix}, 
+	\end{multline*} або, у розгорнутому вигляді: \[
+	\left\{
+		\begin{aligned}
+			\dot n_{11} (t) &= - 2 \cos(t) \cdot n_{11} (t) - 2 \sin(t) \cdot n_{12} (t) + k^2, \\
+			\dot n_{12} (t) &= \sin (t) \cdot n_{11} (t) - 2\cos(t) \cdot n_{12} (t) - \sin (t) \cdot n_{22} (t) + k, \\
+			\dot n_{22} (t) &= 2 \sin(t) \cdot n_{12} (t) - 2 \cos(t) \cdot n_{22} (t) + 1.
+		\end{aligned}
+	\right.
+	\]
+
+	Умова спостережуваності цієї системи на $[t_0, T]$ має вигляд  $n_{11} (t) \cdot n_{22} (t) - n_{12}^2 (t) \ne 0$, $t \in [t_0, T]$.
+\end{solution}
+
+\begin{problem}
+    Чи буде система цілком спостережуваною?
+
+    \begin{enumerate}
+    	\item \[ \ddot x = a^2 x, y(t) = x(t); \]
+
+    	\item \[ \left \{ \begin{aligned}
+    		\dot x_1 &= x_1 + \alpha x_2, \\
+    		\dot x_2 &= \alpha x_1 + x_2, \\
+    		y(t) &= \beta x_1 (t) + x_2 (t).
+    	\end{aligned} \right. \]
+
+    	\item \[ \left \{ \begin{aligned}
+    		\dot x_1 &= a x_1, \\
+    		\dot x_2 &= b x_2, \\
+    		y(t) &= x_1 (t) + x_2 (t).
+    	\end{aligned} \right. \]
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    Всі системи є стаціонарними, тому будемо застосовувати другий критерій спостережуваності: \[ rang \mathcal{R} = rang \left(H^* \vdots A^* H^* \vdots (A^*)^2 H^* \vdots \ldots \vdots (A^*)^{n-1} H^*\right) = n. \]
+
+    \begin{enumerate}
+    	\item Введемо нову змінну $x_2 = \dot x_1$, тоді $\dot x_2 = a^2 x_1$, $y = x_1$, тому \[ A = \begin{pmatrix} 0 & 1 \\ a^2 & 0 \end{pmatrix}, \quad H = \begin{pmatrix} 1 & 0 \end{pmatrix}. \] Підставляючи у критерій, знаходимо: \[ \mathcal{R} = \left(\begin{pmatrix} 1 \\ 0 \end{pmatrix} \vdots \begin{pmatrix} 0 & a^2 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right) = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \] її ранг 2, тому система цілком спостережувана.
+
+    	\item \[ A = \begin{pmatrix} 1 & \alpha \\ \alpha & 1 \end{pmatrix}, \quad H = \begin{pmatrix} \beta & 1 \end{pmatrix}. \] Підставляючи у критерій, знаходимо: \[ \mathcal{R} = \left(\begin{pmatrix} \beta \\ 1 \end{pmatrix} \vdots \begin{pmatrix} 1 & \alpha \\ \alpha & 1 \end{pmatrix} \begin{pmatrix} \beta \\ 1 \end{pmatrix}\right) = \begin{pmatrix} \beta & \alpha + \beta \\ 1 & \alpha \beta + 1 \end{pmatrix}, \] її ранг 2 тоді і тільки тоді, коли її визначник $det \mathcal{R} = \alpha (\beta^2 - 1) \ne 0$, тому система цілком спостережувана тоді і тільки тоді, коли $\alpha \ne 0$, $\beta \ne \pm 1$.
+
+    	\item \[ A = \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}, \quad H = \begin{pmatrix} 1 & 1 \end{pmatrix}. \] Підставляючи у критерій, знаходимо: \[ \mathcal{R} = \left(\begin{pmatrix} 1 \\ 1 \end{pmatrix} \vdots \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix}\right) = \begin{pmatrix} 1 & a \\ 1 & b \end{pmatrix}, \] її ранг 2 тоді і тільки тоді, коли її визначник $det \mathcal{R} = b - a \ne 0$, тому система цілком спостережувана тоді і тільки тоді, коли $a \ne b$.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    Дослідити на спостережуваність, використовуючи критерій двоїстості і відповідний критерій керованості: \[ \left\{ \begin{aligned}
+    	\dot x_1 &= x_2 - 2 x_3, \\
+    	\dot x_2 &= x_1 - x_3, \\
+    	\dot x_3 &= - 2 x_3, \\
+    	y(t) &= -x_1 + x_2 - x_3.
+    \end{aligned} \right. \]
+\end{problem}
+
+\begin{solution}
+	За принципом двоїстості Калмана, ця система є цілком спостережуваною на $[t_0, T]$ тоді і тільки тоді, коли система \[ \frac{\diff z(t)}{\diff t} = - A^*(t) \cdot z(t) + H^*(t) \cdot u(t) \] є цілком керованою на $[t_0, T]$. \\
+
+	Підставляючи відомі значення, отримуємо систему \[ \frac{\diff z(t)}{\diff t} = \begin{pmatrix} 0 & -1 & 0 \\ -1 & 0 & 0 \\ 2 & 1 & 2 \end{pmatrix} \cdot z(t) + \begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix} \cdot u(t), \] або, у розгорнутому вигляді \[ \left\{ \begin{aligned}
+		\dot z_1 &= - z_2 - u, \\
+		\dot z_2 &= - z_1 + u, \\
+		\dot z_3 &= 2 z_1 + z_2 + 2 z_3 - u.
+	\end{aligned} \right. \]
+
+	Система стаціонарна, тому використаємо другий критерій керованості: \[ rang \mathcal{D} = rang \left(B \vdots AB \vdots A^2 B \vdots \ldots \vdots A^{n-1} B\right) = n. \]
+
+	\[ A = \begin{pmatrix} 0 & -1 & 0 \\ -1 & 0 & 0 \\ 2 & 1 & 2 \end{pmatrix}, \quad B = \begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix}. \] Підставляючи у критерій, знаходимо: \begin{multline*} \mathcal{D} = \left(\begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix} \vdots \begin{pmatrix} 0 & -1 & 0 \\ -1 & 0 & 0 \\ 2 & 1 & 2 \end{pmatrix} \begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix} \vdots \begin{pmatrix} 0 & -1 & 0 \\ -1 & 0 & 0 \\ 2 & 1 & 2 \end{pmatrix}^2 \begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix} \right) = \\ 
+	= \left(\begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix} \vdots \begin{pmatrix} -1 \\ 1 \\ -3 \end{pmatrix} \vdots \begin{pmatrix} 0 & -1 & 0 \\ -1 & 0 & 0 \\ 2 & 1 & 2 \end{pmatrix} \begin{pmatrix} -1 \\ 1 \\ -3 \end{pmatrix} \right) = \begin{pmatrix} -1 & -1 & -1 \\ 1 & 1 & 1 \\ -1 & -3 & -7 \end{pmatrix}, \end{multline*} її ранг 2, тому система не цілком керована, а початкова -- не цілком спостережувана.
+\end{solution}
+
+\begin{problem}
+    Побудувати спостерігач такої системи у загальному вигляді:
+    \begin{enumerate}
+    	\item \[ \left\{ \begin{aligned}
+    		\dot x_1 &= t x_1 + x_2, \\
+    		\dot x_2 &= x_1 - x_2, \\
+    		y(t) &= x_1(t) + b x_2(t).
+    	\end{aligned} \right. \]
+
+    	\item \[ \left\{ \begin{aligned}
+    		\frac{\diff^2 x(t)}{\diff t^2} &= -kx, \\
+    		y(t) &= x(t) + \beta \frac{\diff x(t)}{\diff t}.
+    	\end{aligned} \right. \]
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+    	\item За теоремою про структуру спостерігача, він має вигляд \[ \frac{\diff \hat x (t)}{\diff t} = (A (t) - K (t) H (t)) \cdot \hat x (t) + K(t) \cdot y(t).\] Підставляючи відомі значення, знаходимо \[ \frac{\diff \hat x (t)}{\diff t} = \left(\begin{pmatrix} t & 1 \\ 1 & -1 \end{pmatrix} - \begin{pmatrix} k_1(t) \\ k_2(t) \end{pmatrix} \begin{pmatrix} 1 & b \end{pmatrix} \right) \cdot \hat x (t) + \begin{pmatrix} k_1(t) \\ k_2(t) \end{pmatrix} \cdot y(t),\] або, у розгорнутому вигляді \[ \left\{ \begin{aligned}
+    		\dot{\hat{x}}_1 &= (t - k_1(t)) \cdot \hat x_1 + (1 - b k_1(t)) \cdot \hat x_2 + k_1(t) \cdot y(t), \\
+    		\dot{\hat{x}}_2 &= (1 - k_2(t)) \cdot \hat x_1 - (1 + b k_2(t)) \cdot \hat x_2 + k_2 (t) \cdot y(t).
+    	\end{aligned} \right. \]
+    	\item Введемо нову змінну $x_2 = \dot x_1$, тоді $\dot x_1 = x_2$, $\dot x_2 = - k x_1$, $y = x_1 + \beta x_2$. \\
+
+    	За теоремою про структуру спостерігача, він має вигляд \[ \frac{\diff \hat x (t)}{\diff t} = A (t) \cdot \hat x (t) + K(t) \cdot (y(t) - H(t) \cdot \hat x(t)).\] Підставляючи відомі значення, знаходимо \[ \frac{\diff \hat x (t)}{\diff t} = \begin{pmatrix} 0 & 1 \\ -k & 0 \end{pmatrix} \hat x(t) + \begin{pmatrix} k_1(t) \\ k_2(t) \end{pmatrix} \cdot \left(y(t) - \hat x_1 - \beta \hat x_2\right), \] або, у розгорнутому вигляді \[ \left\{ \begin{aligned}
+    		\dot{\hat{x}}_1 &= \hat x_2 + k_1(t) \cdot \left(y(t) - \hat x_1 - \beta \hat x_2\right), \\
+    		\dot{\hat{x}}_2 &= -k \hat x_1 + k_2(t) \cdot \left(y(t) - \hat x_1 - \beta \hat x_2\right).
+    	\end{aligned} \right. \]
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    Задана динамічна система \[ \left\{ \begin{aligned} 
+    	\frac{\diff x(t)}{\diff t} &= 2 x(t), \\
+    	y(t) &= \sin (t) \cdot x(t),
+    \end{aligned} \right. \]
+    де $x(t) \in \RR^1$ -- вектор стану, $y(t) \in \RR^1$ -- відомі спостереження, $t \in [0, 3]$. Знайти розв'язок задачі спостереження з використанням грамміана спростережуваності.
+\end{problem}
+
+\begin{solution}
+    Розв'язок задачі спостереження задовольняє диференціальному рівнянню \[ \frac{\diff x(t)}{\diff t} = A(t) \cdot x(t) + R(t) \cdot H^*(t) \cdot (y(t) - H(t) \cdot x(t)), \] де $R(t) = \NN^{-1](t, 0)}$. \\
+
+    Знайдемо $\NN(t, 0)$: з рівняння \[ \frac{\diff \Theta(t, s)}{\diff t} = A(t)\cdot \Theta(t, s) = 2\Theta(t, s) \] знаходимо $\Theta(t, s) = e^{2 (t - s)}$, тому \begin{multline*} \NN(t, 0) = \int_0^t e^{4 (s - t)} \cdot \sin^2(s) \diff s = e^{-4t} \int_0^t e^{4 s} \cdot \sin^2(s) \diff s = \\
+    = \frac{-2 \sin (2t) - 4 \cos(2t) + 5 - e^{-4t}}{40}. \end{multline*} Звідси \[ \frac{\diff x(t)}{\diff t} = A(t) \cdot x(t) + \frac{40 \cdot H^*(t) \cdot (y(t) - H(t) \cdot x(t))}{-2 \sin (2t) - 4 \cos(2t) + 5) - e^{-4t}} , \] або, у розгорнутому вигляді, \[ \dot x = 2 x + \frac{40 \cdot \sin(t) \cdot (y(t) - \sin(t) \cdot x(t))}{-2 \sin (2t) - 4 \cos(2t) + 5 - e^{-4t}}. \]
+\end{solution}
+
+\begin{problem}
+    % 4.6
+\end{problem}
+
+\begin{solution}
+    % 4.6
+\end{solution}

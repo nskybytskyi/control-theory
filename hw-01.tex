@@ -1,287 +1,6 @@
-\section{Домашнє завдання за 9/7}
+% OK, incomplete, missing 1.7
 
-\setcounter{problem}{3}
-
-\begin{problem}
-	Задана система керування 
-	\[
-		\left\{
-			\begin{aligned}
-				\dfrac{dx_1(t)}{dt} &= 2x_1(t) + x_2(t) + u(t), \\
-				\dfrac{dx_2(t)}{dt} &= 3x_1(t) + 4x_2(t),
-			\end{aligned}
-		\right.
-		\quad
-		x_1(0) = 1, x_2(0) = -1.
-	\]
-
-	Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $t \in [0, 2]$. Керування задане у вигляді
-	\[
-		u(t) 
-		=
-		\begin{cases}
-			0, & \text{якщо } t \in [0, 1], \\
-			1, & \text{якщо } t \in (1, 2].
-		\end{cases}
-	\]
-	
-	\begin{enumerate}
-		\item Знайти траєкторію системи, яка відповідає цьому керуванню.
-		\item Чи буде ця траєкторія неперервно диференційовною?
-		\item Чи буде таке керування кращим в порівнянні з керуванням 
-		\[
-			u(t) = 0, t \in [0, 2]
-		\]
-		за умови, що критерій якості має вигляд 
-		\[
-			\mathcal{J}(u) = x_1^2(2) + x_2^2(2) \to \min.
-		\]
-	\end{enumerate}
-\end{problem}
-
-\begin{solution}
-	\begin{enumerate}
-		\item При $t \in [0, 1]$ маємо 
-		\[
-			\begin{pmatrix}
-				\dot x_1 \\ 
-				\dot x_2
-			\end{pmatrix}
-			=
-			\begin{pmatrix}
-				2 & 1 \\
-				3 & 4
-			\end{pmatrix}
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}.
-		\]
-		Характеристичне рівняння 
-		\[
-			\begin{vmatrix}
-				2 - \lambda & 1 \\
-				3 & 4 - \lambda 
-			\end{vmatrix}
-			=
-			\lambda^2 - 6\lambda + 5 
-			=
-			(\lambda - 1) (\lambda - 5)
-			=
-			0,
-		\]
-		звідки $\lambda_1 = 1$, $\lambda_2 = 5$.\\
-		
-		З курсу диференційних рівнянь відомо, що тоді загальний розв'язок має вигляд
-		\[
-			\begin{pmatrix}
-			x_1 \\
-			x_2
-			\end{pmatrix}
-			=
-			c_1 v_1 e^t + c_2 v_2 e^{5t},
-		\]
-		де $v_1$, $v_2$ -- власні вектори, що відповідають $\lambda_1$ та $\lambda_2$ відповідно.\\
-		
-		Нескладно бачити, що 
-		\[
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}
-			=
-			c_1 
-			\begin{pmatrix}
-				1 \\
-				-1
-			\end{pmatrix} 
-			e^t 
-			+ 
-			c_2 
-			\begin{pmatrix}
-				1 \\
-				3
-			\end{pmatrix} 
-			e^{5t}.
-		\]
-		
-		Підставляючи $t = 0$ отримуємо $c_1 = 1$, $c_2 = 0$.
-		
-		При $t \in (1, 2]$ маємо 
-		\[
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}
-			=
-			c_1 v_1 e^t 
-			+ 
-			c_2 v_2 e^{5t} 
-			+ 
-			\begin{pmatrix} 
-				c_3 \\
-				c_4
-			\end{pmatrix},
-		\]
-		де $c_3$, $c_4$ задовольняють систему 
-		\[
-			\left\{
-				\begin{aligned}
-					2c_3 &+ c_4 + 1 &= 0 \\
-					3c_3 &+ 4c_4 &= 0
-				\end{aligned}
-			\right.,
-		\]
-		звідки $c_3 = -4/5$, $c_4 = 3/5$ і 
-		\[
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}
-			=
-			c_1 v_1 e^t 
-			+ 
-			c_2 v_2 e^{5t} 
-			+ 
-			\begin{pmatrix} 
-				-4/5 \\
-				3/5
-			\end{pmatrix},
-		\]
-		Підставляючи $t = 1$ отримуємо $c_1 = \left(1 + \dfrac{3}{4e}\right)$, $c_2 = \dfrac{1}{20e^5}$.\\
-		
-		Остаточно маємо 
-		\[
-			\begin{pmatrix}
-			x_1 \\
-			x_2
-			\end{pmatrix}
-			=
-			\begin{cases}
-				\begin{pmatrix}
-					1 \\
-					-1
-				\end{pmatrix} 
-				e^t, & t \in [0, 1] \\
-				\left(1 + \dfrac{3}{4e}\right) 
-				\begin{pmatrix}
-				1 \\
-				-1
-				\end{pmatrix} 
-				e^t 
-				+ 
-				\dfrac{1}{20e^5} 
-				\begin{pmatrix}
-				1 \\
-				3
-				\end{pmatrix} 
-				e^{5t} 
-				+ 
-				\begin{pmatrix} 
-					-4/5 \\
-					3/5
-				\end{pmatrix}			
-				, & t \in (1, 2]
-			\end{cases}.
-		\]
-		\item 
-		\[
-			\begin{pmatrix}
-				\dot x_1 \\
-				\dot x_2
-			\end{pmatrix}
-			(1-) 
-			= 
-			\begin{pmatrix}
-				2 & 1 \\
-				3 & 4
-			\end{pmatrix}
-			\begin{pmatrix}
-				x_1(1-) \\
-				x_2(1-)
-			\end{pmatrix}
-		\]
-		З неперервності $x_1$, $x_2$ маємо:
-		\[
-			\begin{pmatrix}
-				2 & 1 \\
-				3 & 4
-			\end{pmatrix}
-			\begin{pmatrix}
-				x_1(1-) \\
-				x_2(1-)
-			\end{pmatrix}
-			=
-			\begin{pmatrix}
-			2 & 1 \\
-			3 & 4
-			\end{pmatrix}
-			\begin{pmatrix}
-			x_1(1) \\
-			x_2(1)
-			\end{pmatrix}
-		\]
-		З іншого боку,
-		\[
-			\begin{pmatrix}
-				\dot x_1 \\
-				\dot x_2
-			\end{pmatrix}
-			(1+) 
-			= 
-			\begin{pmatrix}
-				2 & 1 \\
-				3 & 4
-			\end{pmatrix}
-			\begin{pmatrix}
-				x_1(1+) \\
-				x_2(1+)
-			\end{pmatrix}
-			+
-			\begin{pmatrix}
-				1 \\
-				0
-			\end{pmatrix}
-			= 
-			\begin{pmatrix}
-				2 & 1 \\
-				3 & 4
-			\end{pmatrix}
-			\begin{pmatrix}
-				x_1(1) \\
-				x_2(1)
-			\end{pmatrix}
-			+
-			\begin{pmatrix}
-				1 \\
-				0
-			\end{pmatrix}
-		\]
-		Нескладно бачити, що 
-		\[
-			\begin{pmatrix}
-				\dot x_1 \\
-				\dot x_2
-			\end{pmatrix}
-			(1-)
-			\ne
-			\begin{pmatrix}
-				\dot x_1 \\
-				\dot x_2
-			\end{pmatrix}
-			(1+),
-		\]
-		тобто траєкторія не є неперервно диференційовною в точці $1$.
-		\item 
-		Просто підставимо $t=2$ в розв'язки для обох керувань (попутно зауваживши, що для нового керування розв'язок ми вже знаємо, це просто продовження вже знайденого розв'язку для $t \in [0, 1]$):
-		\[
-			\left(e^2 + \dfrac34e + \dfrac{e^5}{20} - \dfrac45\right)^2 + \left(-e^2 - \dfrac34e + \dfrac{3e^5}{20} + \dfrac35\right)^2
-			\lor
-			(e^2)^2 + (-e^2)^2
-		\]
-		Після марудних обчислень знаходимо, що права частина менше, тобто нове керування є кращим за початкове.
-	\end{enumerate}
-\end{solution}
+\subsection*{Домашнє завдання}
 
 \begin{problem}
 	Задана система керування 
@@ -304,11 +23,11 @@
 	\end{equation}
 
 	\begin{enumerate}
-		\item До якого класу керувань належить керування \LaReF{eq:1.6}: програмних керувань, чи керувань з оберненим зв'язком?
-		\item Знайти траєкторію системи при керуванні \LaReF{eq:1.6}.
+		\item До якого класу керувань належить керування (\ref{eq:1.6}): програмних керувань, чи керувань з оберненим зв'язком?
+		\item Знайти траєкторію системи при керуванні (\ref{eq:1.6}).
 		\item Знайти програмне керування $u(t) = 4x_1(t) - x_2(t)$, яке відповідає знайденій траєкторії.
-		\item Якою буде фундаментальна матриця, нормована за моментом $s$, системи, що одержана при підстановці керування \LaReF{eq:1.6} в систему \LaReF{eq:1.5}?
-		\item Побудувати спряжену систему до системи, одержаної при підстановці керування \LaReF{eq:1.6} в систему \LaReF{eq:1.5}, та її фундаментальну матрицю.
+		\item Якою буде фундаментальна матриця, нормована за моментом $s$, системи, що одержана при підстановці керування (\ref{eq:1.6}) в систему (\ref{eq:1.5})?
+		\item Побудувати спряжену систему до системи, одержаної при підстановці керування (\ref{eq:1.6}) в систему (\ref{eq:1.5}), та її фундаментальну матрицю.
 	\end{enumerate}
 \end{problem}
 
@@ -473,9 +192,9 @@
 \begin{problem}
 	Розглядається задача Лагранжа
 		\[
-		\mathcal{J}(u)
+		\JJ(u)
 		=
-		\Int_0^T u^2(s) ds \to \inf
+		\int_0^T u^2(s) \diff s \to \inf
 		\]
 		за умови, що
 		\[
@@ -492,5 +211,14 @@
 \end{problem}
 
 \begin{solution}
-	Введемо нову фазову координату $x_3(t)=\Int_0^t u^2(s) ds$, тоді до системи додається початкова умова $x_3(0)=0$, рівняння $\dot x_3 = u^2$, а функціонал якості переписується у вигляді $x_3(T) \to \inf$
+	Введемо нову фазову координату $x_3(t)=\int_0^t u^2(s) \diff s$, тоді до системи додається початкова умова $x_3(0)=0$, рівняння $\dot x_3 = u^2$, а функціонал якості переписується у вигляді $x_3(T) \to \inf$.
+\end{solution}
+
+
+\begin{problem}
+	% 1.7
+\end{problem}
+
+\begin{solution}
+	% 1.7
 \end{solution}

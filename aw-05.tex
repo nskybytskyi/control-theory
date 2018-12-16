@@ -1,0 +1,33 @@
+\section{Задача фільтрації. Множинний підхід}
+
+\subsection*{Аудиторне заняття}
+
+\begin{problem}
+	Задана динамічна система \[ \left\{ \begin{aligned}
+		\frac{\diff x(t)}{\diff t} &= t x(t) + v(t), \\
+		y(t) &= p x(t) + w(t),
+	\end{aligned} \right. \]
+	де $x(t) \in \RR^1$ -- вектор стану, $v(t) \in \RR^1$, $w(t) \in \RR^1$ -- невідомі шуми, $x_0 \in \RR^1$ -- невідома початкова умова, $y(t) \in \RR^1$ -- відомі спостереження. Побудувати інформаційну множину такої системи в момент $\tau \in [0, T]$ за умови, що \[ \int_0^\tau (v^2(s) + w^2(s)) \diff s + x^2(0) \le 1, \quad \tau \in [0, T]. \]
+\end{problem}
+
+\begin{solution}
+	Загальна постановка задачі фільтрації має вигляд \[ \dot x = A x + v, \quad y = G x + w, \quad \int ( \langle Mv, v\rangle + \langle Nw, w\rangle )  + \langle p_0 x, x \rangle \le \mu^2. \] У нашій задачі $A = \begin{pmatrix} t \end{pmatrix}$, $G = \begin{pmatrix} p \end{pmatrix}$, $M = \begin{pmatrix} 1 \end{pmatrix}$, $N = \begin{pmatrix} 1 \end{pmatrix}$, $p_0 = 1$, $\mu = 1$. \\
+
+	Знайдемо фільтр (спостерігач) цієї задачі у вигляді \[ \dot{\hat{x}} = A \hat x + K (y - G \hat x), \] де $K = R G^* N$, де у свою чергу $\dot R = A T + T A^* - R G^* N G R$, $R(t_0) = p_0^{-1}$. \\
+\end{solution}
+
+\begin{problem}
+	% 5.2
+\end{problem}
+
+\begin{solution}
+	% 5.2
+\end{solution}
+
+\begin{problem}
+	% 5.3
+\end{problem}
+
+\begin{solution}
+	% 5.3
+\end{solution}

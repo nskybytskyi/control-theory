@@ -1,0 +1,68 @@
+% cd ..\..\Users\NikitaSkybytskyi\Desktop\control-theory
+
+% cls && pdflatex ahw.tex && cls && pdflatex ahw.tex && start ahw.pdf
+
+\documentclass[a5paper, 10pt]{article}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, ukrainian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage[top = 2 cm, left = 1 cm, right = 1 cm, bottom = 2 cm]{geometry} 
+
+\title{{\Huge ТЕОРІЯ КЕРУВАННЯ}}
+\date{}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Семінари з теорії керування, 2018}
+\rhead{Нікіта Скибицький, ОМ-3}
+\cfoot{\thepage}
+
+\usepackage{amsthm}
+\newtheorem{definition}{Визначення}
+\theoremstyle{definition}
+\newtheorem*{problem*}{\normalfont{\textit{Задача}}}
+\newtheorem{problem}{\normalfont{\textit{Задача}}}[section]
+\newtheorem*{solution}{Розв'язок}
+
+\allowdisplaybreaks
+\setlength\parindent{0pt}
+\numberwithin{equation}{section}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{unicode=true,colorlinks=true,linktoc=all,linkcolor=red}
+
+\usepackage{graphicx}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathcal{S}}
+\newcommand{\Max}{\displaystyle\max\limits}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfi}{erfi}
+\DeclareMathOperator{\signum}{sgn}
+
+\begin{document}
+
+% \maketitle \thispagestyle{empty} \newpage 
+
+% \tableofcontents \newpage
+
+% \input{aw-01.tex} \input{hw-01.tex} \newpage
+
+% \input{aw-02.tex} \input{hw-02.tex} \newpage
+
+% \input{aw-03.tex} \input{hw-03.tex} \newpage
+
+% \input{aw-04.tex} \input{hw-04.tex} \newpage
+
+\input{aw-05.tex} \input{hw-05.tex}
+
+\end{document}
