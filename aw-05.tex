@@ -1,6 +1,6 @@
 \section{Задача фільтрації. Множинний підхід}
 
-\subsection*{Аудиторне заняття}
+\subsection{Аудиторне заняття}
 
 \begin{problem}
 	Задана динамічна система \[ \left\{ \begin{aligned}
@@ -11,23 +11,63 @@
 \end{problem}
 
 \begin{solution}
-	Загальна постановка задачі фільтрації має вигляд \[ \dot x = A x + v, \quad y = G x + w, \quad \int ( \langle Mv, v\rangle + \langle Nw, w\rangle )  + \langle p_0 x, x \rangle \le \mu^2. \] У нашій задачі $A = \begin{pmatrix} t \end{pmatrix}$, $G = \begin{pmatrix} p \end{pmatrix}$, $M = \begin{pmatrix} 1 \end{pmatrix}$, $N = \begin{pmatrix} 1 \end{pmatrix}$, $p_0 = 1$, $\mu = 1$. \\
+	Загальна постановка задачі фільтрації має вигляд \[ \dot x (t)= A (t) \cdot x (t)+ v (t), \quad y (t)= G (t) \cdot x(t) + w(t),\] \[\int_{t_0}^t ( \langle M(t) \cdot v(t), v(t)\rangle + \langle N(t) \cdot w(t), w(t)\rangle )  + \langle p_0 x(t_0), x(t_0) \rangle \le \mu^2. \] У нашій задачі $A (t)= \begin{pmatrix} t \end{pmatrix}$, $G (t)= \begin{pmatrix} p \end{pmatrix}$, $M (t)= \begin{pmatrix} 1 \end{pmatrix}$, $N (t)= \begin{pmatrix} 1 \end{pmatrix}$, $p_0 = 1$, $\mu = 1$. \\
 
-	Знайдемо фільтр (спостерігач) цієї задачі у вигляді \[ \dot{\hat{x}} = A \hat x + K (y - G \hat x), \] де $K = R G^* N$, де у свою чергу $\dot R = A T + T A^* - R G^* N G R$, $R(t_0) = p_0^{-1}$. \\
+	Знайдемо фільтр (спостерігач) цієї задачі у вигляді \[ \dot{\hat{x}} (t) = A (t) \cdot \hat x (t) + K (t) \cdot (y (t) - G (t) \cdot \hat x (t)), \] де $K (t)= R (t) \cdot G^* (t) \cdot N(t)$, де у свою чергу \[\dot R (t)= A (t) \cdot R (t)+ R (t) \cdot A^* (t)- R (t) \cdot G^* (t) \cdot N (t) \cdot G (t) \cdot R(t), \quad R(t_0) = p_0^{-1}. \]
+
+ 	Підставляючи відомі функції знаходимо \[\dot R (t)= 2 t \cdot R (t) - p^2 \cdot R^2(t), \quad R(t_0) = 1. \]
+
+ 	Це рівняння Бернуллі, його розв'язок \[ R(t) = \frac{2 e^{t^2}}{2 e^{t_0^2} + p^2 \sqrt{\pi} (\erfi(t) - \erfi(t_0))}. \]
+
+ 	Далі, \[ K(t) = \frac{2 p e^{t^2}}{2 e^{t_0^2} + p^2 \sqrt{\pi} (\erfi(t) - \erfi(t_0))}, \] і \[ \dot{\hat{x}} (t) = t \cdot \hat x (t) + \frac{2 p e^{t^2} \cdot (y (t) - p \cdot \hat x (t))}{2 e^{t_0^2} + p^2 \sqrt{\pi} (\erfi(t) - \erfi(t_0))}. \]
+
+ 	Нарешті, \[ \XX(\tau) = \EE (\hat x(\tau), (\mu^2 - k(\tau)) \cdot R(\tau)), \] де \[ \dot k (s) = \langle N(s) (y(s) - G(s) \cdot \hat x(s)), y(s) - G(s) \cdot \hat x(s)\rangle, \quad k(t_0) = 0, \] тобто \[ \dot k (s) = \langle (y(s) - p \hat x(s)), y(s) - p \hat x(s)\rangle = |y(s) - p \hat x(s)|^2, \quad k(t_0) = 0. \]
 \end{solution}
 
 \begin{problem}
-	% 5.2
+	Задана динамічна система \[ \left\{ \begin{aligned}
+		\frac{\diff x(t)}{\diff t} &= x(t) + v(t), \\
+		y(t) &= 2 x(t) + w(t),
+	\end{aligned} \right. \]
+	де $x(t) \in \RR^1$ -- вектор стану, $v(t) \in \RR^1$, $w(t) \in \RR^1$ -- невідомі шуми, $x_0 \in \RR^1$ -- невідома початкова умова. Побудувати оцінку стану заданої системи (фільтр) за заданими спостереженнями $y(t) \in \RR^1$ за умови, що \[ \int_0^\tau (v^2(s) + w^2(s)) \diff s + x^2(0) \le 2, \] $\tau \in [0, T]$. Знайти похибку оцінювання.
 \end{problem}
 
 \begin{solution}
-	% 5.2
+	Загальна постановка задачі фільтрації має вигляд \[ \dot x (t)= A (t) \cdot x (t)+ v (t), \quad y (t)= G (t) \cdot x(t) + w(t),\] \[\int_{t_0}^t ( \langle M(t) \cdot v(t), v(t)\rangle + \langle N(t) \cdot w(t), w(t)\rangle )  + \langle p_0 x(t_0), x(t_0) \rangle \le \mu^2. \] У нашій задачі $A (t)= \begin{pmatrix} 1 \end{pmatrix}$, $G (t)= \begin{pmatrix} 2 \end{pmatrix}$, $M (t)= \begin{pmatrix} 1 \end{pmatrix}$, $N (t)= \begin{pmatrix} 1 \end{pmatrix}$, $p_0 = 1$, $\mu = \sqrt{2}$. \\
+
+	Знайдемо фільтр (спостерігач) цієї задачі у вигляді \[ \dot{\hat{x}} (t) = A (t) \cdot \hat x (t) + K (t) \cdot (y (t) - G (t) \cdot \hat x (t)), \] де $K (t)= R (t) \cdot G^* (t) \cdot N(t)$, де у свою чергу \[\dot R (t)= A (t) \cdot R (t)+ R (t) \cdot A^* (t)- R (t) \cdot G^* (t) \cdot N (t) \cdot G (t) \cdot R(t), \quad R(t_0) = p_0^{-1}. \]
+
+ 	Підставляючи відомі функції знаходимо \[\dot R (t)= 2 \cdot R (t) - 4 \cdot R^2(t), \quad R(t_0) = 1. \]
+
+ 	Це рівняння зі змінними що роздяліються, його розв'язок \[ R(t) = \frac{e^{2t}}{2e^{2t}-e^{2t_0}}. \]
+
+ 	Далі, \[ K(t) = \frac{2 e^{2t}}{2e^{2t}-e^{2t_0}}, \] і \[ \dot{\hat{x}} (t) = \hat x (t) + \frac{2 e^{2t} \cdot (y (t) - 2 \cdot \hat x (t))}{2e^{2t}-e^{2t_0}}. \]
+
+ 	Похибка $e(\tau)$ оцінювання задовольняє оцінці \[ |e(\tau)| \le \sqrt{\mu^2-k(\tau)} \cdot \sqrt{\lambda_* (R(\tau))} = \frac{ \sqrt{2 - k(\tau)} \cdot e^{2\tau}}{2e^{2\tau}-e^{2t_0}},\] де \[ \dot k (s) = \langle N(s) (y(s) - G(s) \cdot \hat x(s)), y(s) - G(s) \cdot \hat x(s)\rangle, \quad k(t_0) = 0, \] тобто \[ \dot k (s) = \langle (y(s) - 2 \hat x(s)), y(s) - 2 \hat x(s)\rangle = |y(s) - 2 \hat x(s)|^2, \quad k(t_0) = 0. \]
 \end{solution}
 
 \begin{problem}
-	% 5.3
+	Задана динамічна система \[ \left\{ \begin{aligned}
+		\frac{\diff x_1(t)}{\diff t} &= 2 x_1(t) + x_2(t) + v_1(t), \\
+		\frac{\diff x_2(t)}{\diff t} &= - x_1(t) + x_2(t) + v_2(t), \\
+		y(t) &= x_1(t) + 2 x_2(t) + w(t),
+	\end{aligned} \right. \] і відомі спостереження за цією системою $y(t) \in \RR^1$.  Побудувати оцінку стану (фільтр) і знайти похибку оцінювання. Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $v_1 (t) \in \RR^1$, $v_2 (t) \in \RR^1$, $w(t) \in \RR^1$ -- невідомі шуми, \[ \int_0^\tau (v_1^2(s) + v_2^2(s) + w^2(s)) \diff s + x_1^2(0) + 2 x_2^2(0) \le 1,\] $\tau \in [0, T]$, момент часу $T$ є заданим.
 \end{problem}
 
 \begin{solution}
-	% 5.3
+	Загальна постановка задачі фільтрації має вигляд \[ \dot x (t)= A (t) \cdot x (t)+ v (t), \quad y (t)= G (t) \cdot x(t) + w(t),\] \[\int_{t_0}^t ( \langle M(t) \cdot v(t), v(t)\rangle + \langle N(t) \cdot w(t), w(t)\rangle )  + \langle p_0 x(t_0), x(t_0) \rangle \le \mu^2. \] У нашій задачі $A (t) = \begin{pmatrix} 2 & 1 \\ -1 & 1 \end{pmatrix}$, $G (t)= \begin{pmatrix} 1 & 2 \end{pmatrix}$, $M (t)= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$, $N (t)= \begin{pmatrix} 1 \end{pmatrix}$, $p_0 = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}$, $\mu = 1$. \\
+
+	Знайдемо фільтр (спостерігач) цієї задачі у вигляді \[ \dot{\hat{x}} (t) = A (t) \cdot \hat x (t) + K (t) \cdot (y (t) - G (t) \cdot \hat x (t)), \] де $K (t)= R (t) \cdot G^* (t) \cdot N(t)$, де у свою чергу \[\dot R (t)= A (t) \cdot R (t)+ R (t) \cdot A^* (t)- R (t) \cdot G^* (t) \cdot N (t) \cdot G (t) \cdot R(t), \quad R(t_0) = p_0^{-1}. \]
+
+ 	Підставляючи відомі функції знаходимо \[\dot R (t) = \begin{pmatrix} 2 & 1 \\ -1 & 1 \end{pmatrix} \cdot R(t) + R(t) \cdot \begin{pmatrix} 2 & -1 \\ 1 & 1 \end{pmatrix} - R(t) \cdot \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix} \cdot R(t), \] або, у розгорнутому вигляді \[ \left\{ \begin{aligned}
+ 		\dot r_{11} &= 4 r_{11} + 2 r_{12} + r_{11}^2 + 4 r_{11}r_{12} + 4 r_{12}^2, \\
+ 		\dot r_{12} &=  - r_{11} + 3 r_{12} + r_{22} + r_{11}r_{12}+2r_{12}^2+2r_{11}r_{22}+4r_{12}r_{22}, \\
+ 		\dot r_{22} &= - 2 r_{12} + 2 r_{22} + r_{12}^2 + 4 r_{12} r_{22} + r_{22}^2, \\
+ 		r_{11} (0) &= 1, \\
+ 		r_{12} (0) &= 0, \\
+ 		r_{22} (0) &= 1 / 2.
+	\end{aligned} \right. \] 	
+
+	Похибка $e(\tau)$ оцінювання задовольняє оцінці \[ |e(\tau)| \le \sqrt{\mu^2-k(\tau)} \cdot \sqrt{\lambda_* (R(\tau))},\] де \[ \dot k (s) = \langle N(s) (y(s) - G(s) \cdot \hat x(s)), y(s) - G(s) \cdot \hat x(s)\rangle, \quad k(t_0) = 0, \] тобто \[ \dot k (s) = \langle (y(s) - \hat x_1(s) - 2 \hat x_2(s)), y(s) - \hat x_1(s) - 2 \hat x_2(s)\rangle = |y(s) - \hat x_1(s) - 2 \hat x_2(s)|^2. \]
+
 \end{solution}

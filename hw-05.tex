@@ -1,4 +1,4 @@
-\subsection*{Домашнє завдання}
+\subsection{Домашнє завдання}
 
 \begin{problem}
     Задана динамічна система
@@ -7,7 +7,7 @@
         y &= -x + w,
     \end{aligned} \right. \]
     де $x(t) \in \RR^1$ -- вектор стану, $v(t)\in\RR^1$, $w(t)\in\RR^1$ -- невідомі шуми, $y(t)\in\RR^1$ -- відомі спостереження. Побудувати інформаційну множину такої системи в момент $\tau\in[0, T]$ за умови. що 
-    \[ \int_0^\tau (v^2(s) + w^2(s)) \diff s + (x(0) - 1)^2 \le 1, \tau \in [0, T]. \]
+    \[ \int_0^\tau (v^2(s) + w^2(s)) \diff s + (x(0) - 1)^2 \le 1, \quad \tau \in [0, T]. \]
 \end{problem}
 
 \begin{solution}
@@ -26,7 +26,17 @@
 \end{problem}
 
 \begin{solution}
-	% 5.5
+	Загальна постановка задачі фільтрації має вигляд \[ \dot x (t)= A (t) \cdot x (t)+ v (t), \quad y (t)= G (t) \cdot x(t) + w(t),\] \[\int_{t_0}^t ( \langle M(t) \cdot v(t), v(t)\rangle + \langle N(t) \cdot w(t), w(t)\rangle )  + \langle p_0 x(t_0), x(t_0) \rangle \le \mu^2. \] У нашій задачі $A (t)= \begin{pmatrix} t \end{pmatrix}$, $G (t)= \begin{pmatrix} p \end{pmatrix}$, $M (t)= \begin{pmatrix} 1 \end{pmatrix}$, $N (t)= \begin{pmatrix} 1 \end{pmatrix}$, $p_0 = 1$, $\mu = 2$. \\
+
+    Знайдемо фільтр (спостерігач) цієї задачі у вигляді \[ \dot{\hat{x}} (t) = A (t) \cdot \hat x (t) + K (t) \cdot (y (t) - G (t) \cdot \hat x (t)), \quad \hat x(0) = 1, \] де $K (t)= R (t) \cdot G^* (t) \cdot N(t)$, де у свою чергу \[\dot R (t)= A (t) \cdot R (t)+ R (t) \cdot A^* (t)- R (t) \cdot G^* (t) \cdot N (t) \cdot G (t) \cdot R(t), \quad R(t_0) = p_0^{-1}. \]
+
+    Підставляючи відомі функції знаходимо \[\dot R (t)= 2 t \cdot R(t) - p^2 \cdot R^2(t), \quad R(t_0) = 1. \]
+
+    Це рівняння Бернуллі, його розв'язок \[ R(t) = \frac{2 e^{t^2}}{2 e^{t_0^2} + p^2 \sqrt{\pi} (\erfi(t) - \erfi(t_0))}. \]
+
+    Далі, \[ K(t) = \frac{2 p e^{t^2}}{2 e^{t_0^2} + p^2 \sqrt{\pi} (\erfi(t) - \erfi(t_0))}, \] і \[ \dot{\hat{x}} (t) = t \cdot \hat x (t) + \frac{2 p e^{t^2} \cdot (y (t) - p \cdot \hat x (t))}{2 e^{t_0^2} + p^2 \sqrt{\pi} (\erfi(t) - \erfi(t_0))}, \quad \hat x(0) = 1. \]
+
+    Похибка $e(\tau)$ оцінювання задовольняє оцінці \[ |e(\tau)| \le \sqrt{\mu^2-k(\tau)} \cdot \sqrt{\lambda_* (R(\tau))} = \frac{ \sqrt{4 - k(\tau)} \cdot e^{2\tau}}{2e^{2\tau}-e^{2t_0}},\] де \[ \dot k (s) = \langle N(s) (y(s) - G(s) \cdot \hat x(s)), y(s) - G(s) \cdot \hat x(s)\rangle, \quad k(t_0) = 0, \] тобто \[ \dot k (s) = \langle (y(s) - p \hat x(s)), y(s) - p \hat x(s)\rangle = |y(s) - p \hat x(s)|^2, \quad k(t_0) = 0. \]
 \end{solution}
 
 \begin{problem}
