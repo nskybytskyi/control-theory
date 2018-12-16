@@ -1,23 +1,124 @@
-% OK, incomplete, missing 2.1, 2.2
+% OK, complete
 
 \section{Елементи багатозначного аналізу. Множина досяжності}
 
 \subsection*{Аудиторне заняття}
 
 \begin{problem}
-	% 2.1
+	Знайти $A + B$ і $\lambda A$, а також метрику Хаусдорфа $\alpha (A, B)$, якщо:
+	
+	\begin{enumerate}
+	    \item $A = \{-3, 2, -1\},  B = \{-2, 5, 1\},  \lambda = 3$;
+	    
+	    \item $A = \{4, 2, -4\},  B = [-2, 3],  \lambda = -1$;
+	    
+	    \item $A = [-1, 2],  B = [3, 7],  \lambda = -2$;
+	    
+	\end{enumerate}
+	
 \end{problem}
 
 \begin{solution}
-	% 2.1
+
+	\begin{enumerate}
+	    \item За визначенням операції $A + B = \{-5, 2, -2, 0, 7, 3, -3, 4, 0\}$, $\lambda A = \{-9, 6, -3 \}$. \\
+	    
+	    Метрика Хаусдорфа визначатиметься як \[\alpha (A, B) = \max\{\beta (A, B), \beta (B, A)\},\] в свою чергу $\beta (A, B)$ визначається як максимум з мінімумів відхилень множини, тобто, у нашому випадку, $\beta (A, B) = \max\{1, 1, 1\}; \beta (B, A) = \max\{1, 3, 1\}$, тоді $\alpha (A, B) = 3$.
+	    
+	    \item За визначенням операції $A + B = [-6,7]$, $\lambda A = \{-4, -2, 4 \}$.\\
+	    
+	    Метрика Хаусдорфа визначатиметься як \[\alpha (A, B) = \max\{\beta (A, B), \beta (B, A)\},\] в свою чергу $\beta (A, B)$ визначається як максимум з мінімумів відхилень множини, тобто, у нашому випадку, $\beta (A, B) = \max\{1, 0, 2\}; \beta (B, A) = \max[0, 3]$, оскільки $-1$ відхиляється від найближчих елементів на $3$ і це є максимумом, тоді $\alpha (A, B) = 3$.
+	    
+	    \item За визначенням операції $A + B = [2,9]$, $\lambda A = [-4,2]$. \\
+	    
+	    Метрика Хаусдорфа визначатиметься як \[\alpha (A, B) = \max\{\beta (A, B), \beta (B, A)\},\] в свою чергу $\beta (A, B)$ визначається як максимум з мінімумів відхилень множини, тобто, у нашому випадку, $\beta (A, B) = \max[1,4]; \beta (B, A) = \max[1, 5]$, оскільки відповідні краї відхиляються на $4$ та $5$ відповідно ($-1$ від $3$ та $7$ від $2$), тоді $\alpha (A, B) = 5$.
+	    
+	\end{enumerate}
+	
 \end{solution}
 
 \begin{problem}
-	% 2.2
+	Знайти $MA$, якщо
+	\[
+	M=
+  \begin{pmatrix}
+    -2 & 4 \\
+    3 & 5
+  \end{pmatrix}
+  , A= 
+  \left\{
+  \begin{pmatrix}
+    -1 \\
+    2 
+  \end{pmatrix},
+    \begin{pmatrix}
+    3 \\
+    -4 
+  \end{pmatrix},
+    \begin{pmatrix}
+    0 \\
+    -2 
+  \end{pmatrix}
+  \right\}
+  .\]
 \end{problem}
 
 \begin{solution}
-	% 2.2
+	За означенням $MA = \{Ma\in \RR^m, a\in A\}$, тому
+	\newline
+   \[ \begin{pmatrix}
+   -2 & 4 \\
+   3 & 5
+  \end{pmatrix}
+  \begin{pmatrix}
+    -1 \\
+    2 
+  \end{pmatrix}=
+  \begin{pmatrix}
+    10 \\
+    7 
+  \end{pmatrix};
+   \begin{pmatrix}
+   -2 & 4 \\
+   3 & 5
+  \end{pmatrix}
+  \begin{pmatrix}
+    3 \\
+    -4 
+  \end{pmatrix}=
+  \begin{pmatrix}
+    -22 \\
+    -11 
+  \end{pmatrix};
+   \begin{pmatrix}
+   -2 & 4 \\
+   3 & 5
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 \\
+    -2 
+  \end{pmatrix}=
+  \begin{pmatrix}
+    -8 \\
+    -10 
+  \end{pmatrix};
+  \]
+  
+  Отже, отримаємо \[MA = 
+  \left\{
+  \begin{pmatrix}
+    10 \\
+    7 
+  \end{pmatrix},
+  \begin{pmatrix}
+    -22 \\
+    -11 
+  \end{pmatrix},
+  \begin{pmatrix}
+    -8 \\
+    -10 
+  \end{pmatrix}
+  \right\}.\]
 \end{solution}
 
 \begin{problem}
