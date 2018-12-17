@@ -1,0 +1,178 @@
+\subsection{Домашнє завдання}
+
+\begin{problem}
+	Знайти першу варіацію за Лагранжем і похідну Фреше в просторі інтегрованмх з квадратом функцій для функціоналів:
+	\begin{enumerate}
+		\item $\JJ(u) = \int_0^T \cos(u(s)) \diff s$;
+		\item $\JJ(u) = \int_0^T (s^2 u_1^4(s) + u_2^2(s)) \diff s$, $u=(u_1,u_2)^*$.
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	\begin{enumerate}
+		\item Перша варіація за Лагранжем:
+		\begin{multline*} 
+			\delta \JJ(u, \psi) = \frac{\diff}{\diff \alpha} \left.\JJ(u + \alpha \psi)\right|_{\alpha = 0} = \frac{\diff}{\diff \alpha} \left.\int_0^T \cos(u(s) + \alpha \psi(s)) \diff s\right|_{\alpha = 0} = \\
+			= \left.\int_0^T - \psi(s) \sin(u(s) + \alpha \psi(s)) \diff s\right|_{\alpha = 0} = - \int_0^T \psi(s) \sin(u(s)) \diff s.
+		\end{multline*}
+		Як наслідок, похідна за Фреше $\JJ'(u) = - \sin u(\cdot)$.
+
+		\item \begin{multline*} 
+			\delta \JJ(u, \psi) = \frac{\diff}{\diff \alpha} \left.\JJ(u + \alpha \psi)\right|_{\alpha = 0} = \\
+			= \frac{\diff}{\diff \alpha} \left.\int_0^T (s^2 (u_1 + \alpha \psi_1)^4(s) + (u_2 + \alpha \psi_2)^2(s)) \diff s\right|_{\alpha = 0} = \\
+			= \left.\int_0^T (4 s^2 \psi_1(s) (u_1 + \alpha \psi_1)^3(s) + 2 \psi_2(s) (u_2 + \alpha \psi_2)(s)) \diff s\right|_{\alpha = 0} = \\
+			= \int_0^T (4 s^2 \psi_1(s) u_1^3(s) + 2 \psi_2(s) u_2 (s)) \diff s.
+		\end{multline*}
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Побудувати рівняння у варіаціях для системи керування \[ \frac{\diff x(t)}{\diff t} = \cos(x(t) + u(t)), \quad x(0) = x_0. \] Тут $x(t)\in\RR^1$, $u(t)\in\RR^1$, $t\in[0,T]$. Точки $x_0\in\RR^1$ і момент часу $T$ є заданими.
+\end{problem}
+
+\begin{solution}
+	Рівняння у варіаціях має загальний вигляд \[ \frac{\diff z(t)}{\diff t} = \frac{\partial f(x(t),u_*(t),t)}{\partial x} \cdot z(t) + \frac{\partial f(x(t),u_*(t),t)}{\partial u} \cdot h(t), \quad z(0) = 0. \] У нашій задачі \[f(x(t), u(t), t) = \cos(x(t) + u(t)), \] тому маємо \[ \frac{\diff z(t)}{\diff t} = -\sin(x(t) + u(t)) \cdot z(t) -\sin(x(t) + u(t)) \cdot h(t), \quad z(0) = 0. \]
+\end{solution}
+
+\begin{problem}
+	Побудувати рівняння у варіаціях для системи керування \[ \left\{ \begin{aligned}
+		\frac{\diff x_1(t)}{\diff t} &= x_1(t)\cdot x_2(t) + u_1(t), \\
+		\frac{\diff x_2(t)}{\diff t} &= x_1(t) - x_2(t) \cdot u_2(t),
+	\end{aligned} \right. \]
+	\[ x_1(0) = -1, x_2 (0) = 4. \]
+
+	Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $u = (u_1, u_2)^*$, $t\in[0, T]$, момент часу $T$ є заданим.
+\end{problem}
+
+\begin{solution}
+	Рівняння у варіаціях має загальний вигляд \[ \frac{\diff z(t)}{\diff t} = \frac{\partial f(x(t),u_*(t),t)}{\partial x} \cdot z(t) + \frac{\partial f(x(t),u_*(t),t)}{\partial u} \cdot h(t), \quad z(0) = 0. \] У нашій задачі \[f(x(t), u(t), t) = \begin{pmatrix} x_1 \cdot x_2 + u_1 \\ x_1 - x_2 \cdot u_2 \end{pmatrix}, \] тому маємо \[ \frac{\diff z(t)}{\diff t} = \begin{pmatrix} x_2 & x_1 \\ 1 & -u_2 \end{pmatrix} \cdot z(t) + \begin{pmatrix} 1 & 0 \\ 0 & - x_2 \end{pmatrix} \cdot h(t), \quad z(0) = 0, \] або, у розгорнутому вигляді, \[ \left\{ \begin{aligned}
+		\dot z_1 &= x_2 z_1 + x_1 z_2 + h_1, \\
+		\dot z_2 &= z_1 - u_2 z_2 - x_2 h_2, \\
+		0 &= z_1(0) = z_2(0).
+	\end{aligned} \right. \]
+\end{solution}
+
+\begin{problem}
+	Знайти першу варіацію за Лагранжем і похідну Фреше в просторі інтегрованих з квадратом функцій для задачи оптимального керування варіаційним методом \[ \JJ(u) = \int_0^T (u^2(s) + x^4(s)) \diff s + x^4(T) \to \inf \] за умови, що \[ \frac{\diff x(t)}{\diff t} = x(t) \cdot u(t), \quad x(0) = x_0. \] Тут $x(t) \in \RR^1$, $u(t)\in\RR^1$, $t\in[0,T]$. Точки $x_0\in\RR^1$ і момент часу $T$ є заданими.
+\end{problem}
+
+\begin{solution}
+	Перш за все запишемо
+	\[ \phi(\alpha) = \JJ(u + \alpha h) = \int_0^T ((u + \alpha h)^2(s) + x^4(s, \alpha)) \diff s + x^4(T, \alpha). \]
+
+	Далі, \[ \phi'(\alpha) = \int_0^T (2 h(s) \cdot (u(s) + \alpha h(s)) + 4 x^3(s, \alpha) x_\alpha'(s, \alpha)) \diff s + 4 x^3 (T, \alpha) x_\alpha'(T, \alpha). \]
+
+	Підставимо $\alpha = 0$: \[ \delta \JJ(u, h) = \int_0^T (2 h(s) u(s) + 4 x^3(s) z(s)) \diff s + \underset{=-\psi(T)}{\underbrace{4 x^3(T)}} \cdot z(T).\] 
+
+	Тоді рівняння у варіаціях \[ \left\{ \begin{aligned} 
+		z' &= u \cdot z + x \cdot h, \\
+		z(0) &= 0.
+	\end{aligned} \right. \]
+
+	\begin{multline*} 
+		\psi(T) \cdot z(T) = \psi(T) \cdot z(T) - \psi(0) \cdot z(0) = \int_0^T (\psi(s) \cdot z(s))' \diff s = \\
+		= \int_0^T (\psi'(s) \cdot z(s) + \psi(s) \cdot z'(s)) \diff s = \\
+		= \int_0^T \phi'(s) z(s) + \phi(s) (u(s) z(s) + x(s) h(s)) = \\
+		= \int_0^T \phi'(s) z(s) u(s) z(s) \diff s + \int_0^T \psi(s) x(s) h(s) \diff s.
+	\end{multline*}
+
+	\begin{multline*} 
+		\delta \JJ(u, h) = \int_0^T 2 h(s) u(s) + 4 x^3(s) z(s) \diff s - \\
+		- \int_0^T \psi'(s) z(s) u(s) z(s) \diff s - \int_0^T \psi(s) x(s) h(s) \diff s = \\
+		= \int_0^T (\psi'(s) z(s) + \psi(s) x(s) h(s) + u(s) z(s)) \diff s.
+	\end{multline*}
+
+	\[ \int_0^T z(s) (\psi'(s) + \psi(s) u(s)) \diff s + \int_0^T h(s) \psi(s) x(s( \diff s + \int)) \]
+
+	\[ ... ??? ... \]
+
+	% Тоді спряжена система \[ \left\{ \begin{aligned} 
+	% 	[]
+	% \end{aligned} \right. \]
+
+	% Остаточно, $\JJ'(u) = \psi(s) s$.
+\end{solution}
+
+\begin{problem}
+	Розв'язати задачу оптимального керування варіаційним методом: \[ \JJ (u) = \int_0^T (u (s) - v (s))^2 \diff s + (x (T) - 3)^2 \to \inf \] за умови, що \[ \frac{\diff x (t)}{\diff t} = u(t), \quad x(0) = x_0. \] Тут $x (t) \in \RR^1$, $u (t) \in \RR^1$, $t \in [0, T]$. Точки $x_0 \in \RR^1$, момент часу $T$ і функція $v (t) \in \RR^1$ є заданими.
+\end{problem}
+
+\begin{solution}
+	Нагадаємо постановку задачі варіаційного методу: \[ \JJ (u) = \int_{t_0}^T f_0 (x(t), u(t), t) \diff t + \Phi(x(T)) \to \inf, \] \[ \frac{\diff x (t)}{\diff t} = f(x(t), u(t), t), \quad x(t_0) = x_0. \]
+
+	Спочатку випишемо всі функції з теоретичної частини які фігурують в задачі: 
+	\begin{align*}
+		f_0(x(t), u(t), t) &= (u (t) - v (t))^2, \\
+		\Phi(x(T)) &= (x (T) - 3)^2, \\
+		f(x(t), u(t), t) &= u(t).
+	\end{align*}
+
+	Позначимо \[ \phi (\alpha) = \JJ (u + \alpha h) = \int_0^T ((u + \alpha h) (s) - v (s))^2 \diff s + (x (T, \alpha) - 3)^2. \]
+
+	Необхідна умова екстремуму через першу варіацію функціоналу має вигляд $\delta \JJ (u_*, h) = \phi' (0) = 0$, тому знайдемо \[ \phi' (\alpha) = \int_0^T \left( 2 h (s) \cdot ((u + \alpha h) (s) - v (s)) \right) \diff s + 2 (x (T, \alpha) - 3) \cdot \underset{=z(T)}{\underbrace{\frac{\partial x (T, \alpha)}{\partial \alpha}}}. \]
+
+	Підставляючи $\alpha = 0$, знаходимо \[ \phi' (0) = \int_0^T \left( 2 h (s) \cdot (u(s) - v (s)) \right) \diff s + \underset{=-\psi(T)}{\underbrace{2 (x (T) - 3)}} \cdot z (T). \]
+
+	Запишемо рівняння у варіаціях на функцію $z(t)$. Його загальний вигляд \[ \frac{\diff z(t)}{\diff t} = \frac{\partial f(x(t), u(t), t)}{\partial x} \cdot z(t) + \frac{\partial f(x(t), u(t), t)}{\partial u} \cdot h(t), \quad z(t_0) = 0. \]
+
+	У контексті нашої задачі маємо \[ \frac{\diff z(t)}{\diff t} = 0 \cdot z(t) + 1 \cdot h(t), \quad z(0) = 0. \]
+
+	Введемо додаткові, спряжені змінні $\psi$ такі, що \[ \psi (T) = - \frac{\partial \Phi (x (T))}{\partial x}. \] 
+
+	Тоді $\left\langle \frac{\partial \Phi (x (T))}{\partial x}, z (T) \right\rangle = - \langle \psi (T), z (T) \rangle$ (у контексті нашої задачі ``скалярний'' добуток зайвий бо функції і так скалярні). Враховуючи рівняння у варіаціях, маємо
+	\begin{align*}
+		\psi (T) \cdot z (T) &= \psi (T) \cdot z (T) - \psi (t_0) \cdot z (t_0) = \\
+		&= \int_{t_0}^T \left( \psi (s) \cdot z' (s) + \psi' (s) \cdot z (s) \right) \diff s = \\
+		&= \int_0^T \left( \psi (s) \cdot h (s) + \psi' (s) \cdot z (s) \right) \diff s.
+	\end{align*}
+
+	Підставимо це у вигляд $\phi' (0)$:
+	\begin{align*}
+		\phi' (0) &= \int_{t_0}^T \left( \frac{\partial f_0 (x (t), u (t), t)}{\partial x} \cdot z(t) + \frac{\partial f_0 (x (t), u (t), t)}{\partial u} \cdot h(t) \right) + \\
+		& \left.\right. \quad + \frac{\partial \Phi (x (T))}{ \partial x} \cdot z (T) = \\
+		&= \int_{t_0}^T \left( \frac{\partial f_0 (x (t), u (t), t)}{\partial x} \cdot z(t) + \frac{\partial f_0 (x (t), u (t), t)}{\partial u} \cdot h(t) \right) - \\
+		& \left.\right. \quad - \int_0^T \left( \psi (s) \cdot h (s) + \psi' (s) \cdot z (s) \right) \diff s = \\
+		&= \int_0^T \left( 2 h (s) \cdot (u(s) - v (s)) \right) \diff s - \\
+		& \left.\right. \quad - \int_0^T \left( \psi (s) \cdot h (s) + \psi' (s) \cdot z (s) \right) \diff s = \\
+		&= \int_0^T - \psi'(s) \cdot z(s) \diff s + \int_0^T (2 (u(s) - v(s)) - \psi(s)) \cdot h(s) \diff s.
+	\end{align*}
+
+	Накладаємо на функцію $\psi(t)$ умову (спряжену систему) \[ \frac{\diff \psi (t)}{\diff t} = - \frac{\partial f (x (t), u (t), t)}{\partial x} \cdot \psi (t) + \frac{\partial f_0 (x (t), u (t), t)}{\partial x} = 0, \] \[ \psi(T) = - \frac{\partial \Phi( x (T))}{\partial x} = 2 (x (T) - 3), \] звідки $\psi (t) = 2 (x (T) - 3)$. \\
+
+	Завдяки цьому \[ \delta \JJ (u, h) = \phi' (0) = \int_0^T (2 (u(s) - v(s)) - \psi(s)) \cdot h(s) \diff s. \]
+
+	Як наслідок, \[ \JJ ' (u) = 2 (u (\cdot) - v (\cdot)) - \psi(\cdot)). \]
+
+	Пригадуючи необхідну умову екстремуму функціоналу, знаходимо \[ u_* (t) = v (t) + \psi (t) / 2 = v (t) + x (T) - 3. \]
+
+	Далі \begin{multline*} 
+		x_*(t) = x_0 + \int_0^t f(x(s), u_*(s), s) \diff s = \\
+		= x_0 + \int_0^t (v(s) + x(T) - 3) \diff s = t x (T) - 3 t + \int_0^t v(s) \diff s.
+	\end{multline*}
+
+	покладаючи $t = T$ знаходимо \[ x (T) = T x (T) - 3 T + \int_0^T v(s) \diff s, \] звідки \[ x(T) = \frac{\int_0^T v(s) \diff s - 3  T}{1 - T}, \] і остаточно \[ u_* (t) = v (t) + \frac{\int_0^T v(s) \diff s - 3  T}{1 - T} - 3, \] \[ x_* (t) =  \frac{t \cdot \left(\int_0^T v(s) \diff s - 3  T\right)}{1 - T} - 3 t + \int_0^t v(s) \diff s .\]
+\end{solution}
+
+\begin{problem}
+	% 6.13
+\end{problem}
+
+\begin{solution}
+	% 6.13
+\end{solution}
+
+\begin{problem}
+	% 6.14
+\end{problem}
+
+\begin{solution}
+	% 6.14
+\end{solution}
+
+\begin{problem}
+	% 6.15
+\end{problem}
+
+\begin{solution}
+	% 6.15
+\end{solution}

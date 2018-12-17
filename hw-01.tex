@@ -1,4 +1,4 @@
-% OK, incomplete, missing 1.7
+% OK, complete
 
 \subsection{Домашнє завдання}
 
@@ -216,9 +216,95 @@
 
 
 \begin{problem}
-	% 1.7
+	Задана система керування \[ \left\{ \begin{aligned}
+		\frac{\diff x_1 (t)}{\diff t} &= - x_1 (t) - 5 x_2 (t), \\
+		\frac{\diff x_2 (t)}{\diff t} &= x_1 (t) + x_2 (t) + u(t),
+	\end{aligned} \right. 
+	\quad x_1 (0) = 0, x_2 (0) = 1. \]
+	Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $t \in [0, 2]$. Керування задане у вигляді \[ u(t) = \begin{cases} 0, & \text{якщо } t \in [0, 1], \\ t, & \text{якщо } t \in (1, 2]. \end{cases} \]
+	\begin{enumerate}
+		\item До якого класу керувань належить таке керування: програмних керувань чи з оберненим зв'язком?
+
+		\item Знайти траєкторію системи, яка відповідає цьому керуванню.
+
+		\item Чи буде ця траєкторія неперервно диференційованою?
+
+		\item Чи буде таке керування кращим в порівнянні з керуванням \[ u(t) = \begin{cases} 0, & \text{якщо } t \in [0, 1], \\ t^2, & \text{якщо } t \in (1, 2], \end{cases} \] за умови, що критерій якості має вигляд \[ \JJ (u) = \int_0^2 u^2(s) \diff s + x_1^2 (2) + x_2^2 (2) \to \min. \]
+	\end{enumerate}
 \end{problem}
 
 \begin{solution}
-	% 1.7
+	\begin{enumerate}
+		\item Керування програмне бо не залежить від $x$.
+
+		\item При $t \in [0, 1]$ маємо 
+		\[
+			\begin{pmatrix}
+				\dot x_1 \\ 
+				\dot x_2
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				-1 & -5 \\
+				1 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				x_1 \\
+				x_2
+			\end{pmatrix}.
+		\]
+		Характеристичне рівняння 
+		\[
+			\begin{vmatrix}
+				-1 - \lambda & -5 \\
+				1 & 1 - \lambda 
+			\end{vmatrix}
+			=
+			\lambda^2 + 4 
+			=
+			(\lambda - 2 i) (\lambda + 2i)
+			=
+			0,
+		\]
+		звідки $\lambda_1 = - 2 i$, $\lambda_2 = 2 i$.\\
+		
+		З курсу диференційних рівнянь відомо, що тоді загальний розв'язок має вигляд
+		\[
+			\begin{pmatrix}
+			x_1 \\
+			x_2
+			\end{pmatrix}
+			=
+			c_1 v_1 (\cos(2t) - i \sin(2t)) + c_2 v_2 (\cos(2t) + i \sin(2t)),
+		\]
+		де $v_1$, $v_2$ -- власні вектори, що відповідають $\lambda_1$ та $\lambda_2$ відповідно.\\
+		
+		Нескладно бачити, що 
+		\[
+			\begin{pmatrix}
+				x_1 \\
+				x_2
+			\end{pmatrix}
+			=
+			c_1 
+			\begin{pmatrix}
+				2 \cos (2t) - \sin (2t) \\
+				\sin (2t)
+			\end{pmatrix} 
+			+ 
+			c_2 
+			\begin{pmatrix}
+				-5 \sin (2t) \\
+				\sin(2t) + 2 \cos(2t)
+			\end{pmatrix}.
+		\]
+		
+		Підставляючи $t = 0$ отримуємо $c_1 = 0$, $c_2 = 1 / 2$.
+		
+		При $t \in (1, 2]$ маємо \[...\]
+
+		\item
+
+		\item
+	\end{enumerate}
 \end{solution}

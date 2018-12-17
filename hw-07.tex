@@ -1,0 +1,315 @@
+\subsection{Домашнє завдання}
+
+\begin{problem}
+    Записати крайову задачу принципу максимуму для задачі оптимального керування:
+    \begin{equation*}
+        \JJ(u) = \int_0^T (4 u_1^2(s) + u_2^2(s) + \cos^2(x_1(s))) \diff s + \sin^2(x_2(T)) \to \inf
+    \end{equation*}
+    за умови, що
+    \[ \left\{ \begin{aligned}
+        \dot x_1 &= x_1 + x_2 + 3 x_1 x_2 + 2 u_1, \\
+        \dot x_2 &= - x_1 + 6 x_2 - 3 x_1 x_2 + u_2,
+    \end{aligned} \right. \]
+    \begin{equation*}
+        x_1(0) = 4, x_2(0) = -2.
+    \end{equation*}
+    Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $u_1(t), u_2(t)$ -- функції керування, $t \in [0, T]$, момент часу $T$ є заданим.
+\end{problem}
+
+\begin{solution}
+    Для початку випишемо всі функції з теоретичної частини:
+    \begin{equation}
+        \begin{aligned}
+            f_0(x, u, t) &=  4 u_1^2(s) + u_2^2(s) + \cos^2(x_1(s)), \\
+            f(x(t), u(t), t) &= \begin{pmatrix} x_1 + x_2 + 3 x_1 x_2 + 2 u_1 \\ - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 \end{pmatrix}, \\
+            \Phi(x(T)) &= \sin^2(x_2(T)).
+        \end{aligned}
+    \end{equation}
+
+    Функція Гамільтона-Понтрягіна має вигляд
+    \begin{equation}
+        \begin{aligned}
+        \mathcal{H} (x, u, \psi, t) &= - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = \\
+        &= - 4 u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \langle \psi, f(x, u, t) \rangle = \\
+        &= - 4 u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \\
+        &+ \left \langle \psi, \begin{pmatrix} x_1 + x_2 + 3 x_1 x_2 + 2 u_1 \\ - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 \end{pmatrix} \right \rangle = \\
+        &= - 4 u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \\
+        &+ \left \langle \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}, \begin{pmatrix} x_1 + x_2 + 3 x_1 x_2 + 2 u_1 \\ - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 \end{pmatrix} \right \rangle = \\
+        &= - 4 u_1^2(t) - u_2^2(t) - \cos^2(x_1(t)) + \\
+        &+ \psi_1 ( x_1 + x_2 + 3 x_1 x_2 + 2 u_1 ) + \psi_2 ( - x_1 + 6 x_2 - 3 x_1 x_2 + u_2 ).
+        \end{aligned}
+    \end{equation}
+    
+    Спряжена система записується так:
+    \begin{equation} 
+        \dot \psi = - \nabla_x \mathcal{H} = \begin{pmatrix} \sin (2 x_1) + \psi_1 + 3 \psi_1 x_2 - \psi_2 - 3 \psi_2 x_2 \\ \psi_1 + 3 \psi_1 x_1 + 6 \psi_2 - 3 \psi_2 x_1 \end{pmatrix},
+    \end{equation}
+    \begin{equation} 
+        \psi(T) = - \nabla \Phi(x(T)) = \begin{pmatrix} 0 \\ \sin (2 x_2) \end{pmatrix}.
+    \end{equation} 
+    
+    Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування
+    \begin{equation} 
+        \dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = \begin{pmatrix} - 8 u_1 + 2 \psi_1 \\ - 2 u_2 + \psi_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix},
+    \end{equation}
+    звідки $u_1 = \psi_1 / 4$, $u_2 = \psi_2 / 2$. Підставляємо знайдене керування у початкову систему:
+    \[ \left\{ \begin{aligned}
+        \dot x_1 &= x_1 + x_2 + 3 x_1 x_2 + \psi_1 / 2, \\
+        \dot x_2 &= - x_1 + 6 x_2 - 3 x_1 x_2 + \psi_2 / 2.
+    \end{aligned} \right. \]
+\end{solution}
+
+\begin{problem}
+    Записати крайову задачу принципу максимуму для задачі оптимального керування:
+    \begin{equation*}
+        \JJ(u) = \gamma^2 \int_0^T (x(s) - z(s))^2 \diff s \to \inf
+    \end{equation*}
+    за умови, що
+    \begin{equation*}
+        \dot x = u, x(0) = x_0.
+    \end{equation*}
+    Тут $x(t) \in \RR^1$, $u(t) \in \RR^1$,
+    \begin{equation*}
+        |u(t)| \le \rho,
+    \end{equation*}
+    $t \in [0, T]$. Точка $x_0 \in \RR^1$, неперервна функція $z(t) \in \RR^1$ і момент часу $T$ є заданими.
+\end{problem}
+
+\begin{solution}
+    Для початку випишемо всі функції з теоретичної частини:
+    \begin{equation}
+        f_0(x, u, t) = \gamma^2 (x - z)^2, \quad f(x(t), u(t), t) = u(t), \quad \Phi(x(T)) = 0, \quad \mathcal{U} = \mathcal{U}(t) = [-\rho, \rho].
+    \end{equation}
+    
+    Функція Гамільтона-Понтрягіна має вигляд
+    \begin{equation}
+        \mathcal{H} (x, u, \psi, t) = - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = - \gamma^2 (x - z)^2 + \psi u.
+    \end{equation}
+    
+    Спряжена система записується так:
+    \begin{equation}
+        \dot \psi = - \nabla_x \mathcal{H} = - 2 \gamma^2 x + 2 \gamma^2 z,
+    \end{equation}
+    \begin{equation} 
+        \psi(T) = - \nabla \Phi(x(T)) = 0,
+    \end{equation}
+    % її розв'язок 
+    % \begin{equation}
+    %     \psi (t) = 2 \gamma^2 (z(t) - x(t)) t,
+    % \end{equation}
+    % причому, з крайової умови,
+    % \begin{equation}
+    %     x(T) = z(T).
+    % \end{equation}
+    
+    Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто
+    \begin{equation} 
+        u = \rho \cdot \signum \psi.
+    \end{equation} 
+    Підставляємо знайдене керування у початкову систему:
+    \begin{equation}
+        \dot x = \rho \cdot \signum \psi.
+    \end{equation}
+\end{solution}
+
+\begin{problem}
+    Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна:
+    \begin{equation*}
+        \JJ(u) = \dfrac12 \int_0^T u^2(s) \diff s + \dfrac{(x(T) - x_1)^2}{2} \to \inf
+    \end{equation*}
+    за умови, що
+    \begin{equation*}
+        \dot x = a x + u, x(0) = x_0.
+    \end{equation*}
+    Тут $x(t) \in \RR^1$, $u(t) \in \RR^1$, $t \in [0, T]$. Точки $x_0 \in \RR^1$, $x_1 \in \RR^1$ і момент часу $T$ є заданими.
+\end{problem}
+
+\begin{solution}
+	Для початку випишемо всі функції з теоретичної частини:
+	\begin{equation}
+		f_0(x, u, t) = \dfrac{u^2}{2}, \quad f(x(t), u(t), t) = a x(t) + u(t), \quad \Phi(x(T)) = \dfrac{(x(T) - x_1)^2}{2}.
+	\end{equation}
+
+	Функція Гамільтона-Понтрягіна має вигляд:
+	\begin{equation}
+		\mathcal{H}(x, u, \psi, t) = - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = - \dfrac{u^2}{2} + a \psi x + \psi u.
+	\end{equation}
+
+	Спряжена система записується так:
+	\begin{equation}
+		\dot \psi = - \nabla_x \mathcal{H} = - a \psi,
+	\end{equation}
+	\begin{equation}
+		\psi(T) = - \nabla \Phi(x(T)) = x(T) - x_1.
+	\end{equation}
+
+	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
+	\begin{equation}
+		\dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = - u + \psi = 0,
+	\end{equation}
+	звідки $u = \psi$. Підставляємо знайдене керування у початкову систему:
+	\[ \left\{ \begin{aligned}
+		\dot x &= a x + \psi, \\
+		x(0) &= x_0, \\
+		\dot \psi &= - a \psi, \\
+		\psi(T) &= x(T) - x_1.
+	\end{aligned} \right. \]
+
+	З рівнянь на $\psi$ знаходимо, що $\psi(t) = C_1 \cdot e^{-a t}$, де $C_1$ визначається з рівності $\psi(T) = x(T) - x_1$, тобто $C_1 = (x(T) - x_1) \cdot e^{a T}$. \\
+
+	Підставляючи це у рівняння на $x$ знаходимо, що 
+	\begin{equation}
+		x(t) = C_2 e^{a t} - \dfrac{C_1 e^{-a t}}{2 a} = C_2 e^{a t} - \dfrac{(x(T) - x_1) \cdot e^{a (T - t)}}{2 a},
+	\end{equation}
+	де $C_2$ визначається з рівності $x(0) = x_0$, тобто $C_2 = x_0 + \dfrac{(x(T) - x_1) \cdot e^{a T}}{2 a}$. \\
+
+	% x(t) = x_0 e^{a t} + \dfrac{(x(T) - x_1) \cdot (e^{a (T + t)} - e^{a (T - t)})}{2 a},
+
+	Залишається знайти $x(T)$ з рівності 
+	\begin{equation}
+		x(T) = x_0 e^{a T} + \dfrac{(x(T) - x_1) \cdot (e^{2 a T} - 1)}{2 a}.
+	\end{equation}
+	Зробивши це, отримаємо
+	\begin{equation}
+		x(T) = \dfrac{x_1 (e^{2 a T} - 1) - 2 a x_0 e^{a T}}{e^{2 a T} - 2 a - 1}.
+	\end{equation}
+
+	Остаточно,
+	\begin{equation}
+		x(t) = x_0 e^{a t} + \dfrac{\left(\dfrac{x_1 (e^{2 a T} - 1) - 2 a x_0 e^{a T}}{e^{2 a T} - 2 a - 1} - x_1\right) \cdot \left(e^{a (T + t)} - e^{a (T - t)}\right)}{2 a},
+	\end{equation}	
+	\begin{equation}
+		u(t) = \left(\dfrac{x_1 (e^{2 a T} - 1) - 2 a x_0 e^{a T}}{e^{2 a T} - 2 a - 1} - x_1\right) \cdot e^{a (T - t)}.
+	\end{equation}
+\end{solution}
+
+\begin{problem}
+    Записати крайову задачу принципу максимуму для задачі оптимального керування:
+    \begin{equation*}
+        \JJ(u) = \dfrac12 \int_0^T (u^2(s) + x^2(s)) \diff s + \dfrac{(\dot x(T) - x_1)^2}{2} \to \inf
+    \end{equation*}
+    за умови, що
+    \begin{equation*}
+        \ddot x = u, x(0) = x_0, \dot x(0) = y_0.
+    \end{equation*}
+    Тут $x(t) \in \RR^1$, $u(t) \in \RR^1$, $t \in [0, T]$. Точки $x_0 \in \RR^1$, $y_0 \in \RR^1$ і момент часу $T$ є заданими.
+\end{problem}
+
+\begin{solution}
+	Позначимо $\textbf{x} = \begin{pmatrix} \textbf{x}_1 & \textbf{x}_2 \end{pmatrix}^* = \begin{pmatrix} x & \dot x \end{pmatrix}^*$. \\
+
+	Для початку випишемо всі функції з теоретичної частини:
+	\begin{equation}
+		f_0(\textbf{x}, u, t) = \dfrac{u^2 + \textbf{x}_1^2}{2}, \quad f(\textbf{x}(t), u(t), t) = \begin{pmatrix} \textbf{x}_1(t) \\ u(t) \end{pmatrix}, \quad \Phi(\textbf{x}(T)) = \dfrac{(\textbf{x}_2(T) - x_1)^2}{2}.
+	\end{equation}
+
+	Функція Гамільтона-Понтрягіна має вигляд:
+	\begin{equation}
+		\mathcal{H}(\textbf{x}, u, \psi, t) = - f_0(\textbf{x}, u, t) + \langle \psi, f(\textbf{x}, u, t) \rangle = - \dfrac{u^2 + \textbf{x}_1^2}{2} + \psi_1 \textbf{x}_1 + \psi_2 u.
+	\end{equation}
+
+	Спряжена система записується так:
+	\begin{equation}
+		\dot \psi = - \nabla_\textbf{x} \mathcal{H} = \begin{pmatrix} \textbf{x}_1 - \psi_1 \\ 0 \end{pmatrix}.
+	\end{equation}
+	\begin{equation}
+		\psi(T) = - \nabla \Phi(\textbf{x}(T)) = \begin{pmatrix} 0 \\ \textbf{x}_2(T) - x_1 \end{pmatrix}.
+	\end{equation}
+
+	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
+	\begin{equation}
+    	\dfrac{\partial \mathcal{H}(\textbf{x}, u, \psi, t)}{\partial u} = - u + \psi_2
+	\end{equation}
+	звідки $u = \psi_2$. Підставляємо знайдене керування у початкову систему:
+	\[ \left\{ \begin{aligned}
+	    \dot{\textbf{x}}_1 &= \textbf{x}_2. \\
+	    \dot{\textbf{x}}_2 &= \psi_2.
+	\end{aligned} \right. \]
+\end{solution}
+
+\begin{problem}
+    Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна:
+    \begin{equation*}
+        \JJ(u) = \dfrac 12 \int_0^T u^2(s) \diff s + x_2^2(T) \to \inf
+    \end{equation*}
+    \[ \left\{ \begin{aligned}
+        \dot x_1 &= x_1 - x_2 + u, \\
+        \dot x_2 &= - 4 x_1 + x_2,
+    \end{aligned} \right. \]
+    \begin{equation*}
+        x_1(0) = 2, x_2(0) = 4.
+    \end{equation*}
+    Тут $x = (x_1, x_2)^*$ -- вектор фазових координат з $\RR^2$, $u(t)$ -- функція керування, $t \in [0, T]$, момент часу $T$ є заданим.
+\end{problem}
+
+\begin{solution}
+    Для початку випишемо всі функції з теоретичної частини:
+	\begin{equation}
+		f_0(x, u, t) = \dfrac{u^2}{2}, \quad f(x(t), u(t), t) = \begin{pmatrix} x_1(t) - x_2(t) + u(t) \\ -4x_1(t) + x_2(t) \end{pmatrix}, \quad \Phi(x(T)) = x_2(T))^2.
+	\end{equation}
+	
+	Функція Гамільтона-Понтрягіна має вигляд:
+	\begin{equation}
+		\mathcal{H}(x, u, \psi, t) = - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle = -\dfrac{u^2}{2} + \psi_1 x_1 - \psi_1 x_2 + \psi_1 u - 4 \psi_2 x_1 + \psi_2 x_2.
+	\end{equation}
+
+	Спряжена система записується так:
+	\begin{equation}
+		\dot \psi = - \nabla_x \mathcal{H} = \begin{pmatrix} - \psi_1 + 4 \psi_2 \\ \psi_1 - \psi_2 \end{pmatrix},
+	\end{equation}
+	\begin{equation}
+		\psi(T) = - \nabla \Phi(x(T)) = 2 x_2(T).
+	\end{equation}
+
+	Згідно принципу максимуму, функція Гамільтона-Понтрягіна на оптимальному керуванні досягає свого максимуму, тобто, за відсутності обмежень на керування,
+	\begin{equation}
+		\dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = - u + \psi_1 = 0,
+	\end{equation}
+	звідки $u = \psi_1$. Підставляємо знайдене керування у початкову систему:
+	\[ \left\{ \begin{aligned}
+		\dot x_1 &= x_1 - x_2 + \psi_1, \\
+		\dot x_2 &= - 4 x_1 + x_2.
+	\end{aligned} \right. \]
+
+ 	З рівнянь на $\psi$ знаходимо
+ 	\begin{equation}
+ 	    \psi = C_1 \begin{pmatrix} 2 \\ -1 \end{pmatrix} e^{-3t} + C_2 \begin{pmatrix} 2 \\ 1 \end{pmatrix} e^{t},
+ 	\end{equation}
+ 	де $C_1$ і $C_2$ визначаються з крайових умов. \\
+
+	Підставляючи це у рівняння на $x$ знаходимо, що 
+    \[ \left\{ \begin{aligned}
+        \dot x_1 &= x_1 - x_2 + 2 C_1 e^{-3t} + 2 C_2 e^{t}, \\
+		\dot x_2 &= - 4 x_1 + x_2.
+    \end{aligned} \right. \]
+    
+    Загальний розв'язок однорідного рівняння має вигляд 
+    \begin{equation}
+        x = C_3 \begin{pmatrix} 1 \\ 2 \end{pmatrix} e^{-t} + C_4 \begin{pmatrix} 1 \\ -2 \end{pmatrix} e^{3t}.
+    \end{equation}
+    
+    Частинний розв'язок неоднорідного знайдемо методом невизначених коефіцієнтів. Покладемо
+    \begin{equation}
+        x = \begin{pmatrix} A_1 \\ A_2 \end{pmatrix} e^{-3t} + \begin{pmatrix} B_{11} \\ B_{21} \end{pmatrix} e^{t} + \begin{pmatrix} B_{12} \\ B_{22} \end{pmatrix} x e^{t},
+    \end{equation}
+    тоді, при підстановці у систему, отримаємо:
+    \[ \left\{ \begin{aligned}
+        - 3 A_1 e^{-3 t} + B_1 e^t &= A_1 e^{-3 t} + B_1 e^t - A_2 e^{-3 t} - B_2 e^t + 2 C_1 e^{-3t} + 2 C_2 e^{t}, \\
+		- 3 A_2 e^{-3 t} + B_2 e^t &= - 4 A_1 e^{-3 t} - 4 B_1 e^t + A_2 e^{-3 t} + B_2 e^t.
+    \end{aligned} \right. \]
+    Ця система рівносильна системі
+    \[ \left\{ \begin{aligned}
+        - 3 A_1 &= A_1 - A_2 + 2 C_1, \\
+        B_1 &= B_1 - B_2 + 2 C_2, \\
+		- 3 A_2 &= - 4 A_1 + A_2, \\
+		B_2 &= - 4 B_1 + B_2. \\
+    \end{aligned} \right. \]
+\end{solution}
+
+\begin{problem}
+    % 7.12
+\end{problem}
+
+\begin{solution}
+    % 7.12
+\end{solution}

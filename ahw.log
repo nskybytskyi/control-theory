@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6880 64-bit) (preloaded format=pdflatex 2018.11.28)  17 DEC 2018 01:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6880 64-bit) (preloaded format=pdflatex 2018.11.28)  17 DEC 2018 21:33
 entering extended mode
 **./ahw.tex
 (ahw.tex
@@ -548,24 +548,24 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
 \openout1 = `ahw.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -630,7 +630,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 53.
+Package hyperref Info: Link coloring ON on input line 58.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -640,19 +640,19 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 53.
-LaTeX Info: Redefining \pageref on input line 53.
-LaTeX Info: Redefining \nameref on input line 53.
+LaTeX Info: Redefining \ref on input line 58.
+LaTeX Info: Redefining \pageref on input line 58.
+LaTeX Info: Redefining \nameref on input line 58.
 
 (ahw.out) (ahw.out)
 \@outlinefile=\write3
 \openout3 = `ahw.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+LaTeX Font Info:    Try loading font information for U+msa on input line 60.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 55.
+LaTeX Font Info:    Try loading font information for U+msb on input line 60.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -662,22 +662,36 @@ LaTeX Warning: No \author given.
 
 [1
 
-{C:/Users/NikitaSkybytskyi/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] 
-(ahw.toc)
+{C:/Users/NikitaSkybytskyi/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+[2] (ahw.toc)
 \tf@toc=\write4
 \openout4 = `ahw.toc'.
 
- [2] (aw-01.tex
+ [3] (aw-01.tex
 Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-[3] [4] [5]
+[4] [5] [6]
 Underfull \hbox (badness 10000) in paragraph at lines 245--247
 
  []
 
-[6]
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 256--258
 
  []
@@ -687,7 +701,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 323--325
 
  []
 
-[7]) (hw-01.tex [8]
+[8]) [9] (hw-01.tex
 Underfull \hbox (badness 10000) in paragraph at lines 65--67
 
  []
@@ -697,17 +711,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--78
 
  []
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
-[9]
+
 Underfull \hbox (badness 10000) in paragraph at lines 149--151
 
  []
 
-[10]) [11] (aw-02.tex
+[11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 268--270
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--281
+
+ []
+
+) [13] (aw-02.tex
 Overfull \hbox (15.27646pt too wide) in paragraph at lines 3--3
 []\T2A/cmr/bx/n/14.4 Елементи ба-га-то-зна-чно-го ана-лi-зу. Мно-жи-на дося-
  []
@@ -727,73 +751,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--33
 
  []
 
-[12]
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 67--69
 
  []
 
-[13] [14]
+[15] [16]
 Overfull \hbox (3.66724pt too wide) in paragraph at lines 210--210
 []\T2A/cmr/bx/n/10 Розв'язок. []\T2A/cmr/m/n/10 Ско-ри-ста-№-мо-ся те-о-ре-мою 
 про ви-гляд опор-ноЁ фун-кцiЁ мно-жи-ни дося-
  []
 
-[15]) (hw-02.tex [16]
-Underfull \hbox (badness 10000) in paragraph at lines 106--108
-
- []
-
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+[17]) [18] (hw-02.tex [19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 109--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--174
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
-[19]) [20] (aw-03.tex [21] [22]
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+[23]) [24] (aw-03.tex [25] [26]
 Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-[23] [24]
+[27] [28]
 Overfull \hbox (23.19427pt too wide) detected at line 111
 []
  []
 
-[25] [26]) (hw-03.tex [27]
+[29] [30]) [31] (hw-03.tex [32]
 Underfull \hbox (badness 10000) in paragraph at lines 44--46
 
  []
 
-[28]
+
 Underfull \hbox (badness 10000) in paragraph at lines 49--51
 
  []
@@ -811,28 +835,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
-[29] [30]
+[33] [34]
 Overfull \hbox (4.14088pt too wide) in paragraph at lines 109--110
 []\T2A/cmr/m/n/10 Пригада№мо на-сту-пний ре-зуль-тат: розв'язком ви-ще-зга-да-н
 оЁ за-да-чi про опти-
  []
 
-[31] [32]
+[35] [36] [37]
 Underfull \hbox (badness 10000) in paragraph at lines 177--179
 
  []
 
-[33] [34] [35]) [36] (aw-04.tex [37] [38]
+[38] [39] [40]) [41] (aw-04.tex [42] [43]
 Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-[39]
+[44]
 Underfull \hbox (badness 10000) in paragraph at lines 115--116
 
  []
 
-[40]
+[45]
 Overfull \hbox (2.69525pt too wide) in paragraph at lines 133--133
 []\T2A/cmr/bx/n/10 Розв'язок. []\T2A/cmr/m/n/10 Розв'язок за-да-чi спо-сте-ре-ж
 е-н-ня за-до-воль-ня№ ди-фе-рен-цi-аль-но-му рiв-
@@ -843,71 +867,172 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
-[41]) (hw-04.tex
+[46]) [47] (hw-04.tex
 Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
-[42] [43] [44]) [45] (aw-05.tex
+[48] [49] [50]) [51] (aw-05.tex
 Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
-[46]
+[52]
 Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
-[47] [48]
+[53] [54]
 Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
-) (hw-05.tex [49]
+) [55] (hw-05.tex
 Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
  []
 
-[50])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
- [51]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
+[56]) [57] (aw-06.tex [58] [59] [60]
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+[61]
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
+
+ []
+
+[62]) [63] (hw-06.tex [64] [65] [66] [67] [68]
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
+
+ []
+
+[69]) [70] (aw-07.tex [71] [72]
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
+
+ []
+
+[73] [74]
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
+
+ []
+
+) [75] (hw-07.tex [76]
+Overfull \hbox (3.05707pt too wide) detected at line 82
+[]\OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; u; t\OT1/cmr/m/n/10 
+) = \OML/cmm/m/it/10 []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10   
+\OML/cmm/m/it/10 z\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 ;  f\OT1/cmr/m/n/10 (\OML
+/cmm/m/it/10 x\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 )\OML/cmm/m/it
+/10 ; u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; t
+\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/c
+mr/m/n/10 )\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n
+/10 (\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 )) = 0\OML/cmm/m/it/10 ;  \OMS/cmsy/m/n/
+10 U \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 U\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT
+1/cmr/m/n/10 ) = [\OMS/cmsy/m/n/10  \OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 ]\OML/
+cmm/m/it/10 :
+ []
+
+[77]
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
+
+ []
+
+[78]
+Underfull \hbox (badness 10000) in paragraph at lines 163--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+[79] [80]
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
+
+ []
+
+[81])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
+ [82]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
  (ahw.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
 Package rerunfilecheck Info: File `ahw.out' has not changed.
-(rerunfilecheck)             Checksum: 4E9346F8A689C156CEA19DD320F26513;4407.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
+(rerunfilecheck)             Checksum: 00DF93A9393A46A8706A3A1A9FEB1E1F;6157.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 102.
  ) 
 Here is how much of TeX's memory you used:
- 11742 strings out of 492969
- 158133 string characters out of 3135813
- 258318 words of memory out of 3000000
- 15201 multiletter control sequences out of 15000+200000
- 19704 words of font info for 52 fonts, out of 3000000 for 9000
+ 11917 strings out of 492969
+ 160141 string characters out of 3135813
+ 258332 words of memory out of 3000000
+ 15209 multiletter control sequences out of 15000+200000
+ 21350 words of font info for 54 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,17n,43p,1205b,525s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,17n,43p,1205b,520s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\NikitaSkybytskyi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2
-a\dpi600\lati1000.pk> <C:\Users\NikitaSkybytskyi\AppData\Local\MiKTeX\2.9\fonts
-\pk\ljfour\lh\lh-t2a\dpi600\labx1200.pk> <C:\Users\NikitaSkybytskyi\AppData\Loc
-al\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1000.pk> <C:\Users\NikitaSky
-bytskyi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1440.pk> 
+a\dpi600\labx0700.pk> <C:\Users\NikitaSkybytskyi\AppData\Local\MiKTeX\2.9\fonts
+\pk\ljfour\lh\lh-t2a\dpi600\lati1000.pk> <C:\Users\NikitaSkybytskyi\AppData\Loc
+al\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1200.pk> <C:\Users\NikitaSky
+bytskyi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1000.pk> 
 <C:\Users\NikitaSkybytskyi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\d
-pi600\larm1000.pk> <C:\Users\NikitaSkybytskyi\AppData\Local\MiKTeX\2.9\fonts\pk
-\ljfour\lh\lh-t2a\dpi600\larm2488.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/symbols/msbm7.pfb>
-Output written on ahw.pdf (51 pages, 369011 bytes).
+pi600\labx1440.pk> <C:\Users\NikitaSkybytskyi\AppData\Local\MiKTeX\2.9\fonts\pk
+\ljfour\lh\lh-t2a\dpi600\larm1000.pk> <C:\Users\NikitaSkybytskyi\AppData\Local\
+MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\larm2488.pk><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on ahw.pdf (82 pages, 483812 bytes).
 PDF statistics:
- 845 PDF objects out of 1000 (max. 8388607)
- 256 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1178 PDF objects out of 1200 (max. 8388607)
+ 409 named destinations out of 1000 (max. 500000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
