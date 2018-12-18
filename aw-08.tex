@@ -1,0 +1,225 @@
+\section{Принцип максимуму Понтрягіна: загальний випадок}
+
+\subsection{Алгоритми}
+
+\begin{problem*}
+	Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна: \[ \JJ  = \int f_0 \diff s + \Phi_0 \to \inf \] за умов, що \[ \dot x = f, \] а також \[ \int f_i \diff s + \Phi_i = 0 , \quad i = \overline{1..k}. \]
+\end{problem*}
+
+\begin{algorithm} \tt
+	\begin{enumerate}
+		\item Запишемо функцію Гамільтона-Понтрягіна: \[ \HH = -F + \langle \psi, f \rangle. \]
+		\item Запишемо термінант: \[ F = \sum_i \lambda_i f_i, \quad \ell = \sum_i \lambda_i \Phi_i. \]
+		\item Випишемо тепер всі (необхідні) умови принципу максимуму:
+		\begin{enumerate}
+			\item оптимальність: \[\frac{\partial \HH}{\partial u} = 0;\]
+			\item стаціонарність (спряжена система): \[\dot \psi = - \nabla_x \HH;\]
+			\item трансверсальність: \[\psi(t_0) = \frac{\partial \ell}{\partial x_0}, \quad \psi(T) = - \frac{\partial \ell}{\partial x_T};\]
+			\item стаціонарність за кінцями: відсутня, бо час фіксований;
+			\item доповнююча нежорсткість: відсутня, бо немає інтегральних \allowbreak об\-ме\-жень виду нерівність на задачу;
+			\item невід'ємність: $\lambda_i \ge 0$.
+		\end{enumerate}
+		\item Методом від супротивного показуємо, що $\lambda_i \ne 0$.
+		\item З умов принципу максимуму визначаємо $u = u(\psi)$.
+		\item Записуємо крайову задачу -- систему диференціальних рівнянь на $x$ і $\psi$ з граничними умовами.
+		\item Знаходимо її розв'язок $x_*$.
+		\item Відновлюємо $u_* = u_*(\psi)$.
+	\end{enumerate}
+\end{algorithm}
+
+\begin{problem*}
+	Розв'язати задачу оптимальної швидкодії за допомогою принципу максимуму Понтрягіна: \[ \JJ  = \int f_0 \diff s + \Phi_0 \to \inf \] за умов, що \[ \dot x = f, \] а також \[ \int f_i \diff s + \Phi_i = 0 , \quad i = \overline{1..k}. \]
+\end{problem*}
+
+
+\begin{algorithm} \tt
+	\begin{enumerate}
+		\item Запишемо функцію Гамільтона-Понтрягіна: \[ \HH = -F + \langle \psi, f \rangle. \]
+		\item Запишемо термінант: \[ F = \sum_i \lambda_i f_i, \quad \ell = \sum_i \lambda_i \Phi_i. \]
+		\item Випишемо тепер всі (необхідні) умови принципу максимуму:
+		\begin{enumerate}
+			\item оптимальність: \[\frac{\partial \HH}{\partial u} = 0;\]
+			\item стаціонарність (спряжена система): \[\dot \psi = - \nabla_x \HH;\]
+			\item трансверсальність: \[\psi(t_0) = \frac{\partial \ell}{\partial x_0}, \quad \psi(T) = - \frac{\partial \ell}{\partial x_T};\]
+			\item стаціонарність за кінцями: \[ \HH(T) = \frac{\partial \ell}{\partial T}; \]
+			\item доповнююча нежорсткість: відсутня, бо немає інтегральних \allowbreak об\-ме\-жень виду нерівність на задачу;
+			\item невід'ємність: $\lambda_i \ge 0$.
+		\end{enumerate}
+		\item Методом від супротивного показуємо, що $\lambda_i \ne 0$.
+		\item З умов принципу максимуму визначаємо $u = u(\psi)$.
+		\item Записуємо крайову задачу -- систему диференціальних рівнянь на $x$ і $\psi$ з граничними умовами.
+		\item З умов принципу максимуму і крайової задачі визначаємо $T$.
+		\item Знаходимо розв'язок крайової задачі $x_*$.
+		\item Відновлюємо $u_* = u_*(\psi)$.
+	\end{enumerate}
+\end{algorithm}
+
+
+
+\newpage
+
+\subsection{Аудиторне заняття}
+
+\begin{problem}
+	Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна: \[ \JJ (u) = \int_0^1 (u^2 (s) + x^2 (s)) \diff s \to \inf \] за умови, що \[ \frac{\diff x(t)}{\diff t} = u (t), \quad x(0) = 0, x(1) = \frac12. \] Тут $x (t) \in \RR^1$, $u (t) \in \RR^1$, $t \in [0, 1]$.
+\end{problem}
+
+\begin{solution}
+	Нагадаємо загальну постановку задачі принципу максимуму Понтрягіна: \[ \JJ_0 \to \min, \dot x = f, \JJ_i \le 0 \, (i = \overline{1..k}), \JJ_i = 0 \, (i = \overline{k+1..k+r}), \JJ_i = \int f_i + \Phi_i. \]
+
+	У нашій задачі \[ f_0 = u^2 + x^2, f = u, \] і треба щось зробити з $x(0) = 0$ і $x(1) = \frac 12$. Насправді це інтегральні обмеження вигляду \[ \JJ_1 = 0, f_1 = 0, \Phi_1 = x_0, \quad \JJ_2 = 0, f_2 = 0, \Phi_2 = x_T - \frac{1}{2}. \]
+
+	Запишемо функцію Гамільтона-Понтрягіна і термінант: \[ F = \lambda_0 (u^2 + x^2), \quad \ell = \lambda_1 x_0 + \lambda_2 \left(x_T - \frac{1}{2}\right), \] \[ \HH = -F + \langle \psi, f \rangle = - \lambda_0 (u^2 + x^2) + \psi u. \]
+
+	Випишемо тепер всі (необхідні) умови принципу максимуму:
+	\begin{enumerate}
+		\item оптимальність: $\frac{\partial \HH}{\partial u} = - 2 \lambda_0 u + \psi  = 0$;
+		\item стаціонарність (спряжена система): $\dot \psi = - \nabla_x \HH = 2 \lambda_0 x$;
+		\item трансверсальність: $\psi(t_0) = \psi(0) = \frac{\partial \ell}{\partial x_0} = \lambda_1$, $\psi(T) = \psi(1) = - \frac{\partial \ell}{\partial x_T} = - \lambda_2$;
+		\item стаціонарність за кінцями: відсутня, бо час фіксований, $[t_0,T]=[0,1]$;
+		\item доповнююча нежорсткість: відсутня, бо немає інтегральних обмежень виду нерівність на задачу, $k = 0$;
+		\item невід'ємність: $\lambda_0 \ge 0$.
+	\end{enumerate}
+
+	Нескладно пересвідчитися, що якщо $\lambda_0 = 0$, то $\psi \equiv 0$, вироджений випадок, тобто виконується умова нерівності нулеві множників Лагранжа. Покладемо тоді без обмеження загальності $\lambda_0 = \frac{1}{2}$, тоді $u = \psi$. \\
+
+	Запишемо тепер крайову задачу принципу максимуму: \[ \left\{ \begin{aligned}
+		\dot \psi &= x, \\
+		\dot x &= \psi, \\
+		x(0) &= 0, x(1) = \frac{1}{2}.
+	\end{aligned} \right. \]
+
+	Її загальний розв'язок \[ \left\{ \begin{aligned}
+		x(t) &= c_1 e^{-t} + c_2 e^t, \\
+		\psi(t) &= - c_1 e^{-t} + c_2 e^t.
+	\end{aligned} \right. \]
+
+	З крайових умов \[ \left\{ \begin{aligned}
+		x(0) &= c_1 + c_2 = 0, \\
+		x(1) &= c_1 / e + c_2 e = \frac{1}{2},
+	\end{aligned} \right. \] знаходимо \[c_1 = - \frac{1}{2(e-e^{-1})}, \quad c_2 = \frac{1}{2(e-e^{-1})}. \]
+
+	Остаточно, \[ \left\{ \begin{aligned}
+		x(t) &= \frac{e^t - e^{-t}}{2(e-e^{-1})}, \\
+		u(t) &= \frac{e^t + e^{-t}}{2(e-e^{-1})}.
+	\end{aligned} \right. \]
+\end{solution}
+
+\begin{problem}
+	Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна: \[ \JJ (u) = \frac{1}{2} \int_0^1 (u^2 (s) - 12 s x (s)) \diff s \to \inf \] за умови, що \[ \frac{\diff x(t)}{\diff t} = u (t), \quad x(0) = 0, x(1) = 0. \] Тут $x (t) \in \RR^1$, $u (t) \in \RR^1$, $t \in [0, 1]$.
+\end{problem}
+
+\begin{solution}
+	Зауважимо, що на множник $\frac{1}{2}$ можна заплющити очі, адже від нього $\arg\inf\JJ$ явно не зміниться. \\
+
+	Функція Гамільтона-Понтрягіна і термінант записують так: \[ \HH = - \lambda_0 (u^2 - 12 t x), \quad \ell = \lambda_1 x_0 + \lambda_2 x_T. \]
+
+	Випишемо тепер всі (необхідні) умови принципу максимуму:
+	\begin{enumerate}
+		\item оптимальність: $\frac{\partial \HH}{\partial u} = - 2 \lambda_0 u + \psi  = 0$;
+		\item стаціонарність (спряжена система): $\dot \psi = - \nabla_x \HH = - 12 \lambda_0 t$;
+		\item трансверсальність: $\psi(t_0) = \psi(0) = \frac{\partial \ell}{\partial x_0} = \lambda_1$, $\psi(T) = \psi(1) = - \frac{\partial \ell}{\partial x_T} = - \lambda_2$;
+		\item стаціонарність за кінцями: відсутня, бо час фіксований, $[t_0,T]=[0,1]$;
+		\item доповнююча нежорсткість: відсутня, бо немає інтегральних обмежень виду нерівність на задачу, $k = 0$;
+		\item невід'ємність: $\lambda_0 \ge 0$.
+	\end{enumerate}
+
+	Перевіряємо умову нерівності нулеві множників Лагранжа. Від супротивного, якщо $\lambda_0 = 0$, то $\psi \equiv 0$, а тоді і $\lambda_1 = \lambda_2 = 0$, вироджений випадок. Покладемо тоді без обмеження загальності $\lambda_0 = 1$, тоді $u = \psi / 2$. \\
+
+	Запишемо тепер крайову задачу принципу максимуму: \[ \left\{ \begin{aligned}
+		\dot \psi &= -12t, \\
+		\dot x &= \psi / 2, \\
+		x(0) &= x(1) = 0.
+	\end{aligned} \right. \]
+
+	З рівняння на $\dot \psi$, $\psi = - 6 t^2 + C_1$. Підставляючи в рівняння на $\dot x$ і розв'язуючи його, знаходимо $x = - t^3 + C_1 t / 2 + C_2$.
+
+	З крайових умов \[ \left\{ \begin{aligned}
+		x(0) &= C_2 = 0, \\
+		x(1) &= -1 + C_1 / 2 + C_2 = 0,
+	\end{aligned} \right. \] знаходимо \[C_1 = 2, \quad C_2 = 0. \]
+
+	Отже керування \[ u_*(t) = \frac{\psi(t)}{2} = - 3 t^2 + 1, \] і відповідна йому траєкторія \[ x_*(t) = -t^3 + t \] є оптимальними.
+
+\end{solution}
+
+\begin{problem}
+	Розв'язати задачу оптимального керування за допомогою принципу максимуму Понтрягіна: \[ \JJ (u) = \frac{1}{2} \int_0^1 u^2 (s) \diff s \to \inf \] за умови, що \[ \frac{\diff^2 x(t)}{\diff t^2} = u (t),\quad  x(0) = -1, \dot x(0) = 2, x(1) = 0, \dot x(1) = 1. \] Тут $x (t) \in \RR^1$, $u (t) \in \RR^1$, $t \in [0, 1]$.
+\end{problem}
+
+\begin{solution}
+	Позначимо $x_1 = x$, $x_2 = \dot x$, тоді $f_0 = u^2 / 2$, $\Phi_0 = 0$, $f_1 = 0$, $\Phi_1 = x_{10} + 1$, $f_2 = 0$, $\Phi_2 = x_{20} - 2$, $f_3 = 0$, $\Phi_3 = x_{1T}$, $f_4 = 0$, $\Phi_4 = x_{2T} - 1$, $f = \begin{pmatrix} x_2 \\ u \end{pmatrix}$. \\
+
+	Запишемо тепер функцію Гамільтона-Понтрягіна і термінант: \[ F = \lambda_0 u^2 / 2, \quad \ell = \lambda_1 (x_{10} + 1) + \lambda_2 (x_{20} - 2) + \lambda_3 x_{1T} + \lambda_4 (x_{2T} - 1), \] \[ \HH = -F + \langle \psi, f \rangle = - \lambda_0 u^2 / 2 + \psi_1 x_2 + \psi_2 u. \]
+
+	Випишемо тепер всі (необхідні) умови принципу максимуму:
+	\begin{enumerate}
+		\item оптимальність: $\frac{\partial \HH}{\partial u} = - \lambda_0 u + \psi_2  = 0$;
+		\item стаціонарність (спряжена система): $\dot \psi = - \nabla_x \HH = - \begin{pmatrix} 0 \\ \psi_1 \end{pmatrix}$;
+		\item трансверсальність: \[\psi(t_0) = \psi(0) = \nabla_{x_0} \ell = \begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix}, \quad \psi(T) = \psi(1) = - \nabla_{x_T} \ell = \begin{pmatrix} - \lambda_3 \\ - \lambda_4 \end{pmatrix};\]
+		\item стаціонарність за кінцями: відсутня, бо час фіксований, $[t_0,T]=[0,1]$;
+		\item доповнююча нежорсткість: відсутня, бо немає інтегральних обмежень виду нерівність на задачу, $k = 0$;
+		\item невід'ємність: $\lambda_0 \ge 0$.
+	\end{enumerate}
+
+	Без обмеження загальності покладемо $\lambda_0 = 1$, тоді $u = \psi_2$. \\
+
+	Запишемо тепер крайову задачу принципу максимуму: \[ \left\{ \begin{aligned}
+		\dot \psi_1 &= 0, \\
+		\dot \psi_2 &= - \psi_1, \\
+		\dot x_1 &= x_2, \\
+		\dot x_2 &= \psi_2, \\
+		x_{10} &= -1, x_{20} = 2, \\
+		x_{1T} &= 0, x_{2T} = 1.
+	\end{aligned} \right. \]
+
+	З першого рівняння $\psi_1 = C_1$, тоді з другого $\psi_2 = - C_1 t + C_2$, далі з четвертого $x_2 = - C_1 t^2 / 2 + C_2 t + C_3$, і нарешті з третього $x_1 = - C_1 t^3 / 6 + C_2 t^2 / 2 + C_3 t + C_4$. \\
+
+	З крайових умов \[ \left\{ \begin{aligned}
+		x_1(0) &= C_4 = -1, \\
+		x_2(0) &= C_3 = 2, \\
+		x_1(1) &= - C_1 / 6 + C_2 / 2 + C_3 + C_4 = 0, \\
+		x_2(1) &= - C_1 / 2 + C_2 + C_3 = 1.
+	\end{aligned} \right. \] знаходимо \[C_1 = -6, \quad C_2 = -4, \quad C_3 = 2, \quad C_4 = -1. \]
+
+	Отже \[ u_*(t) = \psi_2(t) = 6 t - 4, \] \[ x_*(t) = x_1(t) = t^3 - 2 t^2 + 2 t - 1. \]
+\end{solution}
+
+\begin{problem}
+	Розв'язати задачу оптимальної швидкодії за допомогою принципу максимуму Понтрягіна: \[ \JJ (u) = T = \int_0^T \diff s \to \inf \] за умови, що \[ \frac{\diff x(t)}{\diff t} = u (t), \quad x(0) = 0, x(T) = 1, \] \[ \int_0^T u^2(s) \diff s = 1. \] Тут $x (t) \in \RR^1$, $u (t) \in \RR^1$, $t \in [0, 1]$.
+\end{problem}
+
+\begin{solution}
+	У нашій задачі $f_0 = 1$, $\Phi_0 = T$, $f_1 = 0$, $\Phi_1 = x_0$, $f_2 = 0$, $\Phi_2 = x_T - 1$, $f_3 = u^2$, $\Phi_3 = -1$, $f = u$. \\
+
+	Запишемо тепер функцію Гамільтона-Понтрягіна і термінант: \[ F = \lambda_0 + \lambda_3 u^2, \quad \ell = \lambda_0 T + \lambda_1 x_0 + \lambda_2 (x_T - 1) - \lambda_3, \] \[ \HH = -F + \langle \psi, f \rangle = - \lambda_0 - \lambda_3 u^2 + \psi u. \]
+
+	Випишемо тепер всі (необхідні) умови принципу максимуму:
+	\begin{enumerate}
+		\item оптимальність: $\frac{\partial \HH}{\partial u} = - 2 \lambda_3 u + \psi = 0$;
+		\item стаціонарність (спряжена система): $\dot \psi = - \nabla_x \HH = - 0$;
+		\item трансверсальність: \[\psi(t_0) = \psi(0) = \nabla_{x_0} \ell =  \lambda_1 , \quad \psi(T) = - \nabla_{x_T} \ell = - \lambda_2;\]
+		\item стаціонарність за кінцями: $\HH(T) = \frac{\partial \ell}{\partial T} = \lambda_0$;
+		\item доповнююча нежорсткість: відсутня, бо немає інтегральних обмежень виду нерівність на задачу, $k = 0$;
+		\item невід'ємність: $\lambda_0 \ge 0$.
+	\end{enumerate}
+
+	$u = \frac{\psi}{2 \lambda_3}$. \\
+
+	Запишемо тепер крайову задачу принципу максимуму: \[ \left\{ \begin{aligned}
+		\dot \psi &= 0, \\
+		\dot x &= \frac{\psi}{2 \lambda_3}, \\
+		x(0) &= 0, x(T) = 1.
+	\end{aligned} \right. \]
+
+	З першого рівняння $\psi = C_1$, підставляючи в друге і розв'язуючи його знаходимо $x = \frac{C_1 t + C_2}{2 \lambda_3}$. \\
+
+	З крайових умов \[ \left\{ \begin{aligned}
+		x(0) &= C_2 / 2 \lambda_3 = 0, \\
+		x(T) &= \frac{C_1 T + C_2}{2 \lambda_3} = 1,
+	\end{aligned} \right. \] знаходимо \[C_1 = \frac{2 \lambda_3}{T}, \quad C_2 = 0. \]
+
+	Отже \[ u(t) = \frac{\psi(t)}{2 \lambda_3} = \frac{1}{T}. \]
+
+	Підставляючи це в умову $\int_0^T u^2(s) \diff s = 1$, знаходимо $1 / T = 1$, звідки $T = 1$.
+\end{solution}

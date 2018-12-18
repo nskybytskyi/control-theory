@@ -1,5 +1,30 @@
 \section{Принцип максимуму Понтрягіна для задачі з вільним правим кінцем}
 
+\subsection{Алгоритми}
+
+\begin{problem*}
+    Записати крайову задачу принципу максимуму для задачі оптимального керування: \[ \JJ = \int f \diff s + \Phi(T) \to \inf \] за умови, що \[ \dot x = f_0. \] Розв'язати задачу оптимального керування.
+\end{problem*}
+
+\begin{algorithm} \tt
+    \begin{enumerate}
+        \item Записуємо функцію Гамільтона-Понтрягіна: \[ \mathcal{H} (x, u, \psi, t) = - f_0(x, u, t) + \langle \psi, f(x, u, t) \rangle. \]
+    
+        \item Записуємо спряжену систему: \[ \dot \psi = - \nabla_x \mathcal{H}, \quad \psi(T) = - \nabla \Phi(x(T)). \]
+    
+    
+        \item Знаходимо $u(\psi)$ з умови оптимальності: \[ \dfrac{\partial \mathcal{H}(x, u, \psi, t)}{\partial u} = 0. \]
+
+        \item Підставляємо знайдене керування у початкову систему, от\-ри\-ма\-ли \allowbreak край\-о\-ву задачу, систему диференціальних рівнянь на $x$ і $\psi$ з гра\-нич\-ни\-ми  \allowbreak у\-мо\-ва\-ми.
+
+        \item Розв'язуємо крайову задачу і знаходимо $x$.
+
+        \item Відновлюємо $u = u (\psi)$ за знайденим $\psi$.
+    \end{enumerate}
+\end{algorithm}
+
+\newpage
+
 \subsection{Аудиторне заняття}
 
 \begin{problem}
