@@ -1,0 +1,71 @@
+% cd ..\..\Users\NikitaSkybytskyi\Desktop\control-theory
+
+% cls && pdflatex algo.tex && cls && pdflatex algo.tex && start algo.pdf
+
+\documentclass[a5paper, 10pt]{article}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, ukrainian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage[top = 2 cm, left = 1 cm, right = 1 cm, bottom = 2 cm]{geometry} 
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Алгоритми теорії керування}
+\rhead{Нікіта Скибицький}
+\cfoot{\thepage}
+
+\usepackage{amsthm}
+\newtheorem{definition}{Визначення}
+\theoremstyle{definition}
+\newtheorem*{problem*}{\normalfont{\textit{Задача}}}
+\newtheorem{problem}{\normalfont{\textit{Задача}}}[section]
+\newtheorem{algorithm}{\tt Алгоритм}[section]
+\newtheorem*{solution}{Розв'язок}
+
+\allowdisplaybreaks
+\setlength\parindent{0pt}
+\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Max}{\displaystyle\max\limits}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\SS}{\mathcal{S}}
+\renewcommand{\epsilon}{\varepsilon}
+
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfi}{erfi}
+\DeclareMathOperator{\signum}{sgn}
+
+\begin{document}
+
+\input{algo-01.tex}
+
+\input{algo-02.tex}
+
+\input{algo-03.tex}
+
+\input{algo-04.tex}
+
+\input{algo-05.tex}
+
+\input{algo-06.tex}
+
+\input{algo-07.tex}
+
+\input{algo-08.tex}
+
+\end{document}

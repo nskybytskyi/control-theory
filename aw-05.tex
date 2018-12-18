@@ -1,31 +1,3 @@
-\section{Задача фільтрації. Множинний підхід}
-
-\subsection{Алгоритми}
-
-\begin{problem*}
-	Задана динамічна система $\dot x = A x + v$, $y = G x + w$, де $v(t) \in \RR^1$, $w(t) \in \RR^1$ -- невідомі шуми, $x_0 \in \RR^1$ -- невідома початкова умова, $y(t) \in \RR^1$ -- відомі спостереження. 
-
-	\begin{enumerate}
-		\item Побудувати інформаційну множину такої системи в момент $\tau \in [0, T]$ за умови, що \[ \int_0^\tau (Mv^2(s) + Nw^2(s)) \diff s + p_0x^2(0) \le \mu^2. \]
-		\item Знайти похибку оцінювання.
-	\end{enumerate}
-\end{problem*}
-
-\begin{algorithm} \tt
-	\begin{enumerate}
-		\item \begin{enumerate}
-			\item Знайдемо $R(t)$ з рівняння Бернуллі \[\dot R (t)= A (t) \cdot R (t)+ R (t) \cdot A^* (t)- R (t) \cdot G^* (t) \cdot N (t) \cdot G (t) \cdot R(t), \quad R(t_0) = p_0^{-1}. \]
-			\item Знайдемо $K(t)$ за формулою \[K (t)= R (t) \cdot G^* (t) \cdot N(t).\]
-			\item Знайдемо фільтр (спостерігач) за формулою \[ \dot{\hat{x}} (t) = A (t) \cdot \hat x (t) + K (t) \cdot (y (t) - G (t) \cdot \hat x (t)). \]
-			\item Знайдемо $k(s)$ з системи \[ \dot k (s) = \langle N(s) (y(s) - G(s) \cdot \hat x(s)), y(s) - G(s) \cdot \hat x(s)\rangle, \quad k(t_0) = 0. \]
-			\item Знайдемо $\XX(\tau)$ за формулою \[ \XX(\tau) = \EE (\hat x(\tau), (\mu^2 - k(\tau)) \cdot R(\tau)). \]
-		\end{enumerate}
-		\item Похибка $e(\tau)$ оцінювання задовольняє оцінці \[ |e(\tau)| \le \sqrt{\mu^2-k(\tau)} \cdot \sqrt{\lambda_* (R(\tau))}.\]
-	\end{enumerate}
-\end{algorithm}
-
-\newpage
-
 \subsection{Аудиторне заняття}
 
 \begin{problem}

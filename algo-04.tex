@@ -1,0 +1,60 @@
+\section{Критерії спостережуваності. Критерій двоїстості}
+
+\subsection{Алгоритми}
+
+\begin{problem*}
+    Побудувати систему для знаходження грамміана спостережуваності для системи $\dot x = A x$, $y = H x$.
+\end{problem*}
+
+\begin{algorithm} \tt
+    Записуємо систему \[ \dot \NN(t, t_0) = -A(t) \cdot \NN(t, t_0) - \NN(t, t_0) \cdot A^*(t) + H^*(t) \cdot H(t). \]
+\end{algorithm}
+
+\begin{problem*}
+    Чи буде стаціонарна система $\dot x = A x + B u$ цілком спостережуваною?
+\end{problem*}
+
+\begin{algorithm} \tt 
+    \begin{enumerate}
+        \item Знаходимо \[ \mathcal{R} = \left(H^* \vdots A^* H^* \vdots (A^*)^2 H^* \vdots \ldots \vdots (A^*)^{n-1} H^*\right).\] 
+        \item Якщо $rang \mathcal{R} = n$ то система цілком спостережувана інакше ні.
+    \end{enumerate}
+\end{algorithm}
+
+\begin{problem*}
+    Дослідити на спостережуваність систему $\dot x = A x$, $y = H x$, використовуючи критерій двоїстості і відповідний критерій керованості.
+\end{problem*}
+
+\begin{algorithm} \tt
+    \begin{enumerate}
+        \item Будуємо спряжену систему \[ \frac{\diff z(t)}{\diff t} = - A^*(t) \cdot z(t) + H^*(t) \cdot u(t). \]
+        \item Досліджуємо її на керованість, якщо вона керована, то по\-чат\-ко\-ва \allowbreak сис\-те\-ма спостережувана, інакше ні.
+    \end{enumerate}
+\end{algorithm}
+
+\begin{problem*}
+    Побудувати спостерігач для системи $\dot x = A x$, $y = H x$.
+\end{problem*}
+
+\begin{algorithm} \tt
+    \begin{enumerate}
+        \item Записуємо систему (спостерігач) \[ \dot{\hat{x}} (t) = (A (t) - K (t) H (t)) \cdot \hat x (t) + K(t) \cdot y(t).\]
+        \item Або систему (спостерігач) \[ \dot{\hat{x}} (t) = A (t) \cdot \hat x (t) + K(t) \cdot (y(t) - H(t) \cdot \hat x(t)).\]
+    \end{enumerate}
+    Вибір вільний, це різні форми запису одного і того ж.
+\end{algorithm}
+
+\begin{problem*}
+    Задана динамічна система $\dot x = A x$, $y = H x$. Знайти розв'язок задачі спостереження з використання грамміана спостержуваності.
+\end{problem*}
+
+\begin{algorithm} \tt
+    \begin{enumerate}
+        \item Знаходимо грамміан спостережуваності $\NN(t,t_0)$ з сис\-те\-ми \[ \dot \NN(t, t_0) = -A(t) \cdot \NN(t, t_0) - \NN(t, t_0) \cdot A^*(t) + H^*(t) \cdot H(t). \]
+
+        \item Знаходимо $R(t) = \NN^{-1}(t, t_0)$.
+
+        \item Розв'язуємо рівняння \[ \dot x(t) = A(t) \cdot x(t) + R(t) \cdot H^*(t) \cdot (y(t) - H(t) \cdot x(t)). \]
+    \end{enumerate}
+\end{algorithm}
+

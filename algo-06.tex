@@ -1,0 +1,68 @@
+\section{Варіаційний метод в задачі оптимального керування}
+
+\subsection{Алгоритми}
+
+\begin{problem*}
+	Знайти першу варіацію за Лагранжем і похідну Фреше в просторі інтегрованих з квадратом функцій для функціоналу $\JJ = \int f(u) \diff s$.
+\end{problem*}
+
+\begin{algorithm} \tt
+	\begin{enumerate}
+		\item Записуємо $\JJ(u + \alpha h)$.
+		\item Знаходимо $\frac{\diff}{\diff \alpha} \JJ(u + \alpha h)$.
+		\item Знаходимо першу варіацію $\delta \JJ (u, h)$ за Лагранжем за формулою \[ \delta \JJ(u, h) = \frac{\diff}{\diff \alpha} \left.\JJ(u + \alpha h)\right|_{\alpha = 0}. \]
+		\item Якщо \[\delta \JJ (u, h) = \int h(s) \cdot g(s) \diff s,\] то $g(s)$ -- похідна за Фреше.
+	\end{enumerate}
+\end{algorithm}
+
+\begin{problem*}
+	Побудувати рівняння у варіаціях для системи керування $\dot x = A x + B u$.
+\end{problem*}
+
+\begin{algorithm} \tt
+	Рівняння у варіаціях має загальний вигляд \[ \frac{\diff z(t)}{\diff t} = \frac{\partial f(x(t),u(t),t)}{\partial x} \cdot z(t) + \frac{\partial f(x(t),u(t),t)}{\partial u} \cdot h(t), \quad z(0) = 0. \]
+\end{algorithm}
+
+\begin{problem*}
+	Знайти першу варіацію за Лагранжем і похідну Фреше в просторі інтегрованих з квадратом функцій для задачи оптимального керування варіаційним методом \[ \JJ = \int f \diff s + \Phi(T) \to \inf \] за умови, що \[ \dot x = f_0 (x, u), \] і розв'язати цю задачу.
+\end{problem*}
+
+\begin{algorithm} \tt
+	\begin{enumerate}
+	\item Позначимо $\phi (\alpha) = \JJ (u + \alpha h)$. 
+
+	\item Знайдемо $\phi' (\alpha)$.
+
+	\item Підставляючи $\alpha = 0$, знаходимо \[\phi' (0) = \int ... \diff s + \underset{=-\psi(T)}{\underbrace{\Phi_1(T)}} \cdot z (T). \]
+
+	\item Запишемо рівняння у варіаціях на функцію $z(t)$.
+
+	\item Введемо додаткові, спряжені змінні $\psi$ такі, що \[ \psi (T) = - \frac{\partial \Phi (x (T))}{\partial x}. \] 
+
+	\item Тоді \[\left\langle \frac{\partial \Phi (x (T))}{\partial x}, z (T) \right\rangle = - \langle \psi (T), z (T) \rangle.\] 
+
+	\item Враховуючи рівняння у варіаціях, маємо
+	\begin{align*}
+		\psi (T) \cdot z (T) &= \psi (T) \cdot z (T) - \psi (t_0) \cdot z (t_0) = \\
+		&= \int_{t_0}^T \left( \psi (s) \cdot z' (s) + \psi' (s) \cdot z (s) \right) \diff s = ...
+	\end{align*}
+
+	\item Підставимо це у вигляд $\phi' (0)$:
+	\[ \phi' (0) = - \int (\psi' + ...) \cdot z \diff s + \int (...) \cdot h(s)) \diff s.\]
+
+	\item Накладаємо на функцію $\psi(t)$ умову (спряжену систему) \[ \frac{\diff \psi (t)}{\diff t} = - \frac{\partial f (x (t), u (t), t)}{\partial x} \cdot \psi (t) + \frac{\partial f_0 (x (t), u (t), t)}{\partial x} = 0, \]
+
+	\item Завдяки цьому у $\delta \JJ (u, h) = \phi' (0)$ перший інтеграл зануляється. \\
+
+	\item Знаходимо $\JJ ' (u)$
+
+	\item З необхідної умову екстремуму функціоналу, $\JJ' (u_*) = 0$, зна\-хо\-ди\-мо $u_*$.
+
+	\item Далі \[x_*(t) = x_0 + \int_0^t f(x(s), u_*(s), s) \diff s.\]
+
+	\item Покладаючи $t = T$ знаходимо $x (T)$.
+
+	\item Остаточно знаходимо $u_*$, $x_*$.
+	\end{enumerate}
+\end{algorithm}
+
