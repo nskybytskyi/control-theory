@@ -1,0 +1,22 @@
+\section{Метод динамічного програмування}
+
+\subsection{Алгоритми}
+
+\begin{problem*}
+	Розв'язати задачу оптимального керування і знайти функцію Белмана: \[ \JJ = \int f_0 \diff s + \Phi(T) \to \inf \] за умови, що \[ \dot x = f. \]
+\end{problem*}
+
+\begin{algorithm} \tt
+	\begin{enumerate}
+		\item Відрізок $[t_0, T]$ розбивається сіткою $t_0 < t_1 < t_2 < \ldots < t_N = T$ з деяким кроком $h$.
+		\item Позначаємо $\XX_i = \XX (t_i)$, $\UU_i = \UU (t_i)$, $i = 0,1,2,\ldots,N$.
+		\item $\BB_N(z) = \Phi(z)$.
+		\item Для $s=\overline{N-1..0}$ записуємо і розв'язуємо рівняння Белмана: \begin{multline*}\BB_s(z) = \inf_{u\in \UU_s} \left(\int_{t_s}^{t_{s+1}} f_0(x(\tau,u(\tau),\tau)\diff\tau\right.+\\+\left.\BB_{s+1}\left(z+\int_{t_s}^{t_{s+1}} f(x(\tau),u(\tau),\tau) \diff \tau\right)\right) \end{multline*} для всіх $z \in \XX_s$, запам'ятовуючи $\{u_*(s)\}$. \\
+
+		Розв'язуємо ми його через рівняння Гамільтона-Якобі-Белмана, \[\dot \BB(z) + \inf_u (\langle \nabla_z \BB(z), f \rangle + f_0(z) ) = 0. \]
+
+		\item Знаходимо $x_*(t_0)$ як \[ x_*(t_0) = \argmin_{z\in \XX_0} \BB_0(z).\]
+		\item Знаходимо $\JJ_*$ як $\JJ_* = \BB_0(x_*(t_0))$.
+		\item Для $s=\overline{0..N-1}$ відновлюємо $x_*(t_{s+1})$ за відомим керуванням: \[x_*(t_{s+1}) = x_*(t_s) + \int_{t_s}^{t_{s+1}} f(x_*(\tau),u_*(\tau),\tau) \diff \tau.\] 
+	\end{enumerate}
+\end{algorithm}

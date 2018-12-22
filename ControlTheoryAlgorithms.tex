@@ -1,6 +1,6 @@
 % cd ..\..\Users\NikitaSkybytskyi\Desktop\control-theory
 
-% cls && pdflatex algo.tex && cls && pdflatex algo.tex && start algo.pdf
+% cls && pdflatex ControlTheoryAlgorithms.tex && cls && pdflatex ControlTheoryAlgorithms.tex && start ControlTheoryAlgorithms.pdf
 
 \documentclass[a5paper, 10pt]{article}
 \usepackage[T2A,T1]{fontenc}
@@ -34,6 +34,7 @@
 \newcommand{\MM}{\mathcal{M}}
 \newcommand{\UU}{\mathcal{U}}
 \newcommand{\XX}{\mathcal{X}}
+\newcommand{\BB}{\mathcal{B}}
 \newcommand{\NN}{\mathcal{N}}
 \newcommand{\HH}{\mathcal{H}}
 \newcommand{\EE}{\mathcal{E}}
@@ -49,6 +50,7 @@
 \DeclareMathOperator{\erf}{erf}
 \DeclareMathOperator{\erfi}{erfi}
 \DeclareMathOperator{\signum}{sgn}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 \begin{document}
 
@@ -67,5 +69,9 @@
 \input{algo-07.tex}
 
 \input{algo-08.tex}
+
+\input{algo-09.tex}
+
+\input{algo-10.tex}
 
 \end{document}

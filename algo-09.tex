@@ -1,0 +1,17 @@
+\section{Дискретний варіант методу динамічного програмування}
+
+\subsection{Алгоритми}
+
+\begin{problem*}
+	Розглядається задача оптимального керування \[ \JJ (u, x) = \sum_{k=0}^{N-1} g_k(x(k),u(k))+\Phi(x(N))\to\min \] при умовах \[ x(k + 1) = f_k(x(k),u(k)), \quad k=0,1,\ldots,N-1, \] \[ x(k)\in\XX_k, \quad k=0,1,\ldots,N, \] \[ u(k)\in\UU_k, \quad k=0,1,\ldots,N-1. \] Знайти оптимальне керування, оптимальну траєкторію, функцію Белмана і оптимальне значення критерію якості.
+\end{problem*}
+
+\begin{algorithm} \tt
+	\begin{enumerate}
+		\item $\BB_N(z) = \Phi(z)$.
+		\item Для $s=\overline{N-1..0}$ записуємо і розв'язуємо дискретне рівняння Белмана: \[\BB_s(z) = \min_{u\in \UU_s} (g_s(z,u)+\BB_{s+1}(f_s(z,u))) \] для всіх $z \in \XX_s$, запам'ятовуючи $\{u_*(s)\}$.
+		\item Знаходимо $x_*(0)$ як \[ x_*(0) = \argmin_{z\in \XX_0} \BB_0(z).\]
+		\item Знаходимо $\JJ_*$ як $\JJ_* = \BB_0(x_*(0))$.
+		\item Для $s=\overline{0..N-1}$ відновлюємо $x_*(s+1)$ за відомим керуванням: \[x_*(s+1) = f_s(x_*(s),u_*(s)).\] 
+	\end{enumerate}
+\end{algorithm}
