@@ -1,5 +1,3 @@
-% OK, complete
-
 \subsection{Домашнє завдання}
 
 \begin{problem}
@@ -8,8 +6,8 @@
 		\label{eq:1.5}
 		\left\{
 			\begin{aligned}
-				\dfrac{dx_1(t)}{dt} &= -8x_1(t)  -x_2(t) + u(t),\\
-				\dfrac{dx_2(t)}{dt} &= 6x_1(t) + 3x_2(t),
+				\dfrac{\diff x_1(t)}{\diff t} &= -8x_1(t)  -x_2(t) + u(t),\\
+				\dfrac{\diff x_2(t)}{\diff t} &= 6x_1(t) + 3x_2(t),
 			\end{aligned}
 		\right.
 		\quad
@@ -31,163 +29,163 @@
 	\end{enumerate}
 \end{problem}
 
-\begin{solution}
-	\begin{enumerate}
-		\item З оберненим зв'язком.
-		\item 
-		\[
-			\begin{pmatrix}
-				\dot x_1 \\ 
-				\dot x_2
-			\end{pmatrix}
-			=
-			\begin{pmatrix}
-				-4 & -2 \\
-				6 & 3
-			\end{pmatrix}
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}.
-		\]
-		Характеристичне рівняння 
-		\[
-			\begin{vmatrix}
-				-4 - \lambda & -2 \\
-				6 & 3 - \lambda 
-			\end{vmatrix}
-			=
-			\lambda^2 + \lambda 
-			=
-			(\lambda + 1) \lambda
-			=
-			0,
-		\]
-		звідки $\lambda_1 = -1$, $\lambda_2 = 0$.\\
+% \begin{solution}
+% 	\begin{enumerate}
+% 		\item З оберненим зв'язком.
+% 		\item 
+% 		\[
+% 			\begin{pmatrix}
+% 				\dot x_1 \\ 
+% 				\dot x_2
+% 			\end{pmatrix}
+% 			=
+% 			\begin{pmatrix}
+% 				-4 & -2 \\
+% 				6 & 3
+% 			\end{pmatrix}
+% 			\begin{pmatrix}
+% 				x_1 \\
+% 				x_2
+% 			\end{pmatrix}.
+% 		\]
+% 		Характеристичне рівняння 
+% 		\[
+% 			\begin{vmatrix}
+% 				-4 - \lambda & -2 \\
+% 				6 & 3 - \lambda 
+% 			\end{vmatrix}
+% 			=
+% 			\lambda^2 + \lambda 
+% 			=
+% 			(\lambda + 1) \lambda
+% 			=
+% 			0,
+% 		\]
+% 		звідки $\lambda_1 = -1$, $\lambda_2 = 0$.\\
 		
-		З курсу диференційних рівнянь відомо, що тоді загальний розв'язок має вигляд
-		\[
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}
-			=
-			c_1 v_1 e^{-t} + c_2 v_2,
-		\]
-		де $v_1$, $v_2$ -- власні вектори, що відповідають $\lambda_1$ та $\lambda_2$ відповідно.\\
+% 		З курсу диференційних рівнянь відомо, що тоді загальний розв'язок має вигляд
+% 		\[
+% 			\begin{pmatrix}
+% 				x_1 \\
+% 				x_2
+% 			\end{pmatrix}
+% 			=
+% 			c_1 v_1 e^{-t} + c_2 v_2,
+% 		\]
+% 		де $v_1$, $v_2$ -- власні вектори, що відповідають $\lambda_1$ та $\lambda_2$ відповідно.\\
 		
-		Нескладно бачити, що 
-		\[
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}
-			=
-			c_1 
-			\begin{pmatrix}
-				1 \\
-				-2
-			\end{pmatrix} 
-			+ 
-			c_2 
-			\begin{pmatrix}
-				2 \\
-				-3
-			\end{pmatrix}
-			e^{-t} .
-		\]
+% 		Нескладно бачити, що 
+% 		\[
+% 			\begin{pmatrix}
+% 				x_1 \\
+% 				x_2
+% 			\end{pmatrix}
+% 			=
+% 			c_1 
+% 			\begin{pmatrix}
+% 				1 \\
+% 				-2
+% 			\end{pmatrix} 
+% 			+ 
+% 			c_2 
+% 			\begin{pmatrix}
+% 				2 \\
+% 				-3
+% 			\end{pmatrix}
+% 			e^{-t} .
+% 		\]
 		
-		Підставляючи $t=0$ отримуємо $c_1 = 4$, $c_2 = -3$.\\
+% 		Підставляючи $t=0$ отримуємо $c_1 = 4$, $c_2 = -3$.\\
 		
-		Остаточно маємо:
-		\[
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}
-			=
-			4
-			\begin{pmatrix}
-				1 \\
-				-2
-			\end{pmatrix} 
-			-3
-			\begin{pmatrix}
-				2 \\
-				-3
-			\end{pmatrix}
-			e^{-t}
-			.
-		\]
-		\item Просто підставляємо знайдені $x_1(t)$, $x_2(t)$ в $u(x_1, x_2)$:
-		\[
-			u(t)
-			=
-			4\left(4\cdot (1) - 3\cdot (2)\cdot e^{-t}\right)
-			-
-			\left(4\cdot (-2) - 3\cdot (-3)\cdot e^{-t}\right)
-			=
-			24 - 33e^{-t}.
-		\]
-		\item З вигляду загального розв'язку бачимо, що вищезгадана фундаментальна матриця матиме вигляд
-		\[
-			\Theta(t,s)
-			=
-			\begin{pmatrix}
-				c_1 + 2c_2 e^{s-t} & c_3 + 2c_4 e^{s-t} \\
-				-2c_1 - 3c_2 e^{s-t} & -2c_3 - 3c_4 e^{s-t} 
-			\end{pmatrix},
-		\]
-		причому 
-		\[
-			\left\{
-				\begin{aligned}
-					c_1   &+ 2c_2 &= 1 \\
-					-2c_1 &- 3c_2 &= 0
-				\end{aligned}
-			\right.		
-		\]
-		(і аналогічна система для $c_3$, $c_4$).\\
+% 		Остаточно маємо:
+% 		\[
+% 			\begin{pmatrix}
+% 				x_1 \\
+% 				x_2
+% 			\end{pmatrix}
+% 			=
+% 			4
+% 			\begin{pmatrix}
+% 				1 \\
+% 				-2
+% 			\end{pmatrix} 
+% 			-3
+% 			\begin{pmatrix}
+% 				2 \\
+% 				-3
+% 			\end{pmatrix}
+% 			e^{-t}
+% 			.
+% 		\]
+% 		\item Просто підставляємо знайдені $x_1(t)$, $x_2(t)$ в $u(x_1, x_2)$:
+% 		\[
+% 			u(t)
+% 			=
+% 			4\left(4\cdot (1) - 3\cdot (2)\cdot e^{-t}\right)
+% 			-
+% 			\left(4\cdot (-2) - 3\cdot (-3)\cdot e^{-t}\right)
+% 			=
+% 			24 - 33e^{-t}.
+% 		\]
+% 		\item З вигляду загального розв'язку бачимо, що вищезгадана фундаментальна матриця матиме вигляд
+% 		\[
+% 			\Theta(t,s)
+% 			=
+% 			\begin{pmatrix}
+% 				c_1 + 2c_2 e^{s-t} & c_3 + 2c_4 e^{s-t} \\
+% 				-2c_1 - 3c_2 e^{s-t} & -2c_3 - 3c_4 e^{s-t} 
+% 			\end{pmatrix},
+% 		\]
+% 		причому 
+% 		\[
+% 			\left\{
+% 				\begin{aligned}
+% 					c_1   &+ 2c_2 &= 1 \\
+% 					-2c_1 &- 3c_2 &= 0
+% 				\end{aligned}
+% 			\right.		
+% 		\]
+% 		(і аналогічна система для $c_3$, $c_4$).\\
 		
-		Знаходимо $c_1 = -3$, $c_2 = 2$, $c_3 = -2$, $c_4 = 1$ і підставляємо у матрицю:
-		\[
-			\Theta(t,s)
-			=
-			\begin{pmatrix}
-				-3 + 4e^{s-t} & -2 + 2e^{s-t} \\
-				6 - 6e^{s-t} & 4 - 3e^{s-t} 
-			\end{pmatrix},
-		\]
+% 		Знаходимо $c_1 = -3$, $c_2 = 2$, $c_3 = -2$, $c_4 = 1$ і підставляємо у матрицю:
+% 		\[
+% 			\Theta(t,s)
+% 			=
+% 			\begin{pmatrix}
+% 				-3 + 4e^{s-t} & -2 + 2e^{s-t} \\
+% 				6 - 6e^{s-t} & 4 - 3e^{s-t} 
+% 			\end{pmatrix},
+% 		\]
 		
-		\item Спряжена система буде
-		\[
-			\begin{pmatrix}
-				\dot y_1 \\
-				\dot y_2
-			\end{pmatrix}
-			=
-			\begin{pmatrix}
-				4 & -6 \\
-				2 & -3
-			\end{pmatrix}
-			\begin{pmatrix}
-				y_1 \\
-				y_2
-			\end{pmatrix},
-		\]
-		а відповідна фундаметальна матриця
-		\[
-			\Psi(t,s)
-			=
-			\Theta^*(s,t)
-			=
-			\begin{pmatrix}
-				-3 + 4e^{t-s} & 6 - 6e^{t-s} \\
-				-2 + 2e^{t-s} & 4 - 3 e^{t-s}
-			\end{pmatrix},
-		\]
-	\end{enumerate}
-\end{solution}
+% 		\item Спряжена система буде
+% 		\[
+% 			\begin{pmatrix}
+% 				\dot y_1 \\
+% 				\dot y_2
+% 			\end{pmatrix}
+% 			=
+% 			\begin{pmatrix}
+% 				4 & -6 \\
+% 				2 & -3
+% 			\end{pmatrix}
+% 			\begin{pmatrix}
+% 				y_1 \\
+% 				y_2
+% 			\end{pmatrix},
+% 		\]
+% 		а відповідна фундаметальна матриця
+% 		\[
+% 			\Psi(t,s)
+% 			=
+% 			\Theta^*(s,t)
+% 			=
+% 			\begin{pmatrix}
+% 				-3 + 4e^{t-s} & 6 - 6e^{t-s} \\
+% 				-2 + 2e^{t-s} & 4 - 3 e^{t-s}
+% 			\end{pmatrix},
+% 		\]
+% 	\end{enumerate}
+% \end{solution}
 
 \begin{problem}
 	Розглядається задача Лагранжа
@@ -200,19 +198,19 @@
 		\[
 			\left\{
 				\begin{aligned}
-					\dfrac{dx_1(t)}{dt} &= -x_1(t) + x_2(t) + u(t), \\
-					\dfrac{dx_2(t)}{dt} &= x_1(t)x_2(t),
+					\dfrac{\diff x_1(t)}{\diff t} &= -x_1(t) + x_2(t) + u(t), \\
+					\dfrac{\diff x_2(t)}{\diff t} &= x_1(t) \cdot x_2(t),
 				\end{aligned}
 			\right.
 			\quad
-			x_1(0)=0,x_2(0)=1.
+			x_1(0)=0, x_2(0)=1.
 		\]
 		Тут $x=(x_1,x_2)^*$ -- вектор фазових координат з $\RR^2$, $t\in[0,T]$. Звести цю задачу до задачі Майєра.
 \end{problem}
 
-\begin{solution}
-	Введемо нову фазову координату $x_3(t)=\int_0^t u^2(s) \diff s$, тоді до системи додається початкова умова $x_3(0)=0$, рівняння $\dot x_3 = u^2$, а функціонал якості переписується у вигляді $x_3(T) \to \inf$.
-\end{solution}
+% \begin{solution}
+% 	Введемо нову фазову координату $x_3(t)=\int_0^t u^2(s) \diff s$, тоді до системи додається початкова умова $x_3(0)=0$, рівняння $\dot x_3 = u^2$, а функціонал якості переписується у вигляді $x_3(T) \to \inf$.
+% \end{solution}
 
 
 \begin{problem}
@@ -229,82 +227,82 @@
 
 		\item Чи буде ця траєкторія неперервно диференційованою?
 
-		\item Чи буде таке керування кращим в порівнянні з керуванням \[ u(t) = \begin{cases} 0, & \text{якщо } t \in [0, 1], \\ t^2, & \text{якщо } t \in (1, 2], \end{cases} \] за умови, що критерій якості має вигляд \[ \JJ (u) = \int_0^2 u^2(s) \diff s + x_1^2 (2) + x_2^2 (2) \to \min. \]
+		\item Чи буде таке керування кращим в порівнянні з керуванням \[ u(t) = \begin{cases} 0, & \text{якщо } t \in [0, 1], \\ t^2, & \text{якщо } t \in (1, 2], \end{cases} \] за умови, що критерій якості має вигляд \[ \JJ (u) = \int_0^2 u^2(s) \diff s + x_1^2 (2) + x_2^2 (2) \to \min \]
 	\end{enumerate}
 \end{problem}
 
-\begin{solution}
-	\begin{enumerate}
-		\item Керування програмне бо не залежить від $x$.
+% \begin{solution}
+% 	\begin{enumerate}
+% 		\item Керування програмне бо не залежить від $x$.
 
-		\item При $t \in [0, 1]$ маємо 
-		\[
-			\begin{pmatrix}
-				\dot x_1 \\ 
-				\dot x_2
-			\end{pmatrix}
-			=
-			\begin{pmatrix}
-				-1 & -5 \\
-				1 & 1
-			\end{pmatrix}
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}.
-		\]
-		Характеристичне рівняння 
-		\[
-			\begin{vmatrix}
-				-1 - \lambda & -5 \\
-				1 & 1 - \lambda 
-			\end{vmatrix}
-			=
-			\lambda^2 + 4 
-			=
-			(\lambda - 2 i) (\lambda + 2i)
-			=
-			0,
-		\]
-		звідки $\lambda_1 = - 2 i$, $\lambda_2 = 2 i$.\\
+% 		\item При $t \in [0, 1]$ маємо 
+% 		\[
+% 			\begin{pmatrix}
+% 				\dot x_1 \\ 
+% 				\dot x_2
+% 			\end{pmatrix}
+% 			=
+% 			\begin{pmatrix}
+% 				-1 & -5 \\
+% 				1 & 1
+% 			\end{pmatrix}
+% 			\begin{pmatrix}
+% 				x_1 \\
+% 				x_2
+% 			\end{pmatrix}.
+% 		\]
+% 		Характеристичне рівняння 
+% 		\[
+% 			\begin{vmatrix}
+% 				-1 - \lambda & -5 \\
+% 				1 & 1 - \lambda 
+% 			\end{vmatrix}
+% 			=
+% 			\lambda^2 + 4 
+% 			=
+% 			(\lambda - 2 i) (\lambda + 2i)
+% 			=
+% 			0,
+% 		\]
+% 		звідки $\lambda_1 = - 2 i$, $\lambda_2 = 2 i$.\\
 		
-		З курсу диференційних рівнянь відомо, що тоді загальний розв'язок має вигляд
-		\[
-			\begin{pmatrix}
-			x_1 \\
-			x_2
-			\end{pmatrix}
-			=
-			c_1 v_1 (\cos(2t) - i \sin(2t)) + c_2 v_2 (\cos(2t) + i \sin(2t)),
-		\]
-		де $v_1$, $v_2$ -- власні вектори, що відповідають $\lambda_1$ та $\lambda_2$ відповідно.\\
+% 		З курсу диференційних рівнянь відомо, що тоді загальний розв'язок має вигляд
+% 		\[
+% 			\begin{pmatrix}
+% 			x_1 \\
+% 			x_2
+% 			\end{pmatrix}
+% 			=
+% 			c_1 v_1 (\cos(2t) - i \sin(2t)) + c_2 v_2 (\cos(2t) + i \sin(2t)),
+% 		\]
+% 		де $v_1$, $v_2$ -- власні вектори, що відповідають $\lambda_1$ та $\lambda_2$ відповідно.\\
 		
-		Нескладно бачити, що 
-		\[
-			\begin{pmatrix}
-				x_1 \\
-				x_2
-			\end{pmatrix}
-			=
-			c_1 
-			\begin{pmatrix}
-				2 \cos (2t) - \sin (2t) \\
-				\sin (2t)
-			\end{pmatrix} 
-			+ 
-			c_2 
-			\begin{pmatrix}
-				-5 \sin (2t) \\
-				\sin(2t) + 2 \cos(2t)
-			\end{pmatrix}.
-		\]
+% 		Нескладно бачити, що 
+% 		\[
+% 			\begin{pmatrix}
+% 				x_1 \\
+% 				x_2
+% 			\end{pmatrix}
+% 			=
+% 			c_1 
+% 			\begin{pmatrix}
+% 				2 \cos (2t) - \sin (2t) \\
+% 				\sin (2t)
+% 			\end{pmatrix} 
+% 			+ 
+% 			c_2 
+% 			\begin{pmatrix}
+% 				-5 \sin (2t) \\
+% 				\sin(2t) + 2 \cos(2t)
+% 			\end{pmatrix}.
+% 		\]
 		
-		Підставляючи $t = 0$ отримуємо $c_1 = 0$, $c_2 = 1 / 2$.
+% 		Підставляючи $t = 0$ отримуємо $c_1 = 0$, $c_2 = 1 / 2$.
 		
-		При $t \in (1, 2]$ маємо \[...\]
+% 		При $t \in (1, 2]$ маємо \[...\]
 
-		\item
+% 		\item
 
-		\item
-	\end{enumerate}
-\end{solution}
+% 		\item
+% 	\end{enumerate}
+% \end{solution}

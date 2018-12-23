@@ -1,0 +1,58 @@
+% cd ..\..\Users\NikitaSkybytskyi\Desktop\control-theory
+
+% cls && pdflatex comp-01.tex && cls && pdflatex comp-01.tex && start comp-01.pdf
+
+\documentclass[a4paper, 12pt]{article}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, ukrainian]{babel}
+\usepackage{amsmath, amssymb}
+
+\usepackage{amsthm}
+\newtheorem{definition}{Визначення}
+\theoremstyle{definition}
+\newtheorem*{problem*}{\normalfont{\textit{Задача}}}
+\newtheorem{problem}{\normalfont{\textit{Задача}}}[section]
+\newtheorem{algorithm}{Алгоритм}[section]
+\newtheorem*{solution}{Розв'язок}
+
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{unicode=true,colorlinks=true,linktoc=all,linkcolor=red}
+
+\usepackage{graphicx}
+
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Max}{\displaystyle\max\limits}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\SS}{\mathcal{S}}
+\renewcommand{\epsilon}{\varepsilon}
+
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfi}{erfi}
+\DeclareMathOperator{\signum}{sgn}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\section{Системи керування. Постановка задачі оптимального керування}
+\input{algo-01.tex}
+\input{aw-01.tex}
+\input{hw-01.tex}
+
+\end{document}
