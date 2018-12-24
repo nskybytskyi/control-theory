@@ -1,0 +1,120 @@
+\subsection{Алгоритми}
+
+\begin{problem*}
+	Знайти
+	\begin{enumerate}
+		\item $A+B$;
+		\item $\lambda A$;
+		\item $\alpha(A,B)$;
+		\item $MA$,
+	\end{enumerate}
+	де множини $A \subset\RR^m$, $B\subset\RR^m$, скаляр $\lambda\in\RR^1$, матриця $M\in\RR^{n\times m}$.
+\end{problem*}
+
+\begin{algorithm}
+	\label{algo-2-1}
+	Розглянемо всі пункти задачі вище.
+	\begin{enumerate}
+		\item Знаходимо за визначенням, $A+B=\{a+b|a\in A,b\in B\}$.
+		\item Знаходимо за визначенням, $\lambda A =\{\lambda a|a\in A\}$. 
+		\item \begin{enumerate}
+			\item Знаходимо відхилення $\beta(A,B)$ і $\beta(B,A)$ за визначенням, 
+			\begin{equation}
+				\label{eq:2.1}
+				\beta(A,B) = \max_{a\in A}\rho(a,B),
+			\end{equation}
+			де 
+			\begin{equation}
+				\label{eq:2.2}
+				\rho(a,B) = \min_{b\in B} \rho(a,b).
+			\end{equation}
+			\item Знаходимо $\alpha(A,B)$ за визначенням, 
+			\begin{equation}
+				\label{eq:2.3}
+				\alpha(A,B)=\max\{\beta(A,B),\beta(B,A).
+			\end{equation}
+		\end{enumerate} 
+		\item Знаходимо за визначенням, $MA=\{Ma|a\in A\}$.
+	\end{enumerate}
+\end{algorithm}
+
+\vspace*{\baselineskip}
+
+\begin{problem*}
+	Знайти опорну функцію множини $A \subset \RR^n$.
+\end{problem*}
+
+\begin{algorithm}
+	\label{algo-2-2}
+	\begin{enumerate}
+		\item Намагаємося знайти за визначенням,
+		\begin{equation}
+		 	\label{eq:2.4}
+		 	c(A,\psi) = \Max_{a\in A} \langle a, \psi \rangle.
+		\end{equation}
+		\item Якщо не вийшло, то намагаємося знайти за геометричною властивістю: $c(A,\psi)$ -- (орієнтована) відстань від початку координат до опорної площини множини $A$, для якої напрямок-вектор $\psi$ є вектором нормалі.
+	\end{enumerate}
+\end{algorithm}
+
+\vspace*{\baselineskip}
+
+\begin{problem*}
+	Знайти інтеграл Аумана $\JJ = \int F(x) \diff x$, де $F(x)\subset\RR^n$.
+\end{problem*}
+
+\begin{algorithm}
+	\label{algo-2-3}
+	\begin{enumerate}
+		\item Знаходимо опорну функцію від інтегралу:
+		\begin{equation}
+		 	\label{eq:2.5}
+		 	c(\JJ, \psi) = \int c (F(x), \psi) \diff x.
+		\end{equation}
+		\item Знаходимо $\JJ$ як опуклий компакт з відомою опорною функцією $c(\JJ, \psi)$.
+	\end{enumerate}
+\end{algorithm}
+
+\vspace*{\baselineskip}
+
+\begin{problem*}
+	Знайти множину досяжності системи $\dot x = A x + B u$, де $x(t_0) \in \mathcal{M}_0$, $u \in \mathcal{U}$.
+\end{problem*}
+
+\begin{algorithm}
+	\label{algo-2-4}
+	\begin{enumerate}
+		\item Знаходимо фундаментальну матрицю $\Theta(t,s)$ системи нормовану за моментом $s$.
+		\item Знаходимо інтеграл Аумана
+		\begin{equation}
+			\label{eq:2.6}
+			\int_{t_0}^t \Theta(t, s) B(s) \UU(s) \diff s
+		\end{equation}
+		за алгоритмом \ref{algo-2-3}.
+		\item Використовуємо теорему про вигляд множини досяжності лінійної системи керування:
+		\begin{equation}
+			\label{eq:2.7}
+		 	\XX(t, \MM_0) = \Theta(t, t_0) \MM_0 + \int_{t_0}^t \Theta(t, s)B(s)\UU(s) \diff s.
+		\end{equation}
+	\end{enumerate}
+\end{algorithm}
+
+\vspace*{\baselineskip}
+
+\begin{problem*}
+	Знайти опорну функцію множини досяжності системи $\dot x = A x + B u$, де $x(t_0) \in \mathcal{M}_0$, $u \in \mathcal{U}$.
+\end{problem*}
+
+\begin{algorithm}
+	\label{algo-2-5}
+	\begin{enumerate}
+		\item Знаходимо фундаментальну матрицю $\Theta(t,s)$ системи нормовану за моментом $s$.
+		\item Знаходимо опорну функцію $c(\MM_0, \Theta^*(t, t_0) \psi)$ за алгоритмом \ref{algo-2-2}.
+		\item Знаходимо опорну функцію $c(\UU(s), B^*(s) \Theta^*(t, s) \psi)$ за алгоритмом \ref{algo-2-2}.
+		\item Використовуємо теорему про вигляд опорної функції множини досяжності лінійної системи керування: 
+		\begin{equation}
+			\label{eq:2.8}
+			c(\XX(t, \MM_0), \psi) = c(\MM_0, \Theta^*(t, t_0) \psi) + \int_{t_0}^t c(\UU(s), B^*(s) \Theta^*(t, s) \psi) \diff s.
+		\end{equation}
+	\end{enumerate}
+\end{algorithm}
+
