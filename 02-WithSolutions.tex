@@ -1,0 +1,381 @@
+\subsection{Задачі з розв'язками}
+
+\begin{problem}
+	Знайти $A + B$ і $\lambda A$, а також метрику Хаусдорфа $\alpha (A, B)$, якщо:
+	
+	\begin{enumerate}
+	    \item $A = \{-3, 2, -1\},  B = \{-2, 5, 1\},  \lambda = 3$;
+	    
+	    \item $A = \{4, 2, -4\},  B = [-2, 3],  \lambda = -1$;
+	    
+	    \item $A = [-1, 2],  B = [3, 7],  \lambda = -2$;	    
+	\end{enumerate}
+	
+\end{problem}
+
+\begin{solution}
+	Скористаємося пунктами 1-3 алгоритму \ref{algo-2-1}:
+	\begin{enumerate}
+	    \item \begin{align*} A + B &= \{-3-2, -3+5, -3+1\} \cup \{2-2, 2+5, 2+1\} \cup \\
+	    &\quad\cup \{-1-2, -1+5, -1+1\} =\\&= \{-5,2,-2,0,7,3,-3,4,0\}=\{-5,-3-2,0,2,3,4,7\},\end{align*}
+	    \[ \lambda A = \{3 \cdot -3, 3 \cdot 2, 3 \cdot -1 \} = \{-9,6,-3\}=\{-9,-3,6\}.\]
+	    У нашому випадку \begin{align*}\beta (A, B) &= \max\left\{\min_{b\in B} \rho(-3,b), \min_{b\in B} \rho(2,b), \min_{b\in B} \rho(-1,b)\right\}=\\&=\max\{1,1,1\}=1, \\ \beta (B, A) &= \max\left\{\min_{a\in A} \rho(-2,a), \min_{a\in A} \rho(5,a), \min_{a\in A} \rho(1,a)\right\}=\\&=\max\{1,3,1\}=3,\end{align*} тому $\alpha (A, B) = \max\{1,3\}=3$.
+	    \item \begin{align*} A + B &= [4-2,4+3] \cup [2-2,2+3] \cup [-4-2,-4+3] = \\
+	        &= [2,7] \cup [0,5] \cup [-6,-1] = [-6,7].
+	    \end{align*} 
+	    \[ \lambda A = \{-1 \cdot 4, -1 \cdot 2, -1 \cdot -4 \} = \{-4,-2,4\}.\]
+	    У нашому випадку \begin{align*}\beta (A, B) &= \max\left\{\min_{b\in B} \rho(4,b), \min_{b\in B} \rho(2,b), \min_{b\in B} \rho(-4,b)\right\}= \\ & = \max\{1,0,2\} = 2, \\ \beta (B, A) &= \max_{b\in B} \min \left\{\rho(b,4), \rho(b,2), \rho(b,-4)\right\} = 3,\end{align*} тому $\alpha (A, B) = \max\{2,3\}=3$.
+	    \item $A + B = [2,9]$, $\lambda A = [-4,2]$, $\beta (A, B) = 4$, $\beta (B, A) = 5$, оскільки відповідні краї відхиляються на $4$ та $5$ відповідно ($-1$ від $3$ та $7$ від $2$), тому $\alpha (A, B) = 5$.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Знайти $MA$, якщо
+	\[
+	M=
+  \begin{pmatrix}
+    -2 & 4 \\
+    3 & 5
+  \end{pmatrix}
+  , A= 
+  \left\{
+  \begin{pmatrix}
+    -1 \\
+    2 
+  \end{pmatrix},
+    \begin{pmatrix}
+    3 \\
+    -4 
+  \end{pmatrix},
+    \begin{pmatrix}
+    0 \\
+    -2 
+  \end{pmatrix}
+  \right\}
+  .\]
+\end{problem}
+
+\begin{solution}
+	Скористаємося пунктом 4 алгоритму \ref{algo-2-1}:
+	\begin{align*} 
+		\begin{pmatrix} -2 & 4 \\ 3 & 5 \end{pmatrix} \cdot \begin{pmatrix} -1 \\ 2 \end{pmatrix} &= \begin{pmatrix} 10 \\ 7 \end{pmatrix}, \\
+		\begin{pmatrix} -2 & 4 \\ 3 & 5 \end{pmatrix} \cdot \begin{pmatrix} 3 \\ -4 \end{pmatrix} &= \begin{pmatrix} -22 \\ -11 \end{pmatrix}, \\
+		\begin{pmatrix} -2 & 4 \\ 3 & 5 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ -2 \end{pmatrix} &= \begin{pmatrix} -8 \\ -10 \end{pmatrix}.
+	\end{align*}
+  
+  Отже, отримаємо \[MA = \left\{ \begin{pmatrix} 10 \\ 7 \end{pmatrix}, \begin{pmatrix} -22 \\ -11 \end{pmatrix}, \begin{pmatrix} -8 \\ -10 \end{pmatrix} \right\}.\]
+\end{solution}
+
+\begin{problem}
+	Знайти опорні функції таких множин:
+
+	\begin{enumerate}
+		\item $A = [0, r]$;
+
+		\item $A = [-r, r]$;
+
+		\item $A = \{ (x_1, x_2): |x_1| \le 1, |x_2| \le 2 \}$;
+
+		\item $A = \KK_r (0) = \{ x \in \RR^n: \|x\| \le r \}$;
+
+		\item $A = \SS^n = \{ x \in \RR^n: \|x\| = 1 \}$.
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	У пунктах 1-3 скористаємося пунктом 1 алгоритму \ref{algo-2-2},  а у пунктах 4-5 -- пунктом 2 того ж алгоритму.
+	\begin{enumerate}
+		\item За означенням опорної функції, \[ c(A, \psi) = \max_{a \in A} \langle a, \psi \rangle = \begin{cases} 0, & \psi < 0 \\ r \psi, & 0 \le \psi \end{cases} = \max \{ 0, r \psi \}. \]
+
+		\item За означенням опорної функції, \[ c(A, \psi) = \max_{a \in A} \langle a, \psi \rangle = \begin{cases} - r \psi, & \psi < 0 \\ r \psi, & 0 \le \psi \end{cases} = r |\psi |. \]
+
+		\item За означенням опорної функції, \[ c(A, \psi) = \max_{a \in A} \langle a, \psi \rangle = \max_{a \in A} (\psi_1 x_1 + \psi_2 x_2) = |\psi_1| + 2 |\psi_2|. \]
+
+		\item За властивістю опорної функції, $c(\KK_r (0), \psi) = r \| \psi \|$.
+
+		\item За властивістю опорної функції, $c(\SS^n, \psi) = \| \psi \|$.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Знайти інтеграл Аумана $\JJ = \int_0^1 F(x) \diff x$ таких багатозначних відображень:
+
+	\begin{enumerate}
+		\item $F(x) = [0, x]$, $x \in [0, 1]$;
+
+		\item $F(x) = \KK_x (0) = \{ y \in \RR^n: \|y\| \le x \}$, $x \in [0, 1]$.
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	Скористаємося алгоритмом \ref{algo-2-3}:
+	\begin{enumerate}
+		\item \[c(\JJ) = \int_0^1 c([0, x], \psi) \diff x = \begin{cases} \psi / 2, & 0 \le \psi \\ 0, & \psi < 0 \end{cases}. \]
+
+		Далі знання опорних функцій підказують, що $\JJ = [0, 1 / 2]$.
+
+		\item \[c(\JJ) = \int_0^1 c(\KK_x(0), \psi) \diff x = \int_0^1 x \| \psi \| \diff x = \| \psi \| / 2. \]
+
+		Далі знання опорних функцій підказують, що $\JJ = \KK_{1 / 2} (0)$.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Знайти множину досяжності такої системи керування: \[ \frac{\diff x}{\diff t} = x + u, \]
+
+	де $x (0) = x_0 \in \MM_0$, $u (t) \in \UU$, $t \ge 0$, \[ \MM_0 = \{ x: |x| \le 1 \}, \] \[ \UU = \{ u: |u| \le 1 \}. \]
+\end{problem}
+
+\begin{solution}
+	Скористаємося алгоритмом \ref{algo-2-4}. \\
+
+	Перш за все знаходимо $\Theta(t,s)$. Нескладно бачити, що $\Theta(t, s) = e^{t - s}$. \\
+
+	Далі \[ \XX(t, \MM_0) = \Theta(t, t_0) \MM_0 + \int_{t_0}^t \Theta(t, s) B(s) \UU(s) \diff s. \]
+
+	Підставимо вже відомі значення: 
+	\begin{align*} 
+		\XX(t, [-1, 1]) &= \Theta(t, 0) \cdot [-1, 1] + \int_0^t \left( \Theta(t, s) \cdot 1 \cdot [-1, 1] \right) \diff s = \\
+		&= [-e^t, e^t] + \int_0^t [-e^{t - s}, e^{t - s}] \diff s = \\ 
+		&= [-e^t, e^t] + [1 - e^t, e^t - 1] = [1 - 2 e^t, 2 e^t - 1]. 
+	\end{align*}
+\end{solution}
+
+\begin{problem}
+	Знайти опорну функцію множини досяжності для системи керування: \[
+	\left\{
+		\begin{aligned}
+			\frac{\diff x_1}{\diff t} &= 2x_1 + x_2 + u_1, \\
+			\frac{\diff x_2}{\diff t} &= 3x_1 + 4x_2 + u_2,
+		\end{aligned}
+	\right.
+	\]
+	де $x (0) = (x_{01}, x_{02}) \in \MM_0$, $u(t) = (u_1(t), u_2(t)) \in \UU$, $t \ge 0$, \[ \MM_0 = \{ (x_{01}, x_{02}): |x_{01}| \le 1, |x_{02}| \le 1 \}, \] \[ \UU = \{(u_1, u_2): |u_1| \le 1, |u_2| \le 1\}. \]
+\end{problem}
+
+\begin{solution}
+	Скористаємося алгоритмом \ref{algo-2-5}. \\
+
+	Перш за все знаходимо $\Theta(t,s)$ з системи \[ \frac{\diff \Theta(t, s)}{\diff t} = A(t) \cdot \Theta(t, s) = \begin{pmatrix} 2 & 1 \\ 3 & 4 \end{pmatrix} \Theta(t, s). \]
+
+	Нескладно бачити, що \[ \Theta(t, s) = \frac{1}{4}
+	\begin{pmatrix}
+		3 e^{t - s} + e^{5 (t - s)} & - e^{t - s} + e^{5 (t - s)} \\ -3 e^{t - s} + 3 e^{5 (t - s)} & e^{t - s} + 3 e^{5 (t - s)}
+	\end{pmatrix} 
+	\]
+
+	Скористаємося теоремою про вигляд опорної функції множини досяжності лінійної системи керування: \[ c(\XX(t, \MM_0), \psi) = c(\MM_0, \Theta^*(t, t_0) \psi) + \int_{t_0}^t c(\UU(s), B^*(s) \Theta^*(t, s) \psi) \diff s. \]
+
+	Підставимо вже відомі значення: \begin{multline*}  c(\XX(t, [-1,1]^2), \psi) = c([-1,1]^2, \Theta^*(t, 0) \psi) + \\ + \int_0^t c\left([-1,1]^2, \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \Theta^*(t, s) \psi\right) \diff s, \end{multline*}
+
+	і підставляємо $\Theta$:
+	\begin{multline*} 
+		c\left(\XX(t, [-1,1]^2), \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}\right) = \\
+		= c\left([-1,1]^2, \frac{1}{4} \begin{pmatrix} 3 e^t + e^{5 t} & -3 e^t + 3 e^{5 t} \\ - e^t + e^{5 t} & e^t + 3 e^{5 t}	\end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix} \right) + \\
+		+ \int_0^t c\left([-1,1]^2, \frac{1}{4} \begin{pmatrix} 3 e^{t - s} + e^{5 (t - s)} & -3 e^{t - s} + 3 e^{5 (t - s)} \\ - e^{t - s} + e^{5 (t - s)} & e^{t - s} + 3 e^{5 (t - s)} \end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix} \right) \diff s = \\
+		= c\left([-1,1]^2, \frac{1}{4} \begin{pmatrix} (3 e^t + e^{5 t}) \psi_1 + (-3 e^t + 3 e^{5 t}) \psi_2 \\ (- e^t + e^{5 t}) \psi_1 + (e^t + 3 e^{5 t}) \psi_2 \end{pmatrix}  \right) + \\
+		+ \int_0^t c\left([-1,1]^2, \frac{1}{4} \begin{pmatrix} (3 e^{t - s} + e^{5 (t - s)}) \psi_1 + (-3 e^{t - s} + 3 e^{5 (t - s)}) \psi_2 \\ (- e^{t - s} + e^{5 (t - s)}) \psi_1 + (e^{t - s} + 3 e^{5 (t - s)}) \psi_2 \end{pmatrix} \right) \diff s = \\
+		= \frac{1}{4} \left( \left|(3 e^t + e^{5 t}) \psi_1 + (-3 e^t + 3 e^{5 t}) \psi_2\right| + \left|(- e^t + e^{5 t}) \psi_1 + (e^t + 3 e^{5 t}) \psi_2\right| \right) + \\
+		+ \frac{1}{4} \int_0^t \left|(3 e^{t - s} + e^{5 (t - s)}) \psi_1 + (-3 e^{t - s} + 3 e^{5 (t - s)}) \psi_2\right| \diff s + \\
+		+ \frac{1}{4} \int_0^t \left|(- e^{t - s} + e^{5 (t - s)}) \psi_1 + (e^{t - s} + 3 e^{5 (t - s)}) \psi_2\right| \diff s.
+	\end{multline*}
+\end{solution}
+
+% Тут необхідно доінтегрувати, але, здається, все одно нічого путнього (тобто добре відомої нам опорної функції) не вийде
+
+\begin{problem}
+    Знайти $A + B$ і $\lambda A$, а також метрику Хаусдорфа $\alpha(A, B)$, якщо
+    \begin{enumerate}
+        \item $A = \{4,-2,3\}$, $B = \{7,-1,1\}$, $\lambda=2$;
+        \item $A = \{5,-5,2\}$, $B = [1,3]$, $\lambda=-1$;
+        \item $A = [-4,-2]$, $B = [-1,5]$, $\lambda=3$;
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item $A = \{4,-2,3\}$, $B = \{7,-1,1\}$, $\lambda=2$;
+        \begin{multline*} 
+            A + B = \{4+7,4-1,4+1,-2+7,-2-1,-2+1,3+7,3-1,3+1\}= \\
+            = \{11,3,5,5,-3,-1,10,2,4\} = \{-3,-1,2,3,4,5,10,11\}.
+        \end{multline*} 
+        \[ \lambda A = \{2 \cdot 4, 2 \cdot -2, 2 \cdot 3\} = \{8, -4, 6\}. \]
+        \begin{multline*} 
+            \alpha(A,B) = \max\{\beta(A,B),\beta(B,A)\} = \\
+            = \max\{\max\{3,1,2\},\max\{3,1,2\}\}=\max\{3,3\}=3.
+        \end{multline*} 
+        \item $A = \{5,-5,2\}$, $B = [1,3]$, $\lambda=-1$;
+        \begin{multline*} 
+            A + B = (5 + [1,3]) \cup (-5 + [1,3]) \cup (2+[1,3])= \\
+            = [6,8] \cup [-4,-1] \cup [3,5] = [-4,-1] \cup [3,5] \cup [6,8].
+        \end{multline*} 
+        \[ \lambda A = \{-1 \cdot 5, -1 \cdot -5, -1 \cdot 2\} = \{-5, 5, -2\}. \]
+        \begin{multline*} 
+            \alpha(A,B) = \max\{\beta(A,B),\beta(B,A)\} = \\
+            = \max\{\max\{2,6,0\},\max_{b\in[1,3]}\{|b-2|\}\}=\max\{6,1\}=6.
+        \end{multline*} 
+        \item $A = [-4,-2]$, $B = [-1,5]$, $\lambda=3$;
+        \[ A + B = [-4-1,-2+5] = [-5,3]. \]
+        \[ \lambda A = [3 \cdot -4, 3 \cdot -2] = [-12, -6]. \]
+        \begin{multline*} 
+            \alpha(A,B) = \max\{\beta(A,B),\beta(B,A)\} = \\
+            = \max\{\max\{|-4+1|,|-2+1|\},\max\{|-1+2|,|5+2|\}\}=\max\{3,7\}=7.
+        \end{multline*}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    Знайти $MA$, якщо \[ M = \begin{pmatrix} 2 & 1 \\ -5 & 3 \end{pmatrix}, A = \left\{ \begin{pmatrix} -1 \\ 1 \end{pmatrix}, \begin{pmatrix} 2 \\ -4 \end{pmatrix}, \begin{pmatrix} -3 \\ -2 \end{pmatrix} \right\}. \]
+\end{problem}
+
+\begin{solution}
+    \begin{multline*} 
+        M A = \left\{ M \begin{pmatrix} -1 \\ 1 \end{pmatrix}, M \begin{pmatrix} 2 \\ -4 \end{pmatrix}, M \begin{pmatrix} -3 \\ -2 \end{pmatrix} \right\} = \\
+        = \left\{ \begin{pmatrix} -1 \\ 8 \end{pmatrix}, \begin{pmatrix} 0 \\ -22 \end{pmatrix}, \begin{pmatrix} -8 \\ 9 \end{pmatrix} \right\}.
+    \end{multline*}        
+\end{solution}
+
+\begin{problem}
+    Знайти опорні функції таких множин:
+    \begin{enumerate}
+        \item $A = \{ -1, 1 \}$;
+        \item $A = \{ (x_1, x_2, x_3) : |x_1| \le 2, |x_2| \le  4, |x_3| \le 1 \}$;
+        \item $A = \{ a \}$;
+        \item $A = \KK_r(a) = \{ x\in \RR^n : \| x - a \| \le r \}$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item За визначенням, $c(A, \psi) = \Max_{x \in \{-1, 1\}} \langle x, \psi\rangle = \max(-\psi,\psi) = |\psi|$.
+        \item За визначенням, $c(A, \psi) = \Max_{\substack{ x_1 : |x_1| \le 2 \\ x_2 : |x_2| \le  4 \\ x_3 : |x_3| \le 1 }} x_1 \psi_1 + x_2 \psi_2 + x_3 \psi_3  = 2 |\psi_1| + 4 |\psi_2| + |\psi_3|$.
+        \item За визначенням, $c(A, \psi) = \Max_{x \in \{ a \}} \langle x, \psi\rangle = \langle a, \psi\rangle $.
+        \item За визначенням, 
+        \begin{align*}
+            c(A, \psi) &= \Max_{x \in \RR^n : \| x - a \| \le r} \langle x, \psi\rangle = \Max_{y \in \RR^n : \| y \| \le r} \langle a + y, \psi\rangle = \\
+            &= \langle a, \psi\rangle + \Max_{y \in \RR^n : \| y \| \le r} \langle y, \psi\rangle = \langle a, \psi\rangle + c(\KK_r(0), \psi) = \langle a, \psi \rangle + r\|\psi\|.
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    Знайти інтеграл Аумана $\JJ = \int_0^{\pi/2} F(x) dx$ таких багатозначних відображень:
+    \begin{enumerate}
+        \item $F(x) = [0, \sin x]$, $x \in [0, \pi / 2]$.
+        \item $F(x) = [-\sin x, \sin x]$, $x \in [0, \pi / 2]$.
+        \item $F(x) = \KK_{\sin x}(0) = \{ y \in \RR^n : \| y \| \le \sin x \}$, $x \in [0, \pi / 2]$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    Скористаємося теоремою про зміну порядку інтегрування і взяття опорної функції:
+    \begin{enumerate}
+        \item $c(\JJ, \psi) = \int_0^{\pi/2} c([0, \sin x], \psi) dx = \int_0^{\pi/2} \max(0, \psi) \sin x dx = \max(0, \psi)$, звідки $\JJ = [0, 1]$.
+        \item $c(\JJ, \psi) = \int_0^{\pi/2} c([-\sin x, \sin x], \psi) dx = \int_0^{\pi/2} |\psi| \sin x dx = |\psi|$, звідки $\JJ = [-1, 1]$.
+        \item $c(\JJ, \psi) = \int_0^{\pi/2} c(\KK_{\sin x}(0), \psi) dx = \int_0^{\pi/2} \sin x \|\psi\| dx = \|\psi\|$, звідки $\JJ = \KK_1(0)$. 
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    Знайти множину досяжності такої системи керування:
+    \[\frac{\diff x}{\diff t} = x + bu,\] 
+    де $x(0) = x_0 \in \MM_0$, $u(t)\in \UU$, $t\ge0$, $b$ -- деяке ненульове число, 
+    \[ \MM_0 = \{ x : | x | \le 2 \}, \]
+    \[ \UU = \{ u : |u| \le 3 \}. \]
+\end{problem}
+
+\begin{solution}
+    Множину досяжності знайдемо через її опорну функцію: 
+    \[ c(\XX(t, \MM_0), \psi) = c(\MM_0, \Theta^*(t, t_0) \psi) + \int_{t_0}^t c(\UU(s), C^\star(s) \Theta^*(t, s)\psi) \diff s. \]
+    Для цього послідовно знаходимо: \\
+    
+    $\Theta(t, s) = e^{t-s}$, знайдено із рівності $\dfrac{d\Theta(t,s)}{dt} = A(t)\Theta(t,s) = \Theta(t,s)$ у нашому випадку. \\
+    
+    $c(\MM_0, \psi) = c([-2, 2], \psi) = 2 |\psi|$, вже достатньо відома нам опорна функція. \\
+    
+    $c(\UU(s), \psi) = c([-3, 3], \psi) = 3 |\psi|$, ще одна вже достатньо відома нам опорна функція. \\
+    
+    % Послідовно пісдтавляючи знайдені вирази в формулу вище знаходимо:
+    % \begin{equation*}
+    % \begin{split}
+    %     c(X(t, \MM_0), \psi) &= c(\MM_0, \Theta^\star(t, t_0), \psi) + \int_{t_0}^t c(\UU(s), C^\star(s) \Theta^\star(t, s)\psi) ds = \\
+    %     &= c([-2,2], \Theta^\star(t, 0), \psi) + \int_0^t c([-3, 3], b \Theta^\star(t, s)\psi) ds = \\
+    %     &= 2\left|\Theta^\star(t, 0)\psi\right| + \int_0^t 3\left|b \Theta^\star(t, s)\psi\right| ds = \\
+    %     &= 2\left|e^{-t}\psi\right| + \int_0^t 3\left|b e^{s-t}\psi\right| ds = 2e^{-t}|\psi| + 3|b \psi| \int_0^t e^{s-t} ds = \\
+    %     &= 2e^{-t}|\psi| + 3|b \psi| \left(1 - e^{-t}\right) = \left(2e^{-t} + 3|b|\left(1 - e^{-t}\right)\right) |\psi|,
+    % \end{split}
+    % \end{equation*}
+    % звідки $X(t, \MM_0) = \left[-2e^{-t} - 3|b|\left(1 - e^{-t}\right), 2e^{-t} + 3|b|\left(1 - e^{-t}\right)\right]$.
+    
+    Послідовно пісдтавляючи знайдені вирази в формулу вище знаходимо:
+    \begin{equation*}
+    \begin{split}
+        c(X(t, \MM_0), \psi) &= c(\MM_0, \Theta^\star(t, t_0), \psi) + \int_{t_0}^t c(\UU(s), C^\star(s) \Theta^\star(t, s)\psi) ds = \\
+        &= c([-2,2], \Theta^\star(t, 0), \psi) + \int_0^t c([-3, 3], b \Theta^\star(t, s)\psi) ds = \\
+        &= 2\left|\Theta^\star(t, 0)\psi\right| + \int_0^t 3\left|b \Theta^\star(t, s)\psi\right| ds = \\
+        &= 2\left|e^t\psi\right| + \int_0^t 3\left|b e^{t-s}\psi\right| ds = 2e^t|\psi| + 3|b \psi| \int_0^t e^{t-s} ds = \\
+        &= 2e^t|\psi| + 3|b \psi| \left(e^t - 1\right) = \left(2e^t + 3|b|\left(e^t - 1\right)\right) |\psi|,
+    \end{split}
+    \end{equation*}
+    звідки $\XX(t, \MM_0) = \left[-2e^t - 3|b|\left(e^t - 1\right), 2e^t + 3|b|\left(e^t - 1\right)\right]$.
+\end{solution}
+
+\begin{problem}
+Знайти опорну функцію множини досяжності для системи керування:
+\begin{equation*}
+    \left\{
+    \begin{aligned}
+    \dfrac{dx_1}{dt} &= x_1 - x_2 + 2u_1, \\
+    \dfrac{dx_2}{dt} &= -4x_1 + x_2 + u_2,
+    \end{aligned}
+    \right.
+\end{equation*}
+де $x(0) = (x_{01}, x_{02}) \in \mathcal{M}_0$, $u(t) = (u_1(t), u_2(t)) \in\mathcal{U}$, $t\ge0$,
+\begin{align*}
+    \mathcal{M}_0 &= \{(x_{01},x_{02}): x_{01}^2 + x_{02}^2 \le 4\}, \\
+    \mathcal{U} &= \{(u_1, u_2): u_1^2 + u_2^2 \le 1\}.
+\end{align*}
+\end{problem}
+
+\begin{solution}
+    Одразу помітимо, що $C=\begin{pmatrix}2&0\\0&1\end{pmatrix}$.\\
+
+    $\Theta(t,s)$ знайдемо розв'язавши однорідну систему:
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+        \dfrac{dx_1}{dt} &= x_1 - x_2, \\
+        \dfrac{dx_2}{dt} &= -4x_1 + x_2,
+        \end{aligned}
+        \right.
+    \end{equation*}
+    
+    Її визначник $\begin{vmatrix} 1 - \lambda & - 1 \\ - 4 & 1 - \lambda \end{vmatrix} = (1 - \lambda)^2 - 4 = (\lambda + 1) (\lambda - 3) = 0$, звідки $\lambda_1 = -1$, $\lambda_2 = 3$. \\
+    
+    Підставляючи знайдені числа у систему, знаходимо власні вектори: $\begin{pmatrix} 1 \\ 2 \end{pmatrix}$ та $\begin{pmatrix} 1 \\ -2 \end{pmatrix}$ відповідно. \\
+
+    Отже загальний розв'язок має вигляд \[\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}(t) = c_1 \begin{pmatrix} e^{-t} \\ 2e^{-t} \end{pmatrix} + c_2 \begin{pmatrix} e^{3t} \\ -2e^{3t} \end{pmatrix}\]
+    
+    Розв'язуючи рівняння
+    \[ c_1 \begin{pmatrix} e^{-s} \\ 2e^{-s} \end{pmatrix} + c_2 \begin{pmatrix} e^{3s} \\ -2e^{3s} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \]
+    і
+    \[ c_1 \begin{pmatrix} e^{-s} \\ 2e^{-s} \end{pmatrix} + c_2 \begin{pmatrix} e^{3s} \\ -2e^{3s} \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \]
+    знаходимо фундаментальну матрицю системи, нормовану за моментом $s$, а саме 
+    \[ \Theta(t,s) = \begin{pmatrix} \dfrac{e^{s-t} + e^{3(t-s)}}{2} & \dfrac{e^{s-t} - e^{3(t-s)}}{4} \\ e^{s-t} - e^{3(t-s)} & \dfrac{e^{s-t} + e^{3(t-s)}}{2} \end{pmatrix} \]
+    
+    
+    Далі знаходимо $c(\mathcal{M}_0, \psi) = c(\mathcal{K}_2(0), \psi) = 2\|\psi\|$, та $c(\mathcal{U}, \psi) = c(\mathcal{K}_1(0), \psi) = \|\psi\|$, вже достатньо відомі нам опорні функції. \\
+    
+    Нарешті, можемо зібрати це все докупи: 
+    \begin{align*}
+        c(\mathcal{X}(t, \mathcal{M}_0), \psi) &= c(\mathcal{M}_0, \Theta^\star(t, 0) \psi) + \int_{0}^t c(\mathcal{U}(s), C^\star(s) \Theta^\star(t, s)\psi) ds = \\
+        \\
+        &= 2 \|\Theta^\star(t, 0) \psi\| + \int_{0}^t \left\|C^\star(s) \Theta^\star(t, s)\psi\right\| ds = \\
+        \\
+        &= 2 \left\|\begin{pmatrix} \dfrac{e^{-t} + e^{3t}}{2} & e^{3t} - e^{-t} \\ \dfrac{e^{3t} - e^{-t}}{4} & \dfrac{e^{-t} + e^{3t}}{2} \end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}\right\| + \\
+        \\
+        &+ \int_{0}^t \left\|\begin{pmatrix} e^{s-t} + e^{3(t-s)} & 2(e^{3(t-s)} - e^{s-t}) \\ \dfrac{e^{3(t-s)} - e^{s-t}}{4} & \dfrac{e^{s-t} + e^{3(t-s)}}{2} \end{pmatrix} \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix}\right\| ds = \\
+        \\
+        &= 2 \left\| \begin{pmatrix} \dfrac{e^{-t} + e^{3t}}{2} \cdot \psi_1 + (e^{3t} - e^{-t}) \cdot \psi_2 \\ \dfrac{e^{3t} - e^{-t}}{4}\cdot\psi_1 + \dfrac{e^{-t} + e^{3t}}{2}\cdot\psi_2 \end{pmatrix} \right\| + ...
+    \end{align*}
+\end{solution} 

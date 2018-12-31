@@ -1,6 +1,6 @@
 % cd ..\..\Users\NikitaSkybytskyi\Desktop\c3s1\control-theory
 
-% cls && pdflatex 02.tex && cls && pdflatex 02.tex && del *.aux, *.log, *.out && start 02.pdf
+% cls && pdflatex 03.tex && cls && pdflatex 03.tex && del *.aux, *.log, *.out && start 03.pdf
 
 \documentclass[a4paper, 12pt]{article}
 \usepackage[T2A,T1]{fontenc}
@@ -38,15 +38,19 @@
 
 \newcommand*\diff{\mathop{}\!\mathrm{d}}
 
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfi}{erfi}
+\DeclareMathOperator{\signum}{sign}
+
 \begin{document}
 
-\setcounter{section}{1}
-\section{Елементи багатозначного аналізу. Множина досяжності}
+\setcounter{section}{2}
+\section{Задача про переведення системи з точки в точку. Критерії керованості лінійної системи керування}
 
-\input{02-Algorithms.tex}
+\input{03-Algorithms.tex}
 
-\input{02-WithSolutions.tex}
+\input{03-WithSolutions.tex}
 
-\input{02-NoSolutions.tex}
+\input{03-NoSolutions.tex}
 
 \end{document}
