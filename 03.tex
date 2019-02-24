@@ -1,46 +1,7 @@
 % cd ..\..\Users\NikitaSkybytskyi\Desktop\c3s1\control-theory
-
 % cls && pdflatex 03.tex && cls && pdflatex 03.tex && del *.aux, *.log, *.out && start 03.pdf
 
-\documentclass[a4paper, 12pt]{article}
-\usepackage[T2A,T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[english, ukrainian]{babel}
-\usepackage{amsmath, amssymb}
-
-\usepackage{amsthm}
-\theoremstyle{definition}
-\newtheorem{algorithm}{Алгоритм}[section]
-\newtheorem*{problem*}{\normalfont{\textit{Задача}}}
-\newtheorem{problem}{\normalfont{\textit{Задача}}}[section]
-\newtheorem*{solution}{Розв'язок}
-% \usepackage[showframe]{geometry}
-
-\allowdisplaybreaks
-\numberwithin{equation}{section}
-
-\usepackage{xcolor}
-\usepackage{hyperref}
-\hypersetup{unicode=true,colorlinks=true,linktoc=all,linkcolor=red}
-
-\usepackage{graphicx}
-
-\newcommand{\JJ}{\mathcal{J}}
-\newcommand{\KK}{\mathcal{K}}
-\newcommand{\MM}{\mathcal{M}}
-\newcommand{\UU}{\mathcal{U}}
-\newcommand{\XX}{\mathcal{X}}
-\newcommand{\RR}{\mathbb{R}}
-
-\newcommand{\Max}{\displaystyle\max\limits}
-
-\renewcommand{\SS}{\mathcal{S}}
-
-\newcommand*\diff{\mathop{}\!\mathrm{d}}
-
-\DeclareMathOperator{\erf}{erf}
-\DeclareMathOperator{\erfi}{erfi}
-\DeclareMathOperator{\signum}{sign}
+\input{SingleTopic.sty}
 
 \begin{document}
 
